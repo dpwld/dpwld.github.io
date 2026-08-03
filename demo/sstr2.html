@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSTR2 AI Scientist — 5-Agent Peptide Design Pipeline (Demo)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root {
+  --bg: #0B0F1A; --panel: #121826; --panel2: #171E30; --line: #232B40;
+  --ink: #E8ECF5; --dim: #8B96AD; --dim2: #5D6880;
+  --cyan: #22D3EE; --blue: #3B82F6; --green: #22C55E; --amber: #F59E0B;
+  --red: #EF4444; --purple: #A78BFA;
+  --sans: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+  --mono: 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+button { font-family: inherit; cursor: pointer; }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 28px 24px 64px; }
+
+/* 헤더 */
+.hd { display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.hd h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+.hd h1 span { color: var(--cyan); }
+.hd p { color: var(--dim); font-size: 13px; margin-top: 5px; }
+.hd .meta { font-family: var(--mono); font-size: 11.5px; color: var(--dim2); margin-top: 8px; }
+.hd .actions { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.btn { border: 0; border-radius: 9px; padding: 10px 18px; font-size: 13px; font-weight: 700; }
+.btn--run { background: var(--cyan); color: #06202A; }
+.btn--run:disabled { opacity: .45; cursor: default; }
+.btn--ghost { background: transparent; border: 1px solid var(--line); color: var(--ink); }
+.demo-note { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: var(--amber); background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.28); border-radius: 999px; padding: 4px 11px; }
+
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+.panel__hd { display: flex; align-items: baseline; gap: 10px; padding: 16px 18px 12px; border-bottom: 1px solid var(--line); }
+.panel__hd h2 { font-size: 14px; font-weight: 800; }
+.panel__hd .sub { font-size: 11.5px; color: var(--dim2); }
+.panel__hd .right { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--dim2); }
+
+/* 파이프라인 */
+.pipe { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; padding: 18px; }
+.step { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 12px 10px; text-align: center; position: relative; transition: border-color .3s, background .3s, transform .3s; }
+.step .n { font-family: var(--mono); font-size: 10px; color: var(--dim2); }
+.step .lab { font-size: 12px; font-weight: 700; margin-top: 4px; }
+.step .st { font-size: 10.5px; margin-top: 6px; color: var(--dim2); font-family: var(--mono); }
+.step.run { border-color: var(--cyan); background: rgba(34,211,238,.09); transform: translateY(-3px); }
+.step.run .st { color: var(--cyan); }
+.step.run::after { content: ''; position: absolute; inset: -1px; border-radius: 10px; border: 1px solid var(--cyan); animation: pulse 1.1s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .25; } }
+.step.ok { border-color: rgba(34,197,94,.4); }
+.step.ok .st { color: var(--green); }
+.step.ok .lab { color: var(--ink); }
+
+/* 그리드 */
+.grid { display: grid; grid-template-columns: 320px 1fr; gap: 18px; margin-top: 18px; align-items: start; }
+.col { display: grid; gap: 18px; }
+
+/* 에이전트 */
+.agent { display: flex; align-items: center; gap: 11px; padding: 12px 18px; border-top: 1px solid var(--line); }
+.agent:first-child { border-top: 0; }
+.agent .ic { width: 30px; height: 30px; border-radius: 8px; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; }
+.ic-planner { background: rgba(59,130,246,.16); color: var(--blue); }
+.ic-qc { background: rgba(34,197,94,.16); color: var(--green); }
+.ic-div { background: rgba(167,139,250,.16); color: var(--purple); }
+.ic-critic { background: rgba(245,158,11,.16); color: var(--amber); }
+.ic-rep { background: rgba(34,211,238,.16); color: var(--cyan); }
+.agent b { font-size: 13px; display: block; }
+.agent .msg { font-size: 11.5px; color: var(--dim2); font-family: var(--mono); }
+.agent .tag { margin-left: auto; font-size: 10px; font-weight: 800; color: var(--dim2); border: 1px solid var(--line); border-radius: 5px; padding: 2px 6px; flex: none; }
+.agent.act .ic { box-shadow: 0 0 0 3px rgba(34,211,238,.18); }
+.agent.act b { color: var(--cyan); }
+
+/* 게이트 */
+.gate { padding: 12px 18px; border-top: 1px solid var(--line); }
+.gate:first-child { border-top: 0; }
+.gate .row { display: flex; align-items: baseline; gap: 8px; font-size: 12.5px; }
+.gate .row b { font-weight: 800; }
+.gate .crit { color: var(--dim2); font-family: var(--mono); font-size: 11px; }
+.gate .cnt { margin-left: auto; font-family: var(--mono); font-size: 11.5px; }
+.gate .bar { height: 5px; border-radius: 3px; background: var(--line); margin-top: 8px; overflow: hidden; }
+.gate .bar i { display: block; height: 100%; background: var(--green); border-radius: 3px; transition: width .8s ease; }
+.gate.zero .bar i { background: var(--red); }
+
+/* 테이블 */
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { text-align: left; font-size: 10.5px; letter-spacing: .04em; color: var(--dim2); font-weight: 700; padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 11px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td.mono, th.num { font-family: var(--mono); }
+td.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+tr:hover td { background: rgba(255,255,255,.02); }
+tr.win td { background: rgba(34,211,238,.06); }
+.seq { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; }
+.seq em { font-style: normal; color: var(--cyan); font-weight: 700; }
+.pill { font-size: 10.5px; font-weight: 800; padding: 2.5px 8px; border-radius: 999px; }
+.pill--pass { background: rgba(34,197,94,.14); color: var(--green); }
+.pill--fail { background: rgba(239,68,68,.14); color: var(--red); }
+.rank { font-family: var(--mono); font-weight: 800; color: var(--dim); }
+.rank.top { color: var(--cyan); }
+.fail-why { font-size: 10.5px; color: var(--dim2); font-family: var(--mono); }
+
+/* 수렴 차트 */
+.conv { padding: 18px; }
+.best { display: flex; gap: 22px; padding: 14px 18px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.best div span { display: block; font-size: 10.5px; color: var(--dim2); letter-spacing: .04em; }
+.best div b { font-family: var(--mono); font-size: 15px; font-weight: 800; }
+.best div b.cy { color: var(--cyan); }
+
+/* 로그 */
+.log { font-family: var(--mono); font-size: 11.5px; line-height: 1.9; padding: 14px 18px; max-height: 210px; overflow-y: auto; color: var(--dim); }
+.log .t { color: var(--dim2); }
+.log .ok { color: var(--green); }
+.log .cy { color: var(--cyan); }
+.log .am { color: var(--amber); }
+
+.tablewrap { overflow-x: auto; }
+.log { overflow-wrap: anywhere; }
+.panel__hd { flex-wrap: wrap; }
+.col, .panel, .agent > div { min-width: 0; }
+.agent .msg { overflow-wrap: anywhere; display: block; }
+.hd .meta { overflow-wrap: anywhere; }
+@media (max-width: 1080px) { .grid { grid-template-columns: 1fr; } .pipe { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 620px) { .pipe { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hd">
+    <div>
+      <h1>SSTR2 <span>AI Scientist</span> — 5-Agent Peptide Design Pipeline</h1>
+      <p>DOTATATE 스캐폴드 기반 SSTR2 선택적 펩타이드 바인더를 설계하는 에이전트 파이프라인</p>
+      <div class="meta">target: SSTR2 (Somatostatin Receptor Type 2) · reference: DOTATATE (AGCKNFFWKTFTSC, 14-aa) · run_id: demo_iter03_8bc7</div>
+    </div>
+    <div class="actions">
+      <span class="demo-note">● DEMO — 사전 계산된 결과 재생</span>
+      <button class="btn btn--ghost" id="btnReset">Reset</button>
+      <button class="btn btn--run" id="btnRun">▶ Run pipeline</button>
+    </div>
+  </div>
+
+  <!-- 파이프라인 -->
+  <div class="panel">
+    <div class="panel__hd">
+      <h2>Pipeline</h2><span class="sub">8 steps · iteration 3 / 3</span>
+      <span class="right" id="pipeState">idle</span>
+    </div>
+    <div class="pipe" id="pipe">
+      <div class="step" data-e="OpenFold3 / PDB"><div class="n">STEP 01</div><div class="lab">Receptor</div><div class="st">pending</div></div>
+      <div class="step" data-e="NVIDIA NIM"><div class="n">STEP 02</div><div class="lab">RFdiffusion</div><div class="st">pending</div></div>
+      <div class="step" data-e="NVIDIA NIM"><div class="n">STEP 03</div><div class="lab">ProteinMPNN</div><div class="st">pending</div></div>
+      <div class="step" data-e="ESMFold API"><div class="n">STEP 04</div><div class="lab">ESMFold QC</div><div class="st">pending</div></div>
+      <div class="step" data-e="pLDDT 기반"><div class="n">STEP 05</div><div class="lab">DiffDock</div><div class="st">pending</div></div>
+      <div class="step" data-e="PyRosetta"><div class="n">STEP 06</div><div class="lab">PyRosetta</div><div class="st">pending</div></div>
+      <div class="step" data-e="PyRosetta"><div class="n">STEP 05b</div><div class="lab">Selectivity</div><div class="st">pending</div></div>
+      <div class="step" data-e="FoldMason"><div class="n">STEP 07</div><div class="lab">Analysis</div><div class="st">pending</div></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- 좌: 에이전트 + 게이트 -->
+    <div class="col">
+      <div class="panel">
+        <div class="panel__hd"><h2>Agents</h2><span class="sub">5개 · LLM 3 / Code 2</span></div>
+        <div id="agents">
+          <div class="agent" data-a="planner"><div class="ic ic-planner">P</div><div><b>Planner</b><span class="msg">실험 계획 대기 중</span></div><span class="tag">LLM</span></div>
+          <div class="agent" data-a="qc"><div class="ic ic-qc">Q</div><div><b>QC &amp; Ranker</b><span class="msg">게이트 대기 중</span></div><span class="tag">CODE</span></div>
+          <div class="agent" data-a="div"><div class="ic ic-div">D</div><div><b>DiversityMgr</b><span class="msg">클러스터 대기 중</span></div><span class="tag">CODE</span></div>
+          <div class="agent" data-a="critic"><div class="ic ic-critic">C</div><div><b>ScientistCritic</b><span class="msg">평가 대기 중</span></div><span class="tag">LLM</span></div>
+          <div class="agent" data-a="rep"><div class="ic ic-rep">R</div><div><b>Reporter</b><span class="msg">리포트 대기 중</span></div><span class="tag">LLM</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__hd"><h2>QC Gates</h2><span class="sub">다중 게이트 통과율</span></div>
+        <div id="gates">
+          <div class="gate"><div class="row"><b>Gate 1</b><span class="crit">pLDDT &gt;= 60</span><span class="cnt">7 / 8</span></div><div class="bar"><i style="width:0"></i></div></div>
+          <div class="gate"><div class="row"><b>Gate 2</b><span class="crit">Top 50% Docking</span><span class="cnt">7 / 7</span></div><div class="bar"><i style="width:0"></i></div></div>
+          <div class="gate"><div class="row"><b>Gate 3</b><span class="crit">ddG &lt;= -5.0</span><span class="cnt">4 / 5</span></div><div class="bar"><i style="width:0"></i></div></div>
+          <div class="gate zero"><div class="row"><b>Gate 4</b><span class="crit">Selectivity &gt;= -2.0</span><span class="cnt">0 / 5</span></div><div class="bar"><i style="width:0"></i></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__hd"><h2>Convergence</h2><span class="sub">iteration별 best ddG</span></div>
+        <div class="conv">
+          <svg viewBox="0 0 300 130" style="width:100%">
+            <line x1="34" y1="105" x2="285" y2="105" stroke="#232B40"/>
+            <line x1="34" y1="14" x2="34" y2="105" stroke="#232B40"/>
+            <g font-size="8.5" fill="#5D6880" font-family="monospace">
+              <text x="29" y="108" text-anchor="end">-5</text>
+              <text x="29" y="62" text-anchor="end">-8</text>
+              <text x="29" y="20" text-anchor="end">-11</text>
+              <text x="70" y="120">iter 1</text><text x="145" y="120">iter 2</text><text x="220" y="120">iter 3</text>
+            </g>
+            <polyline id="convLine" points="80,78 155,24 230,58" fill="none" stroke="#22D3EE" stroke-width="2"
+              stroke-dasharray="220" stroke-dashoffset="220"/>
+            <circle cx="80" cy="78" r="4" fill="#22D3EE"/><circle cx="155" cy="24" r="4" fill="#22D3EE"/><circle cx="230" cy="58" r="4" fill="#22D3EE"/>
+            <g font-size="9" fill="#E8ECF5" font-family="monospace">
+              <text x="80" y="94" text-anchor="middle">-6.8</text>
+              <text x="155" y="17" text-anchor="middle">-10.3</text>
+              <text x="230" y="50" text-anchor="middle">-8.2</text>
+            </g>
+          </svg>
+        </div>
+        <div class="best">
+          <div><span>BEST pLDDT</span><b class="cy">80.6</b></div>
+          <div><span>BEST DOCK</span><b>-8.77</b></div>
+          <div><span>BEST ddG</span><b>-10.3</b></div>
+          <div><span>CLUSTERS</span><b>1</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 우: 후보 + 로그 -->
+    <div class="col">
+      <div class="panel">
+        <div class="panel__hd"><h2>Candidates</h2><span class="sub">iteration 3 · 최종 순위</span>
+          <span class="right" id="candState">0 / 8 scored</span></div>
+        <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>ID</th><th>Sequence</th>
+            <th class="num" style="text-align:right">pLDDT</th>
+            <th class="num" style="text-align:right">Dock</th>
+            <th class="num" style="text-align:right">ddG</th>
+            <th class="num" style="text-align:right">lDDT</th>
+            <th class="num" style="text-align:right">Select.</th>
+            <th class="num" style="text-align:right">Score</th>
+            <th>Result</th>
+          </tr></thead>
+          <tbody id="cands"></tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__hd"><h2>Run log</h2><span class="sub">orchestrator</span>
+          <span class="right">Qwen 2.5 7B · rule-based fallback</span></div>
+        <div class="log" id="log"><span class="t">[--:--:--]</span> 대기 중 — <b>Run pipeline</b>을 눌러 시작하세요.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var CANDS = [
+  {rank:1, id:'bb00_seq06', seq:'AGCK<em>F</em>FFWKTFTS', plddt:71.6, dock:-8.26, ddg:-6.4, lddt:0.839, sel:-2.08, score:0.644, res:'PASS', why:''},
+  {rank:2, id:'bb00_seq02', seq:'AGCKNFFWKTF<em>I</em>S', plddt:70.7, dock:-8.64, ddg:-8.2, lddt:0.555, sel:-1.79, score:0.687, res:'PASS', why:''},
+  {rank:3, id:'bb00_seq05', seq:'AGCKNFFWKTFT<em>A</em>', plddt:69.5, dock:-8.77, ddg:-5.2, lddt:0.556, sel:-1.71, score:0.609, res:'PASS', why:''},
+  {rank:4, id:'bb00_seq00', seq:'AGCKNFFWK<em>N</em>FTS', plddt:66.8, dock:-8.20, ddg:-8.2, lddt:0.626, sel:-0.53, score:0.626, res:'PASS', why:''},
+  {rank:5, id:'bb00_seq01', seq:'AGCKNF<em>S</em>WKTFTS', plddt:66.2, dock:-7.40, ddg:-6.9, lddt:0.554, sel:-1.64, score:0.605, res:'PASS', why:''},
+  {rank:6, id:'DOTATATE_ref', seq:'AGCKNFFWKTFTSC', plddt:63.0, dock:-7.13, ddg:0, lddt:0.606, sel:0, score:0.367, res:'FAIL', why:'ddG 0 > -5'},
+  {rank:7, id:'bb00_seq03', seq:'AGCKNF<em>H</em>WKTFTS', plddt:61.2, dock:-6.34, ddg:0, lddt:0.830, sel:0, score:0.342, res:'FAIL', why:'ddG 0 > -5'},
+  {rank:8, id:'bb00_seq04', seq:'AGCKNFF<em>A</em>KTFTS', plddt:56.1, dock:0, ddg:0, lddt:0.506, sel:0, score:0.168, res:'FAIL', why:'pLDDT 56.1 < 60'}
+];
+var STEP_MSG = [
+  ['planner', 'SSTR2 포켓 잔기 로드 · DOTATATE 시드 확정'],
+  ['planner', 'RFdiffusion 백본 8종 생성 (length 13-14)'],
+  ['div',     'ProteinMPNN 서열 설계 → 1 cluster로 축약'],
+  ['qc',      'ESMFold pLDDT 산출 · Gate 1 통과 7/8'],
+  ['qc',      'DiffDock 스코어링 · Gate 2 통과 7/7'],
+  ['critic',  'PyRosetta FlexPepDock ddG · Gate 3 통과 4/5'],
+  ['critic',  'SSTR1/3/4/5 off-target 도킹 · Gate 4 통과 0/5'],
+  ['rep',     'FoldMason lDDT 비교 · 실험 노트북 생성 완료']
+];
+var steps = [].slice.call(document.querySelectorAll('.step'));
+var tbody = document.getElementById('cands');
+var logEl = document.getElementById('log');
+var running = false;
+
+function stamp() {
+  var d = new Date();
+  return '[' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0') + ':' + String(d.getSeconds()).padStart(2,'0') + ']';
+}
+function log(html, cls) {
+  logEl.innerHTML += '<br><span class="t">' + stamp() + '</span> <span class="' + (cls||'') + '">' + html + '</span>';
+  logEl.scrollTop = logEl.scrollHeight;
+}
+function setAgent(key, msg) {
+  document.querySelectorAll('.agent').forEach(function (a) { a.classList.remove('act'); });
+  var el = document.querySelector('.agent[data-a="' + key + '"]');
+  if (el) { el.classList.add('act'); el.querySelector('.msg').textContent = msg; }
+}
+function reset() {
+  running = false;
+  steps.forEach(function (s) { s.className = 'step'; s.querySelector('.st').textContent = 'pending'; });
+  tbody.innerHTML = '';
+  document.getElementById('candState').textContent = '0 / 8 scored';
+  document.getElementById('pipeState').textContent = 'idle';
+  document.getElementById('convLine').style.strokeDashoffset = 220;
+  document.querySelectorAll('.gate .bar i').forEach(function (b) { b.style.width = 0; });
+  document.querySelectorAll('.agent').forEach(function (a) { a.classList.remove('act'); });
+  logEl.innerHTML = '<span class="t">[--:--:--]</span> 대기 중 — <b>Run pipeline</b>을 눌러 시작하세요.';
+  document.getElementById('btnRun').disabled = false;
+}
+function renderCands() {
+  tbody.innerHTML = '';
+  CANDS.forEach(function (c, i) {
+    setTimeout(function () {
+      var tr = document.createElement('tr');
+      if (c.rank === 1) tr.className = 'win';
+      tr.innerHTML =
+        '<td class="rank' + (c.rank <= 3 ? ' top' : '') + '">' + c.rank + '</td>' +
+        '<td class="mono">' + c.id + '</td>' +
+        '<td class="seq">' + c.seq + '</td>' +
+        '<td class="num">' + c.plddt.toFixed(1) + '</td>' +
+        '<td class="num">' + (c.dock ? c.dock.toFixed(2) : '—') + '</td>' +
+        '<td class="num">' + (c.ddg ? c.ddg.toFixed(1) : '—') + '</td>' +
+        '<td class="num">' + c.lddt.toFixed(3) + '</td>' +
+        '<td class="num">' + (c.sel ? c.sel.toFixed(2) : '—') + '</td>' +
+        '<td class="num">' + c.score.toFixed(3) + '</td>' +
+        '<td><span class="pill pill--' + c.res.toLowerCase() + '">' + c.res + '</span>' +
+          (c.why ? '<div class="fail-why">' + c.why + '</div>' : '') + '</td>';
+      tbody.appendChild(tr);
+      document.getElementById('candState').textContent = (i + 1) + ' / 8 scored';
+    }, i * 110);
+  });
+}
+function run() {
+  if (running) return;
+  running = true;
+  document.getElementById('btnRun').disabled = true;
+  reset();
+  running = true;
+  document.getElementById('btnRun').disabled = true;
+  document.getElementById('pipeState').textContent = 'running · iteration 3/3';
+  log('pipeline start — target SSTR2 · seed DOTATATE (14-aa)', 'cy');
+
+  var i = 0;
+  (function next() {
+    if (i >= steps.length) {
+      document.getElementById('pipeState').textContent = 'completed · 8/8 steps';
+      log('Gate 4 (selectivity) 0/5 통과 — off-target 결합 억제가 다음 iteration 과제', 'am');
+      log('run complete · best candidate bb00_seq06 (score 0.644)', 'ok');
+      // 게이트 애니메이션
+      var pcts = [87.5, 100, 80, 0];
+      document.querySelectorAll('.gate .bar i').forEach(function (b, k) {
+        setTimeout(function () { b.style.width = pcts[k] + '%'; }, k * 160);
+      });
+      document.getElementById('convLine').style.transition = 'stroke-dashoffset 1.4s ease';
+      document.getElementById('convLine').style.strokeDashoffset = 0;
+      renderCands();
+      setTimeout(function () {
+        document.querySelectorAll('.agent').forEach(function (a) { a.classList.remove('act'); });
+        running = false;
+        document.getElementById('btnRun').disabled = false;
+      }, 1200);
+      return;
+    }
+    var s = steps[i], msg = STEP_MSG[i];
+    s.classList.add('run');
+    s.querySelector('.st').textContent = 'running';
+    setAgent(msg[0], msg[1]);
+    log(s.querySelector('.lab').textContent + ' — ' + msg[1]);
+    setTimeout(function () {
+      s.classList.remove('run'); s.classList.add('ok');
+      s.querySelector('.st').textContent = 'done';
+      i++; next();
+    }, 620);
+  })();
+}
+document.getElementById('btnRun').addEventListener('click', run);
+document.getElementById('btnReset').addEventListener('click', reset);
+</script>
+</body>
+</html>
