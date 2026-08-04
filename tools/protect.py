@@ -106,11 +106,16 @@ function kek(name) {
     return crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: SALT, iterations: ITER }, km, 256);
   }).then(function (bits) { return new Uint8Array(bits); });
 }
+function replaceDoc(html) {
+  // 파싱이 끝나기 전 write하면 로더 문서에 이어붙어 레이아웃이 섞인다 — 반드시 파싱 완료 후 교체
+  var go = function () { document.open(); document.write(html); document.close(); };
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', go, { once: true });
+  else go();
+}
 function boot(mkBytes) {
   return dec(mkBytes, b64(PAYLOAD)).then(function (buf) {
     localStorage.setItem('pMK', Array.from(mkBytes).map(function (b) { return b.toString(16).padStart(2, '0'); }).join(''));
-    var html = new TextDecoder().decode(buf);
-    document.open(); document.write(html); document.close();
+    replaceDoc(new TextDecoder().decode(buf));
   });
 }
 function tryName(name) {
