@@ -645,3 +645,38 @@ body.co-lock { overflow: hidden; height: 100vh; }
 }
 .cogate button:hover { opacity: 0.85; }
 .cogate__err { margin-top: 14px; font: 600 13px/1.5 var(--sans); color: #ff6b6b; min-height: 20px; }
+
+/* ================= v4.2: Planning·Design 흑백→컬러 인터랙션 ================= */
+.works-grid .work__imgwrap img {
+  filter: grayscale(1) contrast(0.95);
+  opacity: 0.85;
+  transition: filter 0.5s ease, opacity 0.5s ease, transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.works-grid .work:hover .work__imgwrap img,
+.works-grid .work:focus-visible .work__imgwrap img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.03);
+}
+.works-grid .work__org,
+.works-grid .work h4,
+.works-grid .work p,
+.works-grid .work .work__cue {
+  color: #b3b3b3;
+  transition: color 0.35s ease;
+}
+.works-grid .work:hover .work__org,
+.works-grid .work:focus-visible .work__org { color: var(--gray); }
+.works-grid .work:hover h4,
+.works-grid .work:focus-visible h4 { color: var(--ink); }
+.works-grid .work:hover p,
+.works-grid .work:focus-visible p { color: #3a3a3a; }
+.works-grid .work:hover .work__cue,
+.works-grid .work:focus-visible .work__cue { color: var(--ink); }
+/* 터치 기기: 항상 컬러 */
+@media (hover: none) {
+  .works-grid .work__imgwrap img { filter: none; opacity: 1; }
+  .works-grid .work__org { color: var(--gray); }
+  .works-grid .work h4 { color: var(--ink); }
+  .works-grid .work p { color: #3a3a3a; }
+}
