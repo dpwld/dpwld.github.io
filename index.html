@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="portfolio-locked">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,9 +7,30 @@
 <meta name="description" content="증권사 운영 6년과 LLM 실무를 함께 가진 AI-Native 비즈니스 오퍼레이터 정예지의 포트폴리오">
 <link rel="icon" type="image/png" href="assets/profile.png">
 <link rel="stylesheet" href="css/colors_and_type.css?v=42">
-<link rel="stylesheet" href="css/site.css?v=42">
+<link rel="stylesheet" href="css/site.css?v=43">
+<style>
+  html.portfolio-locked { background: #000; }
+  html.portfolio-locked body { overflow: hidden; }
+  html.portfolio-locked body > :not(#portfolioGate) { display: none !important; }
+</style>
 </head>
 <body>
+<main id="portfolioGate" class="portfolio-gate" aria-labelledby="portfolioGateTitle">
+  <div class="portfolio-gate__box">
+    <p class="portfolio-gate__eyebrow">YEJI JEONG / PORTFOLIO</p>
+    <h1 id="portfolioGateTitle">A closer look<span aria-hidden="true">.</span></h1>
+    <p class="portfolio-gate__intro">포트폴리오를 보려면 비밀번호를 입력해 주세요.</p>
+    <form id="portfolioGateForm">
+      <label for="portfolioPassword">비밀번호</label>
+      <div class="portfolio-gate__field">
+        <input id="portfolioPassword" type="password" inputmode="numeric" autocomplete="current-password" required aria-describedby="portfolioGateError">
+        <button type="submit">입장하기 <span aria-hidden="true">↗</span></button>
+      </div>
+      <p id="portfolioGateError" class="portfolio-gate__error" role="status"></p>
+    </form>
+    <noscript>비밀번호를 입력하려면 JavaScript를 켜 주세요.</noscript>
+  </div>
+</main>
 
 
 <!-- ================= 상단 내비게이션 ================= -->
@@ -445,7 +466,7 @@ I build what people actually need, and keep it running.</div>
   </div>
 </footer>
 
-<script src="js/navigation.js"></script>
+<script src="js/navigation.js?v=43"></script>
 
 <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 크게 보기">
   <button class="lb__x" aria-label="닫기">✕</button>
@@ -592,5 +613,6 @@ I build what people actually need, and keep it running.</div>
 
 <script src="js/dialogs.js"></script>
 <script src="js/reveal.js"></script>
+<script src="js/access.js?v=43"></script>
 </body>
 </html>
