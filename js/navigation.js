@@ -1,4 +1,4 @@
-(function () {
+document.addEventListener('portfolio:unlock', function () {
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // 실시간 시계 (Seoul)
@@ -107,4 +107,4 @@
     }
   }
 
-})();
+}, { once: true });
