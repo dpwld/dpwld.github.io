@@ -18,8 +18,8 @@ document.addEventListener('portfolio:unlock', function () {
   var NAV = 72;
 
   function heroMax() {
-    var stats = document.querySelector('.stats');
-    return stats ? Math.max(0, Math.round(stats.getBoundingClientRect().bottom + scrollY - innerHeight)) : 0;
+    var hero = document.querySelector('.hero');
+    return hero ? Math.max(0, Math.round(hero.getBoundingClientRect().bottom + scrollY - innerHeight)) : 0;
   }
 
   addEventListener('wheel', function (e) {

@@ -88,14 +88,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 }
 .hero__links a:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 
-/* ---- 스탯 밴드 ---- */
-.stats { border-bottom: 1px solid var(--ink); }
-.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.stats__item { padding: 40px 32px 36px; border-left: 1px solid var(--ink); }
-.stats__item:first-child { border-left: 0; padding-left: 0; }
-.stats__item b { display: block; font: 800 clamp(34px, 3.4vw, 52px)/1 var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.stats__item span { display: block; margin-top: 12px; font: 600 13px/1.5 var(--sans); color: var(--gray); word-break: keep-all; }
-
 /* ---- 섹션 공통 ---- */
 .section { padding: 104px 0 96px; }
 .section--dark { background: var(--ink); color: var(--paper); }
@@ -229,8 +221,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 @media (max-width: 1024px) {
   .container, .topnav__in { padding: 0 24px; }
   .topnav__menu { display: none; }
-  .stats__grid { grid-template-columns: 1fr 1fr; }
-  .stats__item { border-left: 0; padding-left: 0; }
   .plist__item { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
   .plist__idx { font-size: 22px; }
   .works-grid { grid-template-columns: 1fr 1fr; }
@@ -325,7 +315,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 /* ---- v2.7: 디스플레이 타이포 Helvetica 버전 ----
    한글은 Helvetica에 글리프가 없어 Pretendard로 폴백. 웨이트는 실보유 최대치인 700. */
 :root { --display: 'Helvetica Neue', Helvetica, Arial, 'Pretendard Variable', Pretendard, sans-serif; }
-.hero h1, .section__title, .footer h2, .stats__item b, .plist__idx,
+.hero h1, .section__title, .footer h2, .plist__idx,
 .plist__main h3, .work__body h4, .work__ph, .skill-row h4, .cred-cols h3,
 .cv-item .when, .cv-item h4, .plist__metric, .topnav__logo { font-weight: 700; }
 .hero h1 { letter-spacing: -0.035em; }
@@ -580,14 +570,8 @@ body.gate { overflow: hidden; height: 100vh; }
 .fig, .fig__nav { border: 0 !important; }
 .footer__grid { border-top: 0 !important; }
 .skill-row { border-top: 0 !important; }
-.stats { border-bottom: 0 !important; }
-.stats__item { border-left: 0 !important; }
 .modal__box { border: 0 !important; }
 .cred-list li { border-bottom: 0 !important; }
-
-/* 스탯 밴드: 선 없이 간격으로 구분 */
-.stats__grid { gap: 0 24px; }
-.stats__item { padding-left: 0; }
 
 /* 웍스 카드: 선 없이 여백으로 구분 */
 .work__body { padding: 20px 0 0; }

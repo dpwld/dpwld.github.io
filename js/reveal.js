@@ -1,7 +1,7 @@
 (function () {
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) return;
-  var targets = document.querySelectorAll('.plist__item, .work, .stats__item, .skill-row, .cv-item, .section__head, .cred-cols > div');
+  var targets = document.querySelectorAll('.plist__item, .work, .skill-row, .cv-item, .section__head, .cred-cols > div');
   targets.forEach(function (el) { el.classList.add('reveal'); });
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
