@@ -7,7 +7,7 @@
 <meta name="description" content="증권사 운영 6년과 LLM 실무를 함께 가진 AI-Native 비즈니스 오퍼레이터 정예지의 포트폴리오">
 <link rel="icon" type="image/png" href="assets/profile.png">
 <link rel="stylesheet" href="css/colors_and_type.css?v=42">
-<link rel="stylesheet" href="css/site.css?v=45">
+<link rel="stylesheet" href="css/site.css?v=46">
 <style>
   html.portfolio-locked { background: #000; }
   html.portfolio-locked body { overflow: hidden; }
@@ -80,86 +80,6 @@ I build what people actually need, and keep it running.</div>
       <li class="plist__item">
         <div class="plist__idx">01</div>
         <div class="plist__main">
-          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스</div>
-          <h3>Grant Project: 지원사업 탐색·기업 적합도 검토</h3>
-          <p class="plist__brief">기업 정보를 바탕으로 지원사업을 찾고, 적합도 검토부터 신청 준비까지 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
-          <div class="plist__more">
-            <p><b>도구</b>React·TypeScript, Cloudflare D1, 기업마당·K-Startup API와 선택적 LLM 평가 기능을 연결했습니다.</p>
-            <p><b>구현</b>기업 정보 초기 설정, 공고 수집·가져오기, 검색·필터, 즐겨찾기와 보관 기능을 구현했습니다. 평가의 근거와 검토 범위를 보여주고, 신청 준비 내용을 Sprint Dashboard의 업무로 전달합니다.</p>
-            <p><b>설계</b>기업 정보가 바뀌면 기존 평가를 재검토 대상으로 표시합니다. 기본 정리 기능은 AI 없이 사용할 수 있고, 실제 공고 수집과 AI 평가는 사용자의 API 설정이 필요합니다.</p>
-          </div>
-        </div>
-        <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">Data Integration</span><span class="tag">TypeScript</span><span class="tag">LLM</span></div>
-          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/grant-project" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-          <p class="plist__note">실제 구현 화면 · 가상 기업·공고·평가 예시</p>
-          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/grant-01.jpg" alt="추천 대시보드 · 지원사업의 우선순위와 마감 일정" loading="lazy" class="on"><img src="assets/proj/highlights/grant-02.jpg" alt="공고 상세 · 판단 근거, 신청 조건, 검토한 출처의 범위" loading="lazy"><img src="assets/proj/highlights/grant-03.jpg" alt="기업 프로필 · 필수 정보와 지원 유형별 매칭 선호 조건" loading="lazy"><img src="assets/proj/highlights/grant-04.jpg" alt="공고 탐색 · 등급·출처·마감일 필터와 즐겨찾기" loading="lazy"><img src="assets/proj/highlights/grant-05.jpg" alt="보관함 · 보관한 공고 확인과 추천 목록 복원" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">추천 대시보드 · 지원사업의 우선순위와 마감 일정</p></div>
-        </div>
-      </li>
-
-      <li class="plist__item">
-        <div class="plist__idx">02</div>
-        <div class="plist__main">
-          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스</div>
-          <h3>Company Finance: 기업 가계부·거래 분류</h3>
-          <p class="plist__brief">은행·카드 명세서를 가져와 거래를 분류하고, 기업의 지출·잔액·예산을 확인합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
-          <div class="plist__more">
-            <p><b>도구</b>React·TypeScript, 명세서 파서, Cloudflare D1·R2를 사용해 거래와 첨부 자료를 저장합니다.</p>
-            <p><b>구현</b>지원하는 은행·카드·세금계산서 파일의 가져오기와 미리보기, 거래 검색·수정, 반복 결제, 지출 분석과 예산 관리를 구현했습니다. 사용자가 카테고리와 분류 규칙을 직접 만들 수 있습니다.</p>
-            <p><b>설계</b>규칙이 없는 거래는 미분류로 남기고, 기존 거래에 규칙을 적용할 때는 변경 내용을 먼저 검토합니다. 현재 지원 범위는 정해진 한국어 헤더를 사용하는 원화 명세서입니다.</p>
-          </div>
-        </div>
-        <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">Finance</span><span class="tag">Data Processing</span><span class="tag">TypeScript</span></div>
-          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/company-finance" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-          <p class="plist__note">실제 구현 화면 · 가상 거래·예산 데이터</p>
-          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/finance-01.jpg" alt="재무 대시보드 · 월별 지출 흐름과 계좌 잔액" loading="lazy" class="on"><img src="assets/proj/highlights/finance-02.jpg" alt="정기 결제 탐색 · 여러 달 반복된 가맹점과 결제 이력" loading="lazy"><img src="assets/proj/highlights/finance-03.jpg" alt="예산 관리 · 직접 정의한 분류별 한도와 남은 예산" loading="lazy"><img src="assets/proj/highlights/finance-04.jpg" alt="거래 내역 · 계좌·카드·분류별 필터와 상세 조회" loading="lazy"><img src="assets/proj/highlights/finance-05.jpg" alt="분류 규칙 · 사용자 분류와 거래명 매칭 조건 설정" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">재무 대시보드 · 월별 지출 흐름과 계좌 잔액</p></div>
-        </div>
-      </li>
-
-      <li class="plist__item">
-        <div class="plist__idx">03</div>
-        <div class="plist__main">
-          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스</div>
-          <h3>CRM Automation: 고객·영업·문서 관리</h3>
-          <p class="plist__brief">고객 정보와 영업 단계를 관리하고, 요구 사양·견적·후속 업무를 한 흐름으로 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
-          <div class="plist__more">
-            <p><b>도구</b>React·TypeScript, Cloudflare D1·R2로 고객, 영업 기회, 문서와 첨부 자료를 관리합니다.</p>
-            <p><b>구현</b>고객사 보드·표, 연락처, 영업 파이프라인, 활동 기록과 후속 업무를 구현했습니다. 조직 정보를 입력하고 사양 항목·단위·열을 정의하면 고객별 사양표와 견적·발주·청구 문서를 작성할 수 있습니다.</p>
-            <p><b>설계</b>문서 개정본과 사양 버전을 연결해 변경 이력을 남깁니다. AI 결과는 검토할 초안으로 유지하며, 이메일·AI·고객용 링크 기능에는 사용자 소유의 별도 설정이 필요합니다.</p>
-          </div>
-        </div>
-        <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">CRM</span><span class="tag">Workflow</span><span class="tag">TypeScript</span></div>
-          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/crm-automation" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-          <p class="plist__note">실제 구현 화면 · 가상 고객·사용자 정의 사양 예시</p>
-          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/crm-01.jpg" alt="영업 파이프라인 · 고객 발굴부터 견적·청구까지" loading="lazy" class="on"><img src="assets/proj/highlights/crm-02.jpg" alt="고객 사양서 · 직접 정의한 요청값·확정값 비교" loading="lazy"><img src="assets/proj/highlights/crm-03.jpg" alt="사양서 설정 · 회사별 섹션·필드·값 형식 구성" loading="lazy"><img src="assets/proj/highlights/crm-04.jpg" alt="견적서 편집 · 품목·수량·단가와 합계 계산" loading="lazy"><img src="assets/proj/highlights/crm-05.jpg" alt="고객 활동 · 담당자·연락처와 영업 활동 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">영업 파이프라인 · 고객 발굴부터 견적·청구까지</p></div>
-        </div>
-      </li>
-
-      <li class="plist__item">
-        <div class="plist__idx">04</div>
-        <div class="plist__main">
-          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스</div>
-          <h3>Sprint Dashboard: 프로젝트·업무 진행 관리</h3>
-          <p class="plist__brief">같은 프로젝트와 업무를 다이어그램, 보드, 로드맵과 달력으로 살펴봅니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
-          <div class="plist__more">
-            <p><b>도구</b>React·TypeScript, Cloudflare D1·R2와 프로젝트·업무 상태를 다루는 공통 데이터 계층을 사용합니다.</p>
-            <p><b>구현</b>8개 보기, 중요도 색상, 담당자·일정, 체크리스트, 댓글과 일일 진행 기록을 구현했습니다. 업무 상태에 따라 프로젝트 진행 상황을 계산하며, Grant Project에서 전달받은 신청 준비 내용을 검토해 업무로 저장합니다.</p>
-            <p><b>설계</b>보기마다 동일한 업무 데이터를 사용하고, 중요도는 색상과 텍스트로 함께 표시합니다. 데이터는 계정 단위로 분리되며 계정 간 공동 편집은 현재 구현 범위에 포함되지 않습니다.</p>
-          </div>
-        </div>
-        <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">Project Management</span><span class="tag">Data Visualization</span><span class="tag">TypeScript</span></div>
-          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/sprint-dashboard" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-          <p class="plist__note">실제 구현 화면 · 가상 프로젝트·업무 데이터</p>
-          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/sprint-01.jpg" alt="Diagram · 프로젝트와 업무·체크리스트를 한눈에" loading="lazy" class="on"><img src="assets/proj/highlights/sprint-02.jpg" alt="Board · 상태별 업무 진행과 우선순위 관리" loading="lazy"><img src="assets/proj/highlights/sprint-03.jpg" alt="Roadmap · 프로젝트별 업무 기간과 일정 확인" loading="lazy"><img src="assets/proj/highlights/sprint-04.jpg" alt="Due · 남은 기간별 마감 업무와 담당자 확인" loading="lazy"><img src="assets/proj/highlights/sprint-05.jpg" alt="업무 상세 · 목표·완료 기준·체크리스트·일일 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Diagram · 프로젝트와 업무·체크리스트를 한눈에</p></div>
-        </div>
-      </li>
-
-      <li class="plist__item">
-        <div class="plist__idx">05</div>
-        <div class="plist__main">
           <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스 · MIT</div>
           <h3>Personal Workspace: 일상 기록·목표 관리</h3>
           <p class="plist__brief">하루의 계획과 루틴, 작업 기록을 목표·학업·개인 라이브러리와 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
@@ -174,6 +94,90 @@ I build what people actually need, and keep it running.</div>
           <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/personal-workspace" target="_blank" rel="noreferrer">GitHub ↗</a></div>
           <p class="plist__note">실제 구현 화면 · 개인 기록과 분리된 가상 예시</p>
           <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/personal-01.jpg" alt="오늘 · 우선순위·루틴·할 일·집중 시간 한곳에" loading="lazy" class="on"><img src="assets/proj/highlights/personal-02.jpg" alt="기록 · 활동 잔디와 프로젝트별 누적 시간" loading="lazy"><img src="assets/proj/highlights/personal-03.jpg" alt="루틴 · 시간대별 실행과 최근 일주일의 달성도" loading="lazy"><img src="assets/proj/highlights/personal-04.jpg" alt="할 일 · 오늘과 예정 작업을 나누어 관리" loading="lazy"><img src="assets/proj/highlights/personal-05.jpg" alt="노트 · PARA 분류와 프로젝트 메모 편집" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">오늘 · 우선순위·루틴·할 일·집중 시간 한곳에</p></div>
+        </div>
+      </li>
+
+      <li class="plist__item">
+        <div class="plist__idx">02</div>
+        <div class="plist__main">
+          <div class="plist__org">SwirlX · 2026.08 ~ 현재 · 사내 구축·적용</div>
+          <h3>Grant Project: 지원사업 탐색·기업 적합도 검토</h3>
+          <p class="plist__brief">기업 정보를 바탕으로 지원사업을 찾고, 적합도 검토부터 신청 준비까지 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__more">
+            <p><b>적용 배경</b>SwirlX에서 지원사업 탐색·기업 적합도 검토를 위해 구축해 사내 적용 중입니다. 공개 버전은 회사 정보와 운영 연결을 분리해 재구성했습니다.</p>
+            <p><b>공개 데모 도구</b>React·TypeScript, Cloudflare D1, 기업마당·K-Startup API와 선택적 LLM 평가 기능을 연결했습니다.</p>
+            <p><b>공개 데모 구현</b>기업 정보 초기 설정, 공고 수집·가져오기, 검색·필터, 즐겨찾기와 보관 기능을 구현했습니다. 평가의 근거와 검토 범위를 보여주고, 신청 준비 내용을 Sprint Dashboard의 업무로 전달합니다.</p>
+            <p><b>설계</b>기업 정보가 바뀌면 기존 평가를 재검토 대상으로 표시합니다. 기본 정리 기능은 AI 없이 사용할 수 있고, 실제 공고 수집과 AI 평가는 사용자의 API 설정이 필요합니다.</p>
+          </div>
+        </div>
+        <div class="plist__aside">
+          <div class="tags"><span class="tag tag--fill">Data Integration</span><span class="tag">TypeScript</span><span class="tag">LLM</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/grant-project" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/grant-01.jpg" alt="추천 대시보드 · 지원사업의 우선순위와 마감 일정" loading="lazy" class="on"><img src="assets/proj/highlights/grant-02.jpg" alt="공고 상세 · 판단 근거, 신청 조건, 검토한 출처의 범위" loading="lazy"><img src="assets/proj/highlights/grant-03.jpg" alt="기업 프로필 · 필수 정보와 지원 유형별 매칭 선호 조건" loading="lazy"><img src="assets/proj/highlights/grant-04.jpg" alt="공고 탐색 · 등급·출처·마감일 필터와 즐겨찾기" loading="lazy"><img src="assets/proj/highlights/grant-05.jpg" alt="보관함 · 보관한 공고 확인과 추천 목록 복원" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">추천 대시보드 · 지원사업의 우선순위와 마감 일정</p></div>
+        </div>
+      </li>
+
+      <li class="plist__item">
+        <div class="plist__idx">03</div>
+        <div class="plist__main">
+          <div class="plist__org">SwirlX · 2026.07 ~ 현재 · 사내 구축·적용</div>
+          <h3>Sprint Dashboard: 프로젝트·업무 진행 관리</h3>
+          <p class="plist__brief">같은 프로젝트와 업무를 다이어그램, 보드, 로드맵과 달력으로 살펴봅니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__more">
+            <p><b>적용 배경</b>SwirlX의 프로젝트·업무 진행 관리에 적용 중인 시스템을 바탕으로 만들었습니다. 공개 버전은 실제 프로젝트와 구성원 정보, 사내 연동을 분리해 재구성했습니다.</p>
+            <p><b>공개 데모 도구</b>React·TypeScript, Cloudflare D1·R2와 프로젝트·업무 상태를 다루는 공통 데이터 계층을 사용합니다.</p>
+            <p><b>공개 데모 구현</b>8개 보기, 중요도 색상, 담당자·일정, 체크리스트, 댓글과 일일 진행 기록을 구현했습니다. 업무 상태에 따라 프로젝트 진행 상황을 계산하며, Grant Project에서 전달받은 신청 준비 내용을 검토해 업무로 저장합니다.</p>
+            <p><b>설계</b>보기마다 동일한 업무 데이터를 사용하고, 중요도는 색상과 텍스트로 함께 표시합니다. 데이터는 계정 단위로 분리되며 계정 간 공동 편집은 현재 구현 범위에 포함되지 않습니다.</p>
+          </div>
+        </div>
+        <div class="plist__aside">
+          <div class="tags"><span class="tag tag--fill">Project Management</span><span class="tag">Data Visualization</span><span class="tag">TypeScript</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/sprint-dashboard" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/sprint-01.jpg" alt="Diagram · 프로젝트와 업무·체크리스트를 한눈에" loading="lazy" class="on"><img src="assets/proj/highlights/sprint-02.jpg" alt="Board · 상태별 업무 진행과 우선순위 관리" loading="lazy"><img src="assets/proj/highlights/sprint-03.jpg" alt="Roadmap · 프로젝트별 업무 기간과 일정 확인" loading="lazy"><img src="assets/proj/highlights/sprint-04.jpg" alt="Due · 남은 기간별 마감 업무와 담당자 확인" loading="lazy"><img src="assets/proj/highlights/sprint-05.jpg" alt="업무 상세 · 목표·완료 기준·체크리스트·일일 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Diagram · 프로젝트와 업무·체크리스트를 한눈에</p></div>
+        </div>
+      </li>
+
+      <li class="plist__item">
+        <div class="plist__idx">04</div>
+        <div class="plist__main">
+          <div class="plist__org">SwirlX · 2026.07 ~ 현재 · 사내 구축·적용</div>
+          <h3>Company Finance: 기업 가계부·거래 분류</h3>
+          <p class="plist__brief">은행·카드 명세서를 가져와 거래를 분류하고, 기업의 지출·잔액·예산을 확인합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__more">
+            <p><b>적용 배경</b>SwirlX의 재무·지출 관리 업무에 적용 중인 시스템을 바탕으로 만들었습니다. 공개 버전은 사내 전용 업무를 제외하고 사용자 정의 분류 규칙을 적용했습니다.</p>
+            <p><b>공개 데모 도구</b>React·TypeScript, 명세서 파서, Cloudflare D1·R2를 사용해 거래와 첨부 자료를 저장합니다.</p>
+            <p><b>공개 데모 구현</b>지원하는 은행·카드·세금계산서 파일의 가져오기와 미리보기, 거래 검색·수정, 반복 결제, 지출 분석과 예산 관리를 구현했습니다. 사용자가 카테고리와 분류 규칙을 직접 만들 수 있습니다.</p>
+            <p><b>설계</b>규칙이 없는 거래는 미분류로 남기고, 기존 거래에 규칙을 적용할 때는 변경 내용을 먼저 검토합니다. 현재 지원 범위는 정해진 한국어 헤더를 사용하는 원화 명세서입니다.</p>
+          </div>
+        </div>
+        <div class="plist__aside">
+          <div class="tags"><span class="tag tag--fill">Finance</span><span class="tag">Data Processing</span><span class="tag">TypeScript</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/company-finance" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/finance-01.jpg" alt="재무 대시보드 · 월별 지출 흐름과 계좌 잔액" loading="lazy" class="on"><img src="assets/proj/highlights/finance-02.jpg" alt="정기 결제 탐색 · 여러 달 반복된 가맹점과 결제 이력" loading="lazy"><img src="assets/proj/highlights/finance-03.jpg" alt="예산 관리 · 직접 정의한 분류별 한도와 남은 예산" loading="lazy"><img src="assets/proj/highlights/finance-04.jpg" alt="거래 내역 · 계좌·카드·분류별 필터와 상세 조회" loading="lazy"><img src="assets/proj/highlights/finance-05.jpg" alt="분류 규칙 · 사용자 분류와 거래명 매칭 조건 설정" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">재무 대시보드 · 월별 지출 흐름과 계좌 잔액</p></div>
+        </div>
+      </li>
+
+      <li class="plist__item">
+        <div class="plist__idx">05</div>
+        <div class="plist__main">
+          <div class="plist__org">SwirlX · 2026.06 ~ 현재 · 사내 구축·적용</div>
+          <h3>CRM Automation: 고객·영업·문서 관리</h3>
+          <p class="plist__brief">고객 정보와 영업 단계를 관리하고, 요구 사양·견적·후속 업무를 한 흐름으로 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__more">
+            <p><b>적용 배경</b>SwirlX에서 고객·영업·문서 관리에 적용 중인 시스템을 바탕으로 만들었습니다. 공개 버전은 회사의 기밀 사양표를 제외하고 사용자가 직접 사양을 정의하도록 구성했습니다.</p>
+            <p><b>공개 데모 도구</b>React·TypeScript, Cloudflare D1·R2로 고객, 영업 기회, 문서와 첨부 자료를 관리합니다.</p>
+            <p><b>공개 데모 구현</b>고객사 보드·표, 연락처, 영업 파이프라인, 활동 기록과 후속 업무를 구현했습니다. 조직 정보를 입력하고 사양 항목·단위·열을 정의하면 고객별 사양표와 견적·발주·청구 문서를 작성할 수 있습니다.</p>
+            <p><b>설계</b>문서 개정본과 사양 버전을 연결해 변경 이력을 남깁니다. AI 결과는 검토할 초안으로 유지하며, 이메일·AI·고객용 링크 기능에는 사용자 소유의 별도 설정이 필요합니다.</p>
+          </div>
+        </div>
+        <div class="plist__aside">
+          <div class="tags"><span class="tag tag--fill">CRM</span><span class="tag">Workflow</span><span class="tag">TypeScript</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/crm-automation" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/crm-01.jpg" alt="영업 파이프라인 · 고객 발굴부터 견적·청구까지" loading="lazy" class="on"><img src="assets/proj/highlights/crm-02.jpg" alt="고객 사양서 · 직접 정의한 요청값·확정값 비교" loading="lazy"><img src="assets/proj/highlights/crm-03.jpg" alt="사양서 설정 · 회사별 섹션·필드·값 형식 구성" loading="lazy"><img src="assets/proj/highlights/crm-04.jpg" alt="견적서 편집 · 품목·수량·단가와 합계 계산" loading="lazy"><img src="assets/proj/highlights/crm-05.jpg" alt="고객 활동 · 담당자·연락처와 영업 활동 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">영업 파이프라인 · 고객 발굴부터 견적·청구까지</p></div>
         </div>
       </li>
 

@@ -670,3 +670,42 @@ body.gate { overflow: hidden; height: 100vh; }
   .works-grid .work h4 { color: var(--ink); }
   .works-grid .work p { color: #3a3a3a; }
 }
+
+/* 화면 폭에 맞춰 글자·여백·이미지 비율을 함께 조정 */
+:root {
+  --page-gutter: clamp(20px, 3.43vw, 48px);
+  --project-inset: clamp(12px, 1.43vw, 20px);
+  --project-space: clamp(24px, 2.86vw, 40px);
+}
+.container, .topnav__in { padding-inline: var(--page-gutter); }
+.hero { padding: calc(var(--nav-h) + clamp(48px, 6.86vw, 96px)) 0 clamp(48px, 6.86vw, 96px); }
+.hero h1 { font-size: clamp(2rem, 8.5vw, 7.375rem); }
+.hero__sub, .hero__sizer { font-size: clamp(.875rem, 1.22vw, 1.0625rem); }
+.hero__sub { margin-top: clamp(24px, 3.43vw, 48px); }
+.hero__enter { margin-top: clamp(28px, 4vw, 56px); }
+.section { padding: clamp(48px, 7.43vw, 104px) 0 clamp(40px, 6.86vw, 96px); }
+.section__head { gap: clamp(12px, 1.72vw, 24px); margin-bottom: clamp(32px, 4.57vw, 64px); }
+.section__title { min-width: 0; font-size: clamp(1.625rem, 5.2vw, 4.5rem); overflow-wrap: break-word; }
+.plist__item {
+  grid-template-columns: clamp(28px, 5.71vw, 80px) minmax(0, 1fr) minmax(0, 32.2%);
+  gap: clamp(16px, 2.57vw, 36px);
+  padding: var(--project-space) var(--project-inset);
+  margin-inline: calc(-1 * var(--project-inset));
+}
+.plist__item:first-child { padding-top: var(--project-space) !important; }
+.plist__main, .plist__aside { min-width: 0; }
+.plist__idx { font-size: clamp(1.25rem, 2.6vw, 2.5rem); }
+.plist__main h3 { font-size: clamp(1.25rem, 2.4vw, 2.125rem); overflow-wrap: break-word; }
+.plist__main p { font-size: clamp(.875rem, 1.1vw, .9375rem); }
+.plist__item.open .plist__more { max-height: none; }
+.works-grid { gap: clamp(24px, 2.86vw, 40px) clamp(20px, 2.29vw, 32px); }
+.work__body h4 { font-size: clamp(1.0625rem, 1.36vw, 1.1875rem); }
+.footer { padding: clamp(48px, 7.43vw, 104px) 0 clamp(32px, 4vw, 56px); }
+.footer h2 { font-size: clamp(1.75rem, 7vw, 6rem); margin-bottom: clamp(24px, 3.43vw, 48px); }
+.modal__box { padding: clamp(20px, 2.86vw, 40px); }
+.modal .fig__stage { height: min(58vh, 60vw, 460px); }
+@media (max-width: 700px) {
+  .plist__item { grid-template-columns: minmax(0, 1fr); }
+  .plist__aside { width: 100%; }
+  .section__num { font-size: 12px; }
+}
