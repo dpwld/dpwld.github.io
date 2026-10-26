@@ -85,8 +85,7 @@ function openProjectDetail(item) {
   projectSource = item;
   projectDetail.querySelector('.modal__org').textContent = item.querySelector('.plist__org').textContent;
   projectDetail.querySelector('.modal__title').textContent = item.querySelector('h3').textContent;
-  var brief = item.querySelector('.plist__brief').cloneNode(true);
-  brief.querySelector('.plist__cue').remove();
+  var brief = item.querySelector('.plist__brief');
   projectDetail.querySelector('.project-modal__brief').textContent = brief.textContent.trim();
   var figure = item.querySelector('.fig').cloneNode(true);
   figure.querySelectorAll('img').forEach(function (img) { img.loading = 'eager'; });

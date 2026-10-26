@@ -112,17 +112,11 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .plist__item:first-child { border-top: 0; padding-top: 0; }
 .plist__idx { font: 800 clamp(28px, 2.6vw, 40px)/1 var(--display); color: #d0d0d0; }
 .plist__main h3 { margin: 0 0 10px; font: 800 clamp(24px, 2.4vw, 34px)/1.3 var(--display); letter-spacing: -0.015em; word-break: keep-all; }
-.plist__org { font: 700 12px/1.6 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; }
 .plist__main p { margin: 0; font: 500 15px/1.75 var(--sans); color: #3a3a3a; max-width: 640px; word-break: keep-all; }
 .plist__note { margin-top: 12px; font: 500 13px/1.6 var(--sans); color: var(--gray); }
 
 /* ---- v2.9: 한 줄 요약 + 호버 시 상세 펼침 ---- */
 .plist__brief { margin: 0; font: 500 15px/1.75 var(--sans); color: #3a3a3a; max-width: 640px; word-break: keep-all; }
-.plist__cue {
-  font: 700 11px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase;
-  color: #b8b8b8; margin-left: 10px; white-space: nowrap;
-  transition: opacity 0.25s;
-}
 .plist__preview {
   display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden;
   transition: grid-template-rows 0.42s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.3s ease, visibility 0s 0.42s;
@@ -164,7 +158,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .work__body { padding: 22px 24px 26px; }
 .work__org { font: 700 11px/1.5 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); }
 .work__body h4 { margin: 8px 0 10px; font: 800 19px/1.35 var(--display); letter-spacing: -0.01em; word-break: keep-all; }
-.work__body p { margin: 0; font: 500 13.5px/1.7 var(--sans); color: #3a3a3a; word-break: keep-all; }
 
 .etc-note { margin-top: 40px; font: 500 13.5px/1.8 var(--sans); color: var(--gray); max-width: 900px; word-break: keep-all; }
 
@@ -253,7 +246,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 }
 
 /* ---- v2.1: 타이포 줄바꿈 개선 ---- */
-.hero__sub, .plist__main p, .work__body p, .etc-note, .cv-item p { text-wrap: pretty; }
+.hero__sub, .plist__main p, .etc-note, .cv-item p { text-wrap: pretty; }
 .hero h1, .section__title, .plist__main h3, .work__body h4, .footer h2 { text-wrap: balance; }
 
 /* ---- v2.1: 모션 ---- */
@@ -361,11 +354,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 /* 웍스 카드 → 클릭 가능 */
 .work { cursor: pointer; }
 .work:focus-visible { outline: 3px solid var(--ink); outline-offset: -3px; }
-.work__cue {
-  display: block; margin-top: 14px;
-  font: 700 11px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: #b8b8b8;
-}
-.work:hover .work__cue, .work:focus-visible .work__cue { color: var(--ink); }
 
 /* 모달 */
 .modal {
@@ -533,14 +521,12 @@ body.gate { overflow: hidden; height: 100vh; }
 .plist__item:is(:focus-visible, :has(:focus-visible)) .plist__preview {
   grid-template-rows: 1fr; opacity: 1; visibility: visible; transition-delay: 0s;
 }
-.plist__item:is(:focus-visible, :has(:focus-visible)) .plist__cue { color: var(--gray); }
 .plist__item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 @media (hover: hover) and (pointer: fine) {
   .plist__item:hover .plist__preview {
     grid-template-rows: 1fr; opacity: 1; visibility: visible;
     transition: grid-template-rows 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.3s, opacity 0.5s ease 0.3s, visibility 0s 0.3s;
   }
-  .plist__item:hover .plist__cue { color: var(--gray); }
 }
 @media (prefers-reduced-motion: reduce) {
   .plist__item .plist__preview, .plist__item:hover .plist__preview { transition: none; }
@@ -602,9 +588,7 @@ body.gate { overflow: hidden; height: 100vh; }
   transform: scale(1.03);
 }
 .works-grid .work__org,
-.works-grid .work h4,
-.works-grid .work p,
-.works-grid .work .work__cue {
+.works-grid .work h4 {
   color: #b3b3b3;
   transition: color 0.35s ease;
 }
@@ -612,16 +596,11 @@ body.gate { overflow: hidden; height: 100vh; }
 .works-grid .work:focus-visible .work__org { color: var(--gray); }
 .works-grid .work:hover h4,
 .works-grid .work:focus-visible h4 { color: var(--ink); }
-.works-grid .work:hover p,
-.works-grid .work:focus-visible p { color: #3a3a3a; }
-.works-grid .work:hover .work__cue,
-.works-grid .work:focus-visible .work__cue { color: var(--ink); }
 /* 터치 기기: 항상 컬러 */
 @media (hover: none) {
   .works-grid .work__imgwrap img { filter: none; opacity: 1; }
   .works-grid .work__org { color: var(--gray); }
   .works-grid .work h4 { color: var(--ink); }
-  .works-grid .work p { color: #3a3a3a; }
 }
 
 /* 화면 폭에 맞춰 글자·여백·이미지 비율을 함께 조정 */
@@ -653,10 +632,8 @@ body.gate { overflow: hidden; height: 100vh; }
 .plist__idx { font-size: clamp(1.125rem, 2.2vw, 2rem); }
 .plist__main h3 { margin-bottom: 8px; font-size: clamp(1.125rem, calc(.625rem + 1.2vw), 1.75rem); overflow-wrap: break-word; }
 .plist__main p { font-size: clamp(.8125rem, calc(.625rem + .3vw), .875rem); }
-.plist__org { margin-bottom: 12px; font-size: clamp(.625rem, calc(.4375rem + .36vw), .75rem); }
 .plist__note { font-size: clamp(.6875rem, calc(.5rem + .36vw), .8125rem); }
 .plist__item .tag { font-size: clamp(.5625rem, calc(.4375rem + .3vw), .6875rem); padding: .65em .9em; }
-.plist__cue { font-size: clamp(.5625rem, .8vw, .6875rem); }
 .works-grid { gap: clamp(24px, 2.86vw, 40px) clamp(20px, 2.29vw, 32px); }
 .work__body h4 { font-size: clamp(1.0625rem, 1.36vw, 1.1875rem); }
 .footer { padding: clamp(48px, 7.43vw, 104px) 0 clamp(32px, 4vw, 56px); }
