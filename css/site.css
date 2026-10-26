@@ -209,7 +209,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .footer__contact img { filter: invert(1); }
 .footer__grid a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .footer__grid :is(a, button):focus-visible { outline: 2px solid #fff; outline-offset: 6px; }
-.tech-pile { position: relative; width: min(400px, 42%); aspect-ratio: 5 / 3; flex-shrink: 0; isolation: isolate; }
+.tech-pile { position: relative; width: min(600px, 48%); aspect-ratio: 5 / 3; flex-shrink: 0; isolation: isolate; container-type: inline-size; }
 .tech-pile__item {
   position: absolute; left: var(--x); top: var(--y); width: var(--size); aspect-ratio: 1;
   transform: rotate(var(--tilt)); cursor: grab; user-select: none;
@@ -489,11 +489,10 @@ body.gate { overflow: hidden; height: 100vh; }
 .cv-open {
   position: absolute; left: 44%; top: 41%; z-index: 3; width: 31%; height: 36%;
   background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
-  font: 800 clamp(64px, 6.8vw, 96px)/1 var(--display); letter-spacing: -0.07em; color: var(--paper);
+  font: 800 24cqw/1 var(--display); letter-spacing: -0.07em; color: var(--paper);
   transform: rotate(-8deg); transition: color 0.2s ease;
 }
 .cv-open:hover, .cv-open:focus-visible { color: #8c8c8c; }
-@media (max-width: 700px) { .cv-open { font-size: clamp(64px, 22vw, 84px); } }
 
 /* CV 뷰어 (조회 전용) */
 .cvview {
@@ -648,6 +647,7 @@ body.gate { overflow: hidden; height: 100vh; }
 
 /* 넓은 화면에서는 번호 순서대로 두 프로젝트씩 배치 */
 @media (min-width: 901px) {
+  body { zoom: .9; }
   .section, .footer { zoom: .9; }
   .section .container, .footer .container { max-width: calc(1400px / .9); padding-inline: calc(var(--page-gutter) / .9); }
   #projects { --project-space: 22px; }
@@ -679,6 +679,7 @@ body.gate { overflow: hidden; height: 100vh; }
 
 /* Enter로 실행하는 터미널 표지 */
 .hero { min-height: 100svh; }
+@media (min-width: 901px) { .hero { min-height: calc(100svh / .9); } }
 .hero [hidden] { display: none !important; }
 .hero[data-intro="idle"] .hero__block,
 .hero[data-intro="running"] .hero__block { padding-top: clamp(32px, 8vh, 80px); }
@@ -707,20 +708,14 @@ body.gate { overflow: hidden; height: 100vh; }
 .hero[data-intro="running"] .hero__sub .terminal__line { margin-top: 10px; }
 .intro-choice { margin-top: clamp(24px, 3vw, 40px); }
 .intro-choice > p:first-child { color: #eee; font: 500 clamp(13px, 1.2vw, 16px)/1.6 var(--font-mono); }
-.intro-choice__options { display: flex; gap: 12px; margin-top: 12px; }
-.intro-choice__options button { min-height: 42px; padding: 8px 16px; border: 1px solid transparent; background: none; color: #9a9a9a; font: 500 14px/1.5 var(--font-mono); cursor: pointer; }
-.intro-choice__options button::before { content: ''; display: inline-block; width: 5px; height: 5px; margin-right: 10px; border-top: 1px solid; border-right: 1px solid; transform: rotate(45deg); vertical-align: 2px; opacity: 0; }
-.intro-choice__options button[aria-pressed="true"] { background: #fff; color: #000; }
+.intro-choice__options { display: flex; gap: 28px; margin-top: 8px; }
+.intro-choice__options button { min-height: 42px; padding: 8px 0; border: 0; background: none; color: #777; font: 500 14px/1.5 var(--font-mono); cursor: pointer; }
+.intro-choice__options button::before { content: '❯'; display: inline-block; width: 1ch; margin-right: 1ch; color: #b6e8c0; opacity: 0; }
+.intro-choice__options button[aria-pressed="true"] { color: #fff; }
 .intro-choice__options button[aria-pressed="true"]::before { opacity: 1; }
-.intro-choice__options button:hover { border-color: #777; }
-.intro-choice__options button:focus-visible { outline: 1px solid #fff; outline-offset: 4px; }
-.intro-choice__help { margin-top: 12px; color: #8a8a8a; font: 400 11px/1.7 var(--font-mono); }
-.intro-choice__help span:last-child { display: none; }
+.intro-choice__options button:hover { color: #fff; }
+.intro-choice__options button:focus-visible { outline: none; }
 @keyframes terminal-line { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
-@media (hover: none), (pointer: coarse) {
-  .intro-choice__help span:first-child { display: none; }
-  .intro-choice__help span:last-child { display: inline; }
-}
 @media (max-width: 600px) {
   .terminal__session { display: none; }
   .terminal__command > span:first-child { display: block; }
