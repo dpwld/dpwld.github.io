@@ -17,11 +17,13 @@ document.addEventListener('click', function (e) {
     figGo(btn.closest('.fig'), +btn.dataset.d);
     return;
   }
-  // 이미지 클릭 → 라이트박스
+  // 프로젝트 미리보기 → 상세창, 상세창 이미지 → 라이트박스
   var img = e.target.closest('.fig__stage img');
   if (img) {
     e.preventDefault(); e.stopPropagation();
-    openLightbox(img.closest('.fig'));
+    var item = img.closest('.plist__item');
+    if (item) openProjectDetail(item);
+    else openLightbox(img.closest('.fig'));
   }
 });
 
@@ -43,8 +45,6 @@ function lbGo(d) {
 }
 function openLightbox(fig) {
   lbFigure = fig;
-  var item = fig.closest('.plist__item');
-  if (item) item.classList.add('previewing');
   lbSrcs = [].map.call(fig.querySelectorAll('.fig__stage img'), function (i) { return i.src; });
   lbCaptions = [].map.call(fig.querySelectorAll('.fig__stage img'), function (i) { return i.alt; });
   lbIdx = +fig.dataset.i || 0;
@@ -57,8 +57,6 @@ function closeLightbox() {
   lb.classList.remove('on');
   if (!document.querySelector('.modal.on')) document.body.classList.remove('modal-open');
   lbFigure.querySelector('.fig__stage').focus({ preventScroll: true });
-  var item = lbFigure.closest('.plist__item');
-  if (item) item.classList.remove('previewing');
 }
 lb.addEventListener('click', function (e) {
   var nav = e.target.closest('.lb__nav');
@@ -66,13 +64,40 @@ lb.addEventListener('click', function (e) {
   if (e.target.closest('.lb__x') || e.target === lb) closeLightbox();
 });
 
-// ── 프로젝트 상세: 마우스 호버, 터치·키보드 토글 ──
+// ── 프로젝트 상세창: 기존 내용과 이미지 5장을 그대로 사용 ──
+var projectDetail = document.getElementById('projectDetail');
+var projectSource = null;
+function openProjectDetail(item) {
+  projectSource = item;
+  projectDetail.querySelector('.modal__org').textContent = item.querySelector('.plist__org').textContent;
+  projectDetail.querySelector('.modal__title').textContent = item.querySelector('h3').textContent;
+  var brief = item.querySelector('.plist__brief').cloneNode(true);
+  brief.querySelector('.plist__cue').remove();
+  projectDetail.querySelector('.project-modal__brief').textContent = brief.textContent.trim();
+  var figure = item.querySelector('.fig').cloneNode(true);
+  figure.querySelectorAll('img').forEach(function (img) { img.loading = 'eager'; });
+  figure.insertAdjacentHTML('beforeend', '<div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전 이미지">‹</button><span class="fig__cnt"></span><button class="fig__btn" data-d="1" aria-label="다음 이미지">›</button></div><p class="fig__caption" aria-live="polite"></p>');
+  figGo(figure, 0);
+  projectDetail.querySelector('.project-modal__gallery').replaceChildren(figure);
+  var paragraphs = item.querySelectorAll('.plist__more p');
+  projectDetail.querySelector('.modal__body').replaceChildren(
+    ...Array.from(paragraphs, function (p) { return p.cloneNode(true); })
+  );
+  var note = item.querySelector('.plist__note');
+  projectDetail.querySelector('.project-modal__note').textContent = note ? note.textContent : '';
+  projectDetail.classList.add('on');
+  projectDetail.scrollTop = 0;
+  document.body.classList.add('modal-open');
+  projectDetail.querySelector('.modal__x').focus({ preventScroll: true });
+}
+
+// ── 프로젝트 호버: 짧은 요약과 미리보기 ──
 document.querySelectorAll('.plist__item').forEach(function (item) {
   var timer;
   var figure = item.querySelector('.fig');
   var reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   function isExpanded() {
-    return item.classList.contains('open') || item.matches(':focus-visible, :has(:focus-visible)') ||
+    return item.matches(':focus-visible, :has(:focus-visible)') ||
       (matchMedia('(hover: hover) and (pointer: fine)').matches && item.matches(':hover'));
   }
   function updatePreview() {
@@ -81,11 +106,13 @@ document.querySelectorAll('.plist__item').forEach(function (item) {
     timer = setInterval(function () {
       if (!isExpanded()) { clearInterval(timer); return; }
       var bounds = figure.getBoundingClientRect();
-      if (document.hidden || lb.classList.contains('on') || reducedMotion.matches || bounds.bottom <= 0 || bounds.top >= innerHeight) return;
+      if (document.hidden || document.body.classList.contains('modal-open') || reducedMotion.matches || bounds.bottom <= 0 || bounds.top >= innerHeight) return;
       figGo(figure, 1);
     }, 4000);
   }
   item.tabIndex = 0;
+  item.setAttribute('aria-haspopup', 'dialog');
+  item.setAttribute('aria-controls', 'projectDetail');
   item.addEventListener('pointerenter', updatePreview);
   item.addEventListener('pointerleave', updatePreview);
   item.addEventListener('focusin', updatePreview);
@@ -94,9 +121,7 @@ document.querySelectorAll('.plist__item').forEach(function (item) {
   reducedMotion.addEventListener('change', updatePreview);
   item.addEventListener('click', function (e) {
     if (e.target.closest('a, button, .fig')) return;
-    if (matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    item.classList.toggle('open');
-    updatePreview();
+    openProjectDetail(item);
   });
 });
 
@@ -130,6 +155,7 @@ function openModal(n) {
 function closeModal(m) {
   m.classList.remove('on');
   if (!lb.classList.contains('on')) document.body.classList.remove('modal-open');
+  if (m === projectDetail) projectSource.focus({ preventScroll: true });
 }
 document.addEventListener('click', function (e) {
   var card = e.target.closest('.work[data-work]');
@@ -160,6 +186,13 @@ document.addEventListener('keydown', function (e) {
     return;
   }
   if (e.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+  if (e.key === 'Tab' && projectDetail.classList.contains('on')) {
+    var controls = projectDetail.querySelectorAll('button, [tabindex="0"]');
+    var first = controls[0], last = controls[controls.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    return;
+  }
   var fig = e.target.closest('.fig') || document.querySelector('.modal.on .fig');
   if (fig && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
     e.preventDefault();
@@ -168,10 +201,14 @@ document.addEventListener('keydown', function (e) {
   }
   if (e.key === 'Enter' || e.key === ' ') {
     if (e.target.matches('.fig__stage')) {
-      e.preventDefault(); e.stopPropagation(); openLightbox(fig); return;
+      e.preventDefault(); e.stopPropagation();
+      var item = e.target.closest('.plist__item');
+      if (item) openProjectDetail(item);
+      else openLightbox(fig);
+      return;
     }
     if (e.target.matches('.plist__item')) {
-      e.preventDefault(); e.stopPropagation(); e.target.classList.toggle('open'); return;
+      e.preventDefault(); e.stopPropagation(); openProjectDetail(e.target); return;
     }
   }
   var card = e.target.closest && e.target.closest('.work[data-work]');

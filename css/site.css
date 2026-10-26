@@ -123,13 +123,13 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
   color: #b8b8b8; margin-left: 10px; white-space: nowrap;
   transition: opacity 0.25s;
 }
-.plist__more, .plist__preview {
+.plist__preview {
   display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden;
   transition: grid-template-rows 0.42s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.3s ease, visibility 0s 0.42s;
 }
 .plist__reveal-inner { min-height: 0; overflow: hidden; }
 .plist__preview { width: 100%; }
-.plist__more p { margin-top: 14px; }
+.plist__more, .plist__aside > .plist__note { display: none; }
 .plist__aside { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
 .plist__metric { font: 800 20px/1.45 var(--display); word-break: keep-all; }
 .plist__link {
@@ -339,12 +339,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 
 /* ================= v3.0: 이미지 슬라이더 · 데모 링크 · 모달 ================= */
 .plist__item { grid-template-columns: 88px 1fr 360px; }
-.plist__more p { margin-top: 14px; font: 500 15px/1.75 var(--sans); color: #3a3a3a; max-width: 640px; word-break: keep-all; }
-.plist__more p b {
-  display: block; font: 700 11px/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase;
-  color: #9a9a9a; margin-bottom: 6px;
-}
-
 /* 이미지 슬라이더 */
 .fig { border: 1px solid var(--ink); margin-bottom: 16px; background: #fafafa; }
 .fig__stage { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
@@ -557,22 +551,22 @@ body.gate { overflow: hidden; height: 100vh; }
   width: min(900px, 100%); flex: 1; border: 0; background: #fff;
 }
 
-/* 프로젝트 상세: 마우스 호버, 터치·키보드 확장 */
+/* 프로젝트 미리보기: 마우스 호버·키보드 포커스 */
 .plist__item { position: relative; cursor: pointer; transition: background 0.2s ease; }
 .plist__item:hover { background: #f5f5f5; }
-.plist__item:is(.open, .previewing, :focus-visible, :has(:focus-visible)) :is(.plist__more, .plist__preview) {
+.plist__item:is(:focus-visible, :has(:focus-visible)) .plist__preview {
   grid-template-rows: 1fr; opacity: 1; visibility: visible; transition-delay: 0s;
 }
-.plist__item:is(.open, .previewing, :focus-visible, :has(:focus-visible)) .plist__cue { opacity: 0; }
+.plist__item:is(:focus-visible, :has(:focus-visible)) .plist__cue { color: var(--gray); }
 .plist__item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 @media (hover: hover) and (pointer: fine) {
-  .plist__item:hover :is(.plist__more, .plist__preview) {
+  .plist__item:hover .plist__preview {
     grid-template-rows: 1fr; opacity: 1; visibility: visible; transition-delay: 0.08s;
   }
-  .plist__item:hover .plist__cue { opacity: 0; }
+  .plist__item:hover .plist__cue { color: var(--gray); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .plist__more, .plist__preview { transition: none; }
+  .plist__preview { transition: none; }
 }
 .plist__item .fig, .plist__item a, .plist__item button { cursor: pointer; }
 .plist__aside .fig { cursor: zoom-in; }
@@ -720,7 +714,7 @@ body.gate { overflow: hidden; height: 100vh; }
 .plist__org { font-size: clamp(.625rem, calc(.4375rem + .36vw), .75rem); }
 .plist__note { font-size: clamp(.6875rem, calc(.5rem + .36vw), .8125rem); }
 .plist__item .tag { font-size: clamp(.5625rem, calc(.4375rem + .3vw), .6875rem); padding: .65em .9em; }
-.plist__cue, .plist__more p b { font-size: clamp(.5625rem, .8vw, .6875rem); }
+.plist__cue { font-size: clamp(.5625rem, .8vw, .6875rem); }
 .works-grid { gap: clamp(24px, 2.86vw, 40px) clamp(20px, 2.29vw, 32px); }
 .work__body h4 { font-size: clamp(1.0625rem, 1.36vw, 1.1875rem); }
 .footer { padding: clamp(48px, 7.43vw, 104px) 0 clamp(32px, 4vw, 56px); }
@@ -731,4 +725,20 @@ body.gate { overflow: hidden; height: 100vh; }
   .plist__item { grid-template-columns: minmax(0, 1fr); }
   .plist__aside { width: 100%; }
   .plist__item--github .tags { padding-right: 0; }
+}
+
+/* 프로젝트 클릭 시 큰 이미지와 전체 설명 */
+.project-modal .modal__box { max-width: 1100px; }
+.project-modal .modal__org, .project-modal .modal__title { padding-right: 36px; }
+.project-modal__brief { margin: 0 0 24px; font: 500 clamp(13px, 1.2vw, 16px)/1.7 var(--sans); color: #3a3a3a; word-break: keep-all; }
+.project-modal .fig__stage { height: min(62vh, 560px); }
+.project-modal .modal__body { margin-top: 28px; }
+.project-modal__note { margin: 24px 0 0; font: 500 12px/1.7 var(--sans); color: var(--gray); word-break: keep-all; }
+.project-modal__note:empty { display: none; }
+@media (max-width: 600px) {
+  .project-modal .fig__stage { height: min(52vh, 340px); }
+  .project-modal .modal__body > p { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-modal .modal__box { animation: none; }
 }
