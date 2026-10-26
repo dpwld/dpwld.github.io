@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (state === 'confirm') {
       question.textContent = "Good call. Let's take a look.";
       state = 'leaving';
-      introTimer = setTimeout(showProjects, reduce ? 0 : 450);
+      introTimer = setTimeout(showProjects, 1500);
     } else showProjects();
   }
 
