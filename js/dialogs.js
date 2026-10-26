@@ -7,6 +7,8 @@ function figGo(fig, d) {
   imgs.forEach(function (im, k) { im.classList.toggle('on', k === i); });
   var cnt = fig.querySelector('.fig__cnt');
   if (cnt) cnt.textContent = (i + 1) + ' / ' + imgs.length;
+  var caption = fig.querySelector('.fig__caption');
+  if (caption) caption.textContent = imgs[i].alt;
 }
 document.addEventListener('click', function (e) {
   var btn = e.target.closest('.fig__btn');
@@ -25,14 +27,16 @@ document.addEventListener('click', function (e) {
 
 // ── 라이트박스 ──
 var lb = document.getElementById('lightbox');
-var lbSrcs = [], lbIdx = 0;
+var lbSrcs = [], lbCaptions = [], lbIdx = 0;
 function lbRender() {
   lb.querySelector('.lb__img').src = lbSrcs[lbIdx];
+  lb.querySelector('.lb__img').alt = lbCaptions[lbIdx];
   lb.querySelector('.lb__cnt').textContent = (lbIdx + 1) + ' / ' + lbSrcs.length;
   lb.querySelectorAll('.lb__nav').forEach(function (b) { b.style.display = lbSrcs.length > 1 ? '' : 'none'; });
 }
 function openLightbox(fig) {
   lbSrcs = [].map.call(fig.querySelectorAll('.fig__stage img'), function (i) { return i.src; });
+  lbCaptions = [].map.call(fig.querySelectorAll('.fig__stage img'), function (i) { return i.alt; });
   lbIdx = +fig.dataset.i || 0;
   lbRender();
   lb.classList.add('on');

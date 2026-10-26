@@ -6,7 +6,7 @@
 
 ## 살펴보기
 
-- [AI와 데이터 프로젝트](https://dpwld.github.io/#projects): 사내 AI 업무 시스템, job-scout, 연구 파이프라인과 평가 경험
+- [AI와 데이터 프로젝트](https://dpwld.github.io/#projects): Grant Project, Company Finance, CRM Automation, Sprint Dashboard, Personal Workspace와 KAERI·시계열·감성분석 연구
 - [기획과 디자인](https://dpwld.github.io/#works): 서비스 기획과 사용자 경험 설계
 - [기술과 자격](https://dpwld.github.io/#skills)
 - [경력](https://dpwld.github.io/#cv)
@@ -24,9 +24,9 @@
 | `index.html` | 프로젝트 소개와 경력 |
 | `css/` | 스타일 |
 | `js/` | 비밀번호 입력 화면, 내비게이션·소개 애니메이션, 대화상자·이미지 뷰어, 스크롤 표시 효과 |
-| `assets/` | 이미지 등 포트폴리오 자료 |
+| `assets/` | 이미지 등 포트폴리오 자료. `proj/highlights/`에 프로젝트별 핵심 이미지 5장 |
 | `demo/` | 프로젝트 데모 |
-| `docs/` | 프로젝트 문서 |
+| `docs/` | CV. 프로젝트 PDF는 제공하지 않음 |
 | `fonts/` | 글꼴 |
 | `tools/protect.py` | 별도 보호 버전 생성 도구. 일반 Pages 실행에는 사용하지 않음 |
 

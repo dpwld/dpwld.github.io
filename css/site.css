@@ -357,6 +357,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 }
 .fig__btn:hover { background: var(--ink); color: var(--paper); }
 .fig__cnt { font: 700 11px/1 var(--mono); letter-spacing: 0.08em; color: var(--gray); }
+.fig__caption { margin: 0; padding: 8px 4px; background: var(--paper); font: 500 12px/1.6 var(--sans); color: var(--gray); word-break: keep-all; }
 
 /* 데모 · 문서 링크 */
 .proj-links { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }

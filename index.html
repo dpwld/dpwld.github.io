@@ -7,7 +7,7 @@
 <meta name="description" content="증권사 운영 6년과 LLM 실무를 함께 가진 AI-Native 비즈니스 오퍼레이터 정예지의 포트폴리오">
 <link rel="icon" type="image/png" href="assets/profile.png">
 <link rel="stylesheet" href="css/colors_and_type.css?v=42">
-<link rel="stylesheet" href="css/site.css?v=44">
+<link rel="stylesheet" href="css/site.css?v=45">
 <style>
   html.portfolio-locked { background: #000; }
   html.portfolio-locked body { overflow: hidden; }
@@ -80,80 +80,125 @@ I build what people actually need, and keep it running.</div>
       <li class="plist__item">
         <div class="plist__idx">01</div>
         <div class="plist__main">
-          <div class="plist__org">개인 프로젝트 · 2026.07 ~ 운영 중</div>
-          <h3>job-scout: 채용공고 수집·LLM 적합도 스코어링</h3>
-          <p class="plist__brief">매일 아침 채용공고 1,200여 건을 모아 LLM이 나와의 적합도를 채점합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스</div>
+          <h3>Grant Project: 지원사업 탐색·기업 적합도 검토</h3>
+          <p class="plist__brief">기업 정보를 바탕으로 지원사업을 찾고, 적합도 검토부터 신청 준비까지 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
           <div class="plist__more">
-            <p><b>도구</b>Node.js로 11개 채용 사이트의 API와 HTML을 파싱하는 수집기를 만들고, gpt-4o-mini가 이력 프로필 대비 적합도를 0~100점으로 채점하도록 연결했습니다. 결과는 Next.js 대시보드에서 보고, macOS launchd로 매일 아침 자동 실행합니다.</p>
-            <p><b>결과물</b>공고 1,200여 건을 매일 수집·채점하는 파이프라인과 대시보드를 만들어 실제 이직 준비에 쓰고 있습니다. 계약직 자동 필터링, 기업별 연봉·복지 점수화까지 포함했습니다.</p>
-            <p><b>배운 것</b>처음에는 프로필에 경력을 뭉뚱그려 적었더니 LLM이 모든 직무를 6년차로 판단했습니다. 증권 6년·경영지원 3개월·AI 1년처럼 도메인별로 연차를 쪼개 명시하고 나서야 점수가 실제 감각과 맞았고, 프롬프트를 다듬는 것보다 입력 데이터를 어떻게 구조화하느냐가 결과를 좌우한다는 것을 배웠습니다.</p>
+            <p><b>도구</b>React·TypeScript, Cloudflare D1, 기업마당·K-Startup API와 선택적 LLM 평가 기능을 연결했습니다.</p>
+            <p><b>구현</b>기업 정보 초기 설정, 공고 수집·가져오기, 검색·필터, 즐겨찾기와 보관 기능을 구현했습니다. 평가의 근거와 검토 범위를 보여주고, 신청 준비 내용을 Sprint Dashboard의 업무로 전달합니다.</p>
+            <p><b>설계</b>기업 정보가 바뀌면 기존 평가를 재검토 대상으로 표시합니다. 기본 정리 기능은 AI 없이 사용할 수 있고, 실제 공고 수집과 AI 평가는 사용자의 API 설정이 필요합니다.</p>
           </div>
         </div>
         <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">LLM Pipeline</span><span class="tag">Next.js</span><span class="tag">Vercel</span></div>
-          <div class="fig" data-i="0" data-n="2"><div class="fig__stage"><img src="assets/proj/jobscout-1.jpeg" alt="job-scout: 채용공고 수집·LLM 적합도 스코어링 1" loading="lazy" class="on"><img src="assets/proj/jobscout-2.png" alt="job-scout: 채용공고 수집·LLM 적합도 스코어링 2" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 2</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+          <div class="tags"><span class="tag tag--fill">Data Integration</span><span class="tag">TypeScript</span><span class="tag">LLM</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/grant-project" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">실제 구현 화면 · 가상 기업·공고·평가 예시</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/grant-01.jpg" alt="추천 대시보드 · 지원사업의 우선순위와 마감 일정" loading="lazy" class="on"><img src="assets/proj/highlights/grant-02.jpg" alt="공고 상세 · 판단 근거, 신청 조건, 검토한 출처의 범위" loading="lazy"><img src="assets/proj/highlights/grant-03.jpg" alt="기업 프로필 · 필수 정보와 지원 유형별 매칭 선호 조건" loading="lazy"><img src="assets/proj/highlights/grant-04.jpg" alt="공고 탐색 · 등급·출처·마감일 필터와 즐겨찾기" loading="lazy"><img src="assets/proj/highlights/grant-05.jpg" alt="보관함 · 보관한 공고 확인과 추천 목록 복원" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">추천 대시보드 · 지원사업의 우선순위와 마감 일정</p></div>
         </div>
       </li>
 
       <li class="plist__item">
         <div class="plist__idx">02</div>
         <div class="plist__main">
-          <div class="plist__org">SwirlX, Inc. · 2026.05 ~ 현재 · 경영지원 실무와 병행</div>
-          <h3>사내 AI 업무혁신 시스템 3종 구축·운영</h3>
-          <p class="plist__brief">연구비 판정 분류기·그래프 생성 AI·사내 챗봇을 만들어 매일 운영합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스</div>
+          <h3>Company Finance: 기업 가계부·거래 분류</h3>
+          <p class="plist__brief">은행·카드 명세서를 가져와 거래를 분류하고, 기업의 지출·잔액·예산을 확인합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
           <div class="plist__more">
-            <p><b>도구</b>Next.js와 Supabase로 사내 대시보드를 만들고, LLM API를 붙여 세 가지 기능을 올렸습니다. 정부 R&D(TIPS) 연구비 규정을 학습해 지출의 예산 인정 여부를 판정하는 분류기, 회사 디자인 시스템에 맞는 통계 그래프를 생성하는 서비스, 노션·사내 DB·웹검색을 연결한 챗봇입니다.</p>
-            <p><b>결과물</b>서버리스로 시작한 자동화를 사내 상시 운영 체계로 옮겨 매일 무중단으로 돌리고 있습니다. 기획부터 구현·배포·장애 대응까지 담당했습니다.</p>
-            <p><b>배운 것</b>처음에는 분류 정확도를 올리는 데 매달렸는데, 실제로 쓰이려면 틀렸을 때 사람이 곧바로 고칠 수 있는지가 더 중요했습니다. AI는 분류를 제안만 하고 확정은 사람이 하도록 바꾼 뒤에야 동료들이 실제로 쓰기 시작했습니다.</p>
+            <p><b>도구</b>React·TypeScript, 명세서 파서, Cloudflare D1·R2를 사용해 거래와 첨부 자료를 저장합니다.</p>
+            <p><b>구현</b>지원하는 은행·카드·세금계산서 파일의 가져오기와 미리보기, 거래 검색·수정, 반복 결제, 지출 분석과 예산 관리를 구현했습니다. 사용자가 카테고리와 분류 규칙을 직접 만들 수 있습니다.</p>
+            <p><b>설계</b>규칙이 없는 거래는 미분류로 남기고, 기존 거래에 규칙을 적용할 때는 변경 내용을 먼저 검토합니다. 현재 지원 범위는 정해진 한국어 헤더를 사용하는 원화 명세서입니다.</p>
           </div>
         </div>
         <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">LLM</span><span class="tag">업무자동화</span><span class="tag">운영 전환</span></div>
-          <div class="proj-links"><a class="btn-demo" href="demo/swirlx-dashboard.html" target="_blank" rel="noreferrer">▶ HTML 데모 열기</a><span class="demo-tag">데모 버전 · 실제 데이터 아님</span></div>
-          <div class="fig" data-i="0" data-n="4"><div class="fig__stage"><img src="assets/proj/swirlx-1.png" alt="사내 AI 업무혁신 시스템 3종 구축·운영 1" loading="lazy" class="on"><img src="assets/proj/swirlx-2.png" alt="사내 AI 업무혁신 시스템 3종 구축·운영 2" loading="lazy"><img src="assets/proj/swirlx-3.png" alt="사내 AI 업무혁신 시스템 3종 구축·운영 3" loading="lazy"><img src="assets/proj/swirlx-4.png" alt="사내 AI 업무혁신 시스템 3종 구축·운영 4" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 4</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+          <div class="tags"><span class="tag tag--fill">Finance</span><span class="tag">Data Processing</span><span class="tag">TypeScript</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/company-finance" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">실제 구현 화면 · 가상 거래·예산 데이터</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/finance-01.jpg" alt="재무 대시보드 · 월별 지출 흐름과 계좌 잔액" loading="lazy" class="on"><img src="assets/proj/highlights/finance-02.jpg" alt="정기 결제 탐색 · 여러 달 반복된 가맹점과 결제 이력" loading="lazy"><img src="assets/proj/highlights/finance-03.jpg" alt="예산 관리 · 직접 정의한 분류별 한도와 남은 예산" loading="lazy"><img src="assets/proj/highlights/finance-04.jpg" alt="거래 내역 · 계좌·카드·분류별 필터와 상세 조회" loading="lazy"><img src="assets/proj/highlights/finance-05.jpg" alt="분류 규칙 · 사용자 분류와 거래명 매칭 조건 설정" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">재무 대시보드 · 월별 지출 흐름과 계좌 잔액</p></div>
         </div>
       </li>
 
       <li class="plist__item">
         <div class="plist__idx">03</div>
         <div class="plist__main">
-          <div class="plist__org">한국원자력연구원(KAERI) · 2026.03</div>
-          <h3>PeptiVerse 도입 타당성 기술 리뷰</h3>
-          <p class="plist__brief">외부 AI 모델을 기관에서 쓸 수 있는지 검증해 리포트로 정리했습니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스</div>
+          <h3>CRM Automation: 고객·영업·문서 관리</h3>
+          <p class="plist__brief">고객 정보와 영업 단계를 관리하고, 요구 사양·견적·후속 업무를 한 흐름으로 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
           <div class="plist__more">
-            <p><b>도구</b>bioRxiv에 공개된 논문과 코드를 읽고 아키텍처를 분석한 뒤, 논문이 보고한 성능 지표(Spearman ρ)와 GPU·의존성 요구사항을 항목별로 확인했습니다.</p>
-            <p><b>결과물</b>"지금 쓸 수 있는 기능"과 "도입 시 제약"을 나눠 대비시킨 의사결정용 리포트를 작성했습니다.</p>
-            <p><b>배운 것</b>논문의 성능 수치가 좋아도 우리 환경에서 재현 가능한지는 별개 문제였습니다. 도입 판단에는 모델 성능만큼 인프라 요구사항과 유지보수 부담이 크게 작용한다는 것을 배웠습니다.</p>
+            <p><b>도구</b>React·TypeScript, Cloudflare D1·R2로 고객, 영업 기회, 문서와 첨부 자료를 관리합니다.</p>
+            <p><b>구현</b>고객사 보드·표, 연락처, 영업 파이프라인, 활동 기록과 후속 업무를 구현했습니다. 조직 정보를 입력하고 사양 항목·단위·열을 정의하면 고객별 사양표와 견적·발주·청구 문서를 작성할 수 있습니다.</p>
+            <p><b>설계</b>문서 개정본과 사양 버전을 연결해 변경 이력을 남깁니다. AI 결과는 검토할 초안으로 유지하며, 이메일·AI·고객용 링크 기능에는 사용자 소유의 별도 설정이 필요합니다.</p>
           </div>
         </div>
         <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">AI 평가</span><span class="tag">Tech Review</span></div>
-          <div class="proj-links"><a class="btn-doc" href="docs/peptiverse-review.pdf" target="_blank" rel="noreferrer">PDF 자료 ↗</a></div>
-          <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/pepti-1.png" alt="PeptiVerse 도입 타당성 기술 리뷰 1" loading="lazy" class="on"><img src="assets/proj/pepti-2.png" alt="PeptiVerse 도입 타당성 기술 리뷰 2" loading="lazy"><img src="assets/proj/pepti-3.png" alt="PeptiVerse 도입 타당성 기술 리뷰 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+          <div class="tags"><span class="tag tag--fill">CRM</span><span class="tag">Workflow</span><span class="tag">TypeScript</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/crm-automation" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">실제 구현 화면 · 가상 고객·사용자 정의 사양 예시</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/crm-01.jpg" alt="영업 파이프라인 · 고객 발굴부터 견적·청구까지" loading="lazy" class="on"><img src="assets/proj/highlights/crm-02.jpg" alt="고객 사양서 · 직접 정의한 요청값·확정값 비교" loading="lazy"><img src="assets/proj/highlights/crm-03.jpg" alt="사양서 설정 · 회사별 섹션·필드·값 형식 구성" loading="lazy"><img src="assets/proj/highlights/crm-04.jpg" alt="견적서 편집 · 품목·수량·단가와 합계 계산" loading="lazy"><img src="assets/proj/highlights/crm-05.jpg" alt="고객 활동 · 담당자·연락처와 영업 활동 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">영업 파이프라인 · 고객 발굴부터 견적·청구까지</p></div>
         </div>
       </li>
 
       <li class="plist__item">
         <div class="plist__idx">04</div>
         <div class="plist__main">
-          <div class="plist__org">한국원자력연구원(KAERI) · 2025.12 ~ 2026.03 · 연구 인턴</div>
-          <h3>SSTR2 AI Scientist: 5-에이전트 신약 후보 스크리닝</h3>
-          <p class="plist__brief">LLM 에이전트 5개가 협업해 신약 후보를 자동으로 스크리닝합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스</div>
+          <h3>Sprint Dashboard: 프로젝트·업무 진행 관리</h3>
+          <p class="plist__brief">같은 프로젝트와 업무를 다이어그램, 보드, 로드맵과 달력으로 살펴봅니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
           <div class="plist__more">
-            <p><b>도구</b>Planner·QC&amp;Ranker·DiversityManager·Critic·Reporter 5개 에이전트가 협업하는 워크플로우를 Python으로 설계하고, RFdiffusion·ProteinMPNN·ESMFold·PyRosetta를 단계별로 연결했습니다.</p>
-            <p><b>결과물</b>펩타이드 후보를 생성하고 구조 예측·도킹·결합에너지 계산까지 자동으로 돌린 뒤 순위를 매기는 파이프라인을 만들었습니다.</p>
-            <p><b>배운 것</b>에이전트를 늘리는 것보다 각 단계의 통과 기준을 숫자로 못 박는 게 결과 품질을 좌우했습니다. 기준이 모호하면 에이전트가 그럴듯한 결론을 만들어내는 것을 보고, 정량 게이트를 먼저 설계하게 됐습니다.</p>
+            <p><b>도구</b>React·TypeScript, Cloudflare D1·R2와 프로젝트·업무 상태를 다루는 공통 데이터 계층을 사용합니다.</p>
+            <p><b>구현</b>8개 보기, 중요도 색상, 담당자·일정, 체크리스트, 댓글과 일일 진행 기록을 구현했습니다. 업무 상태에 따라 프로젝트 진행 상황을 계산하며, Grant Project에서 전달받은 신청 준비 내용을 검토해 업무로 저장합니다.</p>
+            <p><b>설계</b>보기마다 동일한 업무 데이터를 사용하고, 중요도는 색상과 텍스트로 함께 표시합니다. 데이터는 계정 단위로 분리되며 계정 간 공동 편집은 현재 구현 범위에 포함되지 않습니다.</p>
           </div>
         </div>
         <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">Multi-Agent</span><span class="tag">Python</span><span class="tag">AlphaFold3</span></div>
-          <div class="proj-links"><a class="btn-demo" href="demo/sstr2.html" target="_blank" rel="noreferrer">▶ HTML 데모 열기</a><span class="demo-tag">데모 버전 · 실제 데이터 아님</span></div>
-          <div class="fig" data-i="0" data-n="2"><div class="fig__stage"><img src="assets/proj/sstr2-1.png" alt="SSTR2 AI Scientist: 5-에이전트 신약 후보 스크리닝 1" loading="lazy" class="on"><img src="assets/proj/sstr2-2.png" alt="SSTR2 AI Scientist: 5-에이전트 신약 후보 스크리닝 2" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 2</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+          <div class="tags"><span class="tag tag--fill">Project Management</span><span class="tag">Data Visualization</span><span class="tag">TypeScript</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/sprint-dashboard" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">실제 구현 화면 · 가상 프로젝트·업무 데이터</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/sprint-01.jpg" alt="Diagram · 프로젝트와 업무·체크리스트를 한눈에" loading="lazy" class="on"><img src="assets/proj/highlights/sprint-02.jpg" alt="Board · 상태별 업무 진행과 우선순위 관리" loading="lazy"><img src="assets/proj/highlights/sprint-03.jpg" alt="Roadmap · 프로젝트별 업무 기간과 일정 확인" loading="lazy"><img src="assets/proj/highlights/sprint-04.jpg" alt="Due · 남은 기간별 마감 업무와 담당자 확인" loading="lazy"><img src="assets/proj/highlights/sprint-05.jpg" alt="업무 상세 · 목표·완료 기준·체크리스트·일일 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Diagram · 프로젝트와 업무·체크리스트를 한눈에</p></div>
         </div>
       </li>
 
       <li class="plist__item">
         <div class="plist__idx">05</div>
+        <div class="plist__main">
+          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스 · MIT</div>
+          <h3>Personal Workspace: 일상 기록·목표 관리</h3>
+          <p class="plist__brief">하루의 계획과 루틴, 작업 기록을 목표·학업·개인 라이브러리와 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__more">
+            <p><b>도구</b>Next.js·React·TypeScript를 사용하고, 로컬 JSON 또는 선택적으로 연결한 Supabase에 데이터를 저장합니다.</p>
+            <p><b>구현</b>개인용 Yeji OS에서 일상 관리 기능을 분리했습니다. 오늘·루틴·할 일·일기, 목표판·학업·기록, 노트·독서 등 13개 화면과 한·영 설치 문서를 제공합니다.</p>
+            <p><b>설계</b>개인 기록이 없는 상태로 설치해 사용자가 자신의 데이터를 쌓도록 구성했습니다. 기본 기능은 API 키 없이 로컬에서 시작할 수 있으며, 한 명의 소유자가 사용하는 워크스페이스입니다.</p>
+          </div>
+        </div>
+        <div class="plist__aside">
+          <div class="tags"><span class="tag tag--fill">Next.js</span><span class="tag">Local-first</span><span class="tag">MIT</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/personal-workspace" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">실제 구현 화면 · 개인 기록과 분리된 가상 예시</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/personal-01.jpg" alt="오늘 · 우선순위·루틴·할 일·집중 시간 한곳에" loading="lazy" class="on"><img src="assets/proj/highlights/personal-02.jpg" alt="기록 · 활동 잔디와 프로젝트별 누적 시간" loading="lazy"><img src="assets/proj/highlights/personal-03.jpg" alt="루틴 · 시간대별 실행과 최근 일주일의 달성도" loading="lazy"><img src="assets/proj/highlights/personal-04.jpg" alt="할 일 · 오늘과 예정 작업을 나누어 관리" loading="lazy"><img src="assets/proj/highlights/personal-05.jpg" alt="노트 · PARA 분류와 프로젝트 메모 편집" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">오늘 · 우선순위·루틴·할 일·집중 시간 한곳에</p></div>
+        </div>
+      </li>
+
+      <li class="plist__item">
+        <div class="plist__idx">06</div>
+        <div class="plist__main">
+          <div class="plist__org">한국원자력연구원(KAERI) · 2025.12 ~ 2026.03 · 연구 인턴</div>
+          <h3>KAERI: PeptiVerse 적용 검토 · SSTR2 AI Scientist</h3>
+          <p class="plist__brief">PeptiVerse의 도입 가능성을 검토하고, SSTR2 표적 후보를 선별하는 5-에이전트 연구 워크플로를 구현했습니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__more">
+            <p><b>모델 검토</b>PeptiVerse 논문과 공개 코드를 분석해 서열·SMILES 입력 구조, 결합 친화도 예측 성능, GPU·의존성 요구사항을 정리했습니다. 적용 가능한 기능과 운영 제약을 나눠 도입 판단 자료로 작성했습니다.</p>
+            <p><b>연구 구현</b>SSTR2 AI Scientist는 후보 생성·필터링·대리 모델 점수화·5개 에이전트 검토·리포트를 연결한 Python 연구 파이프라인입니다. 공개 코드에는 PeptiVerse·ESM-2 임베딩 경로, XGBoost 대리 모델과 LangGraph 검토 흐름이 포함됩니다.</p>
+            <p><b>검증 범위</b>모델의 논문상 성능과 직접 구현한 파이프라인의 검증 범위를 구분했습니다. 공개 Test Mode와 화면 프로토타입은 가상 데이터로 동작을 확인한 예시이며, 실제 도킹이나 실험으로 신약 효능·안전성을 검증한 결과는 아닙니다.</p>
+          </div>
+        </div>
+        <div class="plist__aside">
+          <div class="tags"><span class="tag tag--fill">AI Research</span><span class="tag">Python</span><span class="tag">Multi-Agent</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/sstr2-ai-scientist-kaeri" target="_blank" rel="noreferrer">GitHub ↗</a><a class="btn-demo" href="demo/sstr2.html" target="_blank" rel="noreferrer">▶ 화면 시연</a></div>
+          <p class="plist__note">모델 검토 자료 3장 · 가상 데이터 화면 프로토타입 2장</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/kaeri-01.jpg" alt="PeptiVerse 기술 리뷰: 서열·SMILES 입력부터 특성 예측까지" loading="lazy" class="on"><img src="assets/proj/highlights/kaeri-02.jpg" alt="PeptiVerse 기술 리뷰: 결합 친화도 예측 성능 비교" loading="lazy"><img src="assets/proj/highlights/kaeri-03.jpg" alt="PeptiVerse 기술 리뷰: 적용 가능성과 운영 제약" loading="lazy"><img src="assets/proj/highlights/kaeri-04.jpg" alt="SSTR2 AI Scientist: 에이전트·파이프라인 실행 과정 · 가상 데이터 시연" loading="lazy"><img src="assets/proj/highlights/kaeri-05.jpg" alt="SSTR2 AI Scientist: 후보 평가 결과와 단계별 완료 상태 · 가상 데이터 시연" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">PeptiVerse 기술 리뷰: 서열·SMILES 입력부터 특성 예측까지</p></div>
+        </div>
+      </li>
+
+      <li class="plist__item">
+        <div class="plist__idx">07</div>
         <div class="plist__main">
           <div class="plist__org">3인 팀 · 2025.09 ~ 2025.12 · 팀장 · R 코딩·보고서 집필</div>
           <h3>상수원 탁도 예측: 다변량 시계열 벤치마킹</h3>
@@ -166,13 +211,12 @@ I build what people actually need, and keep it running.</div>
         </div>
         <div class="plist__aside">
           <div class="tags"><span class="tag tag--fill">Time-series</span><span class="tag">R</span><span class="tag">XGBOOST · LSTM</span></div>
-          <div class="proj-links"><a class="btn-doc" href="docs/turbidity.pdf" target="_blank" rel="noreferrer">PDF 자료 ↗</a></div>
-          <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/turb-1.png" alt="상수원 탁도 예측: 다변량 시계열 벤치마킹 1" loading="lazy" class="on"><img src="assets/proj/turb-2.png" alt="상수원 탁도 예측: 다변량 시계열 벤치마킹 2" loading="lazy"><img src="assets/proj/turb-3.png" alt="상수원 탁도 예측: 다변량 시계열 벤치마킹 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/turbidity-01.jpg" alt="2019–2022년 하류 탁도 시계열과 변동 패턴" loading="lazy" class="on"><img src="assets/proj/highlights/turbidity-02.jpg" alt="추세·계절성·불규칙 성분의 시계열 분해" loading="lazy"><img src="assets/proj/highlights/turbidity-03.jpg" alt="Random Forest 변수 중요도: %IncMSE와 IncNodePurity" loading="lazy"><img src="assets/proj/highlights/turbidity-04.jpg" alt="단변량·다변량 모델의 테스트 MSE 비교" loading="lazy"><img src="assets/proj/highlights/turbidity-05.jpg" alt="훈련·테스트·미래 168시간 예측의 통합 시각화" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">2019–2022년 하류 탁도 시계열과 변동 패턴</p></div>
         </div>
       </li>
 
       <li class="plist__item">
-        <div class="plist__idx">06</div>
+        <div class="plist__idx">08</div>
         <div class="plist__main">
           <div class="plist__org">한양대 Biz&amp;AI Lab · 2025 상반기 · 학부연구생</div>
           <h3>TASD-GPT: 다차원 감성분석 프롬프트 최적화</h3>
@@ -185,8 +229,7 @@ I build what people actually need, and keep it running.</div>
         </div>
         <div class="plist__aside">
           <div class="tags"><span class="tag tag--fill">Prompt Eng.</span><span class="tag">GPT-4o-mini</span></div>
-          <div class="proj-links"><a class="btn-doc" href="docs/tasd.pdf" target="_blank" rel="noreferrer">PDF 자료 ↗</a></div>
-          <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/tasd-1.png" alt="TASD-GPT: 다차원 감성분석 프롬프트 최적화 1" loading="lazy" class="on"><img src="assets/proj/tasd-2.png" alt="TASD-GPT: 다차원 감성분석 프롬프트 최적화 2" loading="lazy"><img src="assets/proj/tasd-3.png" alt="TASD-GPT: 다차원 감성분석 프롬프트 최적화 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/tasd-01.jpg" alt="생성 파라미터 조합과 프롬프트 구체화 실험" loading="lazy" class="on"><img src="assets/proj/highlights/tasd-02.jpg" alt="Target·Aspect·Sentiment 단계별 추론 지침" loading="lazy"><img src="assets/proj/highlights/tasd-03.jpg" alt="성공·오류·누락 삼중항을 활용한 예시 전략" loading="lazy"><img src="assets/proj/highlights/tasd-04.jpg" alt="역할·예시 수·설명 방식별 프롬프트 비교 실험" loading="lazy"><img src="assets/proj/highlights/tasd-05.jpg" alt="R16 테스트 858개 기준 F1 비교: 0.4651 · 0.3921 · 0.6120" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">생성 파라미터 조합과 프롬프트 구체화 실험</p></div>
         </div>
       </li>
 
@@ -477,13 +520,12 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">삼성자산운용 · 미래내일 일경험 · 2026.06 · 3인 팀</div>
       <h3 class="modal__title">ETF 투자 정석 가이드라인</h3>
-      <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/etf-1.png" alt="ETF 투자 정석 가이드라인 1" loading="lazy" class="on"><img src="assets/proj/etf-2.png" alt="ETF 투자 정석 가이드라인 2" loading="lazy"><img src="assets/proj/etf-3.png" alt="ETF 투자 정석 가이드라인 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/etf-01.jpg" alt="ETF 종목명과 상품 구조 읽기" loading="lazy" class="on"><img src="assets/proj/highlights/etf-02.jpg" alt="ETF 선택을 위한 8가지 체크리스트" loading="lazy"><img src="assets/proj/highlights/etf-03.jpg" alt="계좌와 ETF 유형별 과세 비교" loading="lazy"><img src="assets/proj/highlights/etf-04.jpg" alt="생애주기별 맞춤 투자 전략" loading="lazy"><img src="assets/proj/highlights/etf-05.jpg" alt="30대 사회초년생의 포트폴리오 구성 예시" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">ETF 종목명과 상품 구조 읽기</p></div>
       <div class="modal__body">
         <p><b>도구</b>ETF 시장 자료와 상품 공시를 조사해 목차를 짜고, 정의·분류부터 NAV와 괴리율, 추적오차, 보수, 과세까지 항목별로 정리했습니다. 브랜드 가이드에 맞춰 편집했습니다.</p>
         <p><b>결과물</b>투자 판단 기준과 생애주기별 포트폴리오 전략을 담은 가이드북을 팀과 함께 완성했습니다.</p>
         <p><b>배운 것</b>같은 상품도 읽는 사람의 이해도에 따라 필요한 설명이 달랐습니다. 정보를 다 넣기보다 무엇을 기준으로 고를지 알려주는 편이 실제로 도움이 된다는 것을 배웠습니다.</p>
       </div>
-      <div class="proj-links"><a class="btn-doc" href="docs/etf-guide.pdf" target="_blank" rel="noreferrer">PDF 자료 ↗</a></div>
     </div>
   </div>
   <div class="modal" id="modal-1" role="dialog" aria-modal="true" aria-label="Louver: AI 콘텐츠 필터 앱">
@@ -491,7 +533,7 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">제품서비스디자인 · 2026 · 3인 팀</div>
       <h3 class="modal__title">Louver: AI 콘텐츠 필터 앱</h3>
-      <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/louver-1.png" alt="Louver: AI 콘텐츠 필터 앱 1" loading="lazy" class="on"><img src="assets/proj/louver-2.png" alt="Louver: AI 콘텐츠 필터 앱 2" loading="lazy"><img src="assets/proj/louver-3.png" alt="Louver: AI 콘텐츠 필터 앱 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/louver-01.jpg" alt="SNS 흐름에 결합한 AI 콘텐츠 필터" loading="lazy" class="on"><img src="assets/proj/highlights/louver-02.jpg" alt="AI Slop 소비 과정의 사용자 문제" loading="lazy"><img src="assets/proj/highlights/louver-03.jpg" alt="사용자 여정과 기회 분석" loading="lazy"><img src="assets/proj/highlights/louver-04.jpg" alt="카테고리별 필터 강도 설정" loading="lazy"><img src="assets/proj/highlights/louver-05.jpg" alt="행동 변화를 측정하는 성공 지표" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">SNS 흐름에 결합한 AI 콘텐츠 필터</p></div>
       <div class="modal__body">
         <p><b>도구</b>AI Slop 확산에 관한 기사와 통계를 근거로 문제를 정의하고, 페르소나와 사용자 여정을 그린 뒤 KPI와 수익 모델까지 설계했습니다. 화면은 프로토타입으로 구현했습니다.</p>
         <p><b>결과물</b>배경 조사부터 문제 정의, 서비스 구조, 프로토타입까지 담은 기획안을 만들었습니다.</p>
@@ -505,13 +547,12 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">오픈놀 미니인턴 · 2026 · 단독 기획</div>
       <h3 class="modal__title">AX Job Simulator 기획서</h3>
-      <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/axjob-1.png" alt="AX Job Simulator 기획서 1" loading="lazy" class="on"><img src="assets/proj/axjob-2.png" alt="AX Job Simulator 기획서 2" loading="lazy"><img src="assets/proj/axjob-3.png" alt="AX Job Simulator 기획서 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/axjob-01.jpg" alt="청년의 실무 경험과 기업의 AI 요구 사이의 격차" loading="lazy" class="on"><img src="assets/proj/highlights/axjob-02.jpg" alt="8주·96시간 프로그램 전체 설계" loading="lazy"><img src="assets/proj/highlights/axjob-03.jpg" alt="8주 학습·프로젝트 로드맵" loading="lazy"><img src="assets/proj/highlights/axjob-04.jpg" alt="교육 후 남는 6종 산출물" loading="lazy"><img src="assets/proj/highlights/axjob-05.jpg" alt="운영·학습·취업 성과 지표" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">청년의 실무 경험과 기업의 AI 요구 사이의 격차</p></div>
       <div class="modal__body">
         <p><b>도구</b>청년 고용 통계와 AI 채용·업무 변화 자료로 문제를 규정하고, 서비스기획 직무를 선택한 근거를 정리한 뒤 8주 96시간 커리큘럼과 운영 실행안을 설계했습니다.</p>
         <p><b>결과물</b>왜 지금 AX 인재인가부터 실행 방안까지 5부로 구성한 기획서를 혼자 작성했습니다.</p>
         <p><b>배운 것</b>교육 프로그램은 무엇을 가르치느냐보다 끝나고 무엇이 남는지가 설득 포인트였습니다. 개인 2종·팀 1종이라는 산출물을 먼저 정하고 커리큘럼을 거꾸로 짜니 기획이 단단해졌습니다.</p>
       </div>
-      <div class="proj-links"><a class="btn-doc" href="docs/ax-job-simulator.pdf" target="_blank" rel="noreferrer">PDF 자료 ↗</a></div>
     </div>
   </div>
   <div class="modal" id="modal-3" role="dialog" aria-modal="true" aria-label="전시 《취향의 증명》 기획">
@@ -519,7 +560,7 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">한양뮤지엄인턴십 19기 · 2025.07 · 4인 팀</div>
       <h3 class="modal__title">전시 《취향의 증명》 기획</h3>
-      <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/museum-1.png" alt="전시 《취향의 증명》 기획 1" loading="lazy" class="on"><img src="assets/proj/museum-2.png" alt="전시 《취향의 증명》 기획 2" loading="lazy"><img src="assets/proj/museum-3.png" alt="전시 《취향의 증명》 기획 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/museum-01.jpg" alt="전시 주제와 취향의 3단계 구성" loading="lazy" class="on"><img src="assets/proj/highlights/museum-02.jpg" alt="공간별 전시 전개와 관람 동선" loading="lazy"><img src="assets/proj/highlights/museum-03.jpg" alt="1부 「나를 담다」 스토리텔링" loading="lazy"><img src="assets/proj/highlights/museum-04.jpg" alt="AI 취향 테스트와 온라인 방명록" loading="lazy"><img src="assets/proj/highlights/museum-05.jpg" alt="나만의 취향 키링 만들기" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">전시 주제와 취향의 3단계 구성</p></div>
       <div class="modal__body">
         <p><b>도구</b>전시 주제와 목표를 정하고 프롤로그부터 3부·에필로그까지 스토리텔링 흐름을 짠 뒤, 공간별 전개안과 체험형 공간, 전시 디자인을 팀과 함께 구성했습니다.</p>
         <p><b>결과물</b>"취향의 내면화 → 표현화 → 공통화"로 이어지는 관람 동선과 체험 공간을 담은 전시 기획안을 만들어 중간발표했습니다.</p>
@@ -533,13 +574,12 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">팀 프로젝트 · 2025</div>
       <h3 class="modal__title">아이보다: 미술 수업 콘텐츠 큐레이션</h3>
-      <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/iboda-1.png" alt="아이보다: 미술 수업 콘텐츠 큐레이션 1" loading="lazy" class="on"><img src="assets/proj/iboda-2.png" alt="아이보다: 미술 수업 콘텐츠 큐레이션 2" loading="lazy"><img src="assets/proj/iboda-3.png" alt="아이보다: 미술 수업 콘텐츠 큐레이션 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/iboda-01.jpg" alt="아이보다 서비스와 대상 사용자" loading="lazy" class="on"><img src="assets/proj/highlights/iboda-02.jpg" alt="입력부터 수업안까지 이어지는 생성 흐름" loading="lazy"><img src="assets/proj/highlights/iboda-03.jpg" alt="GPTs 설계와 피드백 반영" loading="lazy"><img src="assets/proj/highlights/iboda-04.jpg" alt="수업 맥락을 반영한 디자인 플로우" loading="lazy"><img src="assets/proj/highlights/iboda-05.jpg" alt="최적화·시뮬레이션·베타 테스트 로드맵" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">아이보다 서비스와 대상 사용자</p></div>
       <div class="modal__body">
         <p><b>도구</b>교사가 수업을 준비하는 과정을 따라가며 필요한 기능을 정리하고, 콘텐츠를 분류·추천하는 구조와 화면 흐름을 설계했습니다.</p>
         <p><b>결과물</b>서비스 대상과 핵심 기능, 화면 구성을 담은 기획안을 만들었습니다.</p>
         <p><b>배운 것</b>사용자가 교사라는 점 때문에 "좋은 콘텐츠"보다 "수업 시간에 바로 쓸 수 있는 형태인지"가 기준이 됐습니다. 기획은 대상을 좁힐수록 판단이 쉬워진다는 것을 배웠습니다.</p>
       </div>
-      <div class="proj-links"><a class="btn-doc" href="docs/iboda.pdf" target="_blank" rel="noreferrer">PDF 자료 ↗</a></div>
     </div>
   </div>
   <div class="modal" id="modal-5" role="dialog" aria-modal="true" aria-label="초등 디지털 리터러시 교육 게임">
@@ -547,7 +587,7 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">동대문구가족센터 교육봉사 · 2025 · 4인 팀</div>
       <h3 class="modal__title">초등 디지털 리터러시 교육 게임</h3>
-      <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/literacy-1.png" alt="초등 디지털 리터러시 교육 게임 1" loading="lazy" class="on"><img src="assets/proj/literacy-2.png" alt="초등 디지털 리터러시 교육 게임 2" loading="lazy"><img src="assets/proj/literacy-3.png" alt="초등 디지털 리터러시 교육 게임 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/literacy-01.jpg" alt="「빨간모자와 늑대의 유혹」 교육 월드 개요" loading="lazy" class="on"><img src="assets/proj/highlights/literacy-02.jpg" alt="수업 운영 흐름과 교육 활동" loading="lazy"><img src="assets/proj/highlights/literacy-03.jpg" alt="과장 광고를 검증하는 상점 마을 퀘스트" loading="lazy"><img src="assets/proj/highlights/literacy-04.jpg" alt="정보를 판단하는 OX 퀴즈" loading="lazy"><img src="assets/proj/highlights/literacy-05.jpg" alt="늑대와의 대결과 학습 내용 확인" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">「빨간모자와 늑대의 유혹」 교육 월드 개요</p></div>
       <div class="modal__body">
         <p><b>도구</b>메이플스토리 월드의 블록코딩으로 게임을 제작했습니다. 디지털 세상을 숲으로, 가짜 뉴스와 피싱을 늑대의 유혹으로 치환해 스토리를 짜고, 출처 확인·과장 광고·교차 검증·개인정보 보호 4대 원칙을 단계별 퀘스트에 넣었습니다.</p>
         <p><b>결과물</b>초등 고학년 대상 교육 월드와 소개서를 완성해 수업에 활용했습니다.</p>
@@ -561,13 +601,12 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">데이터 시각화 · 2025 · 4인 팀</div>
       <h3 class="modal__title">Netflix 콘텐츠 대시보드</h3>
-      <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/netflix-1.png" alt="Netflix 콘텐츠 대시보드 1" loading="lazy" class="on"><img src="assets/proj/netflix-2.png" alt="Netflix 콘텐츠 대시보드 2" loading="lazy"><img src="assets/proj/netflix-3.png" alt="Netflix 콘텐츠 대시보드 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/netflix-01.jpg" alt="Netflix 콘텐츠 분석 대시보드" loading="lazy" class="on"><img src="assets/proj/highlights/netflix-02.jpg" alt="대시보드 사용자와 분석 목적" loading="lazy"><img src="assets/proj/highlights/netflix-03.jpg" alt="장르 Top 10과 시각화 설계" loading="lazy"><img src="assets/proj/highlights/netflix-04.jpg" alt="한국·미국 콘텐츠 비교" loading="lazy"><img src="assets/proj/highlights/netflix-05.jpg" alt="콘텐츠 전략으로 연결한 인사이트" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Netflix 콘텐츠 분석 대시보드</p></div>
       <div class="modal__body">
         <p><b>도구</b>넷플릭스 공개 데이터셋의 장르·등급·개봉연도·국가 항목을 정리하고, 콘텐츠 기획자가 궁금해할 질문을 기준으로 그래프를 배치했습니다. 비중이 낮을수록 명도를 높이는 방식으로 중요도를 시각화했습니다.</p>
         <p><b>결과물</b>제작자·분석가·마케터가 각각 참고할 수 있도록 인사이트별로 구성한 대시보드를 만들었습니다.</p>
         <p><b>배운 것</b>그래프를 많이 그리는 것보다 누가 무엇을 결정하려고 보는지를 먼저 정하는 게 중요했습니다. 대상을 정하니 어떤 그래프를 뺄지가 분명해졌습니다.</p>
       </div>
-      <div class="proj-links"><a class="btn-doc" href="docs/netflix.pdf" target="_blank" rel="noreferrer">PDF 자료 ↗</a></div>
     </div>
   </div>
   <div class="modal" id="modal-7" role="dialog" aria-modal="true" aria-label="늬웃: AI 뉴스 브리핑 서비스">
@@ -575,7 +614,7 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">한양대 산업융합학부 · 2026 여름 · 팀 프로젝트</div>
       <h3 class="modal__title">늬웃: AI 뉴스 브리핑 서비스</h3>
-      <div class="fig" data-i="0" data-n="3"><div class="fig__stage"><img src="assets/proj/nieut-1.png" alt="늬웃: AI 뉴스 브리핑 서비스 1" loading="lazy" class="on"><img src="assets/proj/nieut-2.png" alt="늬웃: AI 뉴스 브리핑 서비스 2" loading="lazy"><img src="assets/proj/nieut-3.png" alt="늬웃: AI 뉴스 브리핑 서비스 3" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 3</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/nieut-01.jpg" alt="세 줄 요약과 실시간 뉴스 메인 화면" loading="lazy" class="on"><img src="assets/proj/highlights/nieut-02.jpg" alt="주간·월간 인기 뉴스 화면" loading="lazy"><img src="assets/proj/highlights/nieut-03.jpg" alt="홈 정보 구조 와이어프레임 · 상세" loading="lazy"><img src="assets/proj/highlights/nieut-04.jpg" alt="카테고리별 요약·기사 목록 와이어프레임 · 상세" loading="lazy"><img src="assets/proj/highlights/nieut-05.jpg" alt="기사 상세·원문 출처·관련 콘텐츠 와이어프레임 · 상세" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">세 줄 요약과 실시간 뉴스 메인 화면</p></div>
       <div class="modal__body">
         <p><b>도구</b>Figma로 홈·카테고리·검색 화면의 와이어프레임과 디자인 시스템(컬러 스케일·타이포)을 만들고, 뉴스 수집부터 클러스터링, 기사 생성으로 이어지는 서비스 구조를 팀과 정리했습니다.</p>
         <p><b>결과물</b>"아무리 바빠도, 뉴스는 봐야죠"를 콘셉트로 한 화면 설계와 디자인 시스템, 세 줄 요약 기능 구조를 만들었습니다.</p>
@@ -588,17 +627,16 @@ I build what people actually need, and keep it running.</div>
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">NexIoT · 창업동아리 대표 · 2024</div>
       <h3 class="modal__title">Dobi: 음성 제어 IoT 버튼 사업계획서</h3>
-      <div class="fig" data-i="0" data-n="2"><div class="fig__stage"><img src="assets/proj/nexiot-1.png" alt="Dobi: 음성 제어 IoT 버튼 사업계획서 1" loading="lazy" class="on"><img src="assets/proj/nexiot-2.png" alt="Dobi: 음성 제어 IoT 버튼 사업계획서 2" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 2</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div></div>
+      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/nexiot-01.jpg" alt="Dobi의 대상 사용자와 아이템 개요 · 상세" loading="lazy" class="on"><img src="assets/proj/highlights/nexiot-02.jpg" alt="음성 인식 허브와 IR 버튼 장치 구조 · 상세" loading="lazy"><img src="assets/proj/highlights/nexiot-03.jpg" alt="제품 동작 흐름·UX와 시장성 · 상세" loading="lazy"><img src="assets/proj/highlights/nexiot-04.jpg" alt="기존 스마트홈 제품과의 차별점 · 상세" loading="lazy"><img src="assets/proj/highlights/nexiot-05.jpg" alt="시장 확장과 제품군 성장 구상 · 상세" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Dobi의 대상 사용자와 아이템 개요 · 상세</p></div>
       <div class="modal__body">
         <p><b>도구</b>어르신과 장애가 있는 분들이 가전 버튼을 누르기 위해 이동해야 하는 불편에서 출발해, 음성 인식 허브가 IR 신호로 개별 버튼 장치를 작동시키는 구조를 설계하고 사업계획서로 정리했습니다.</p>
         <p><b>결과물</b>아이템 개요·기술성·UX 동작 흐름을 담은 사업계획서를 작성했습니다.</p>
         <p><b>배운 것</b>앱 설치가 필요 없어야 한다는 조건 하나가 기술 구조 전체를 바꿨습니다. 사용자의 제약에서 출발하면 만들 것이 저절로 좁혀진다는 것을 배웠습니다.</p>
       </div>
-      <div class="proj-links"><a class="btn-doc" href="docs/nexiot.pdf" target="_blank" rel="noreferrer">PDF 자료 ↗</a></div>
     </div>
   </div>
 
-<script src="js/dialogs.js"></script>
+<script src="js/dialogs.js?v=45"></script>
 <script src="js/reveal.js"></script>
 <script src="js/access.js?v=43"></script>
 </body>
