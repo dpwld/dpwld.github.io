@@ -80,20 +80,21 @@ I build what people actually need, and keep it running.</div>
       <li class="plist__item">
         <div class="plist__idx">01</div>
         <div class="plist__main">
-          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스 · MIT</div>
-          <h3>Personal Workspace: 일상 기록·목표 관리</h3>
-          <p class="plist__brief">하루의 계획과 루틴, 작업 기록을 목표·학업·개인 라이브러리와 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__org">SwirlX · 2026.07 ~ 현재 · 사내 구축·적용</div>
+          <h3>Company Finance: 기업 가계부·거래 분류</h3>
+          <p class="plist__brief">은행·카드 명세서를 가져와 거래를 분류하고, 기업의 지출·잔액·예산을 확인합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
           <div class="plist__more">
-            <p><b>도구</b>Next.js·React·TypeScript를 사용하고, 로컬 JSON 또는 선택적으로 연결한 Supabase에 데이터를 저장합니다.</p>
-            <p><b>구현</b>개인용 Yeji OS에서 일상 관리 기능을 분리했습니다. 오늘·루틴·할 일·일기, 목표판·학업·기록, 노트·독서 등 13개 화면과 한·영 설치 문서를 제공합니다.</p>
-            <p><b>설계</b>개인 기록이 없는 상태로 설치해 사용자가 자신의 데이터를 쌓도록 구성했습니다. 기본 기능은 API 키 없이 로컬에서 시작할 수 있으며, 한 명의 소유자가 사용하는 워크스페이스입니다.</p>
+            <p><b>적용 배경</b>SwirlX의 재무·지출 관리 업무에 적용 중인 시스템을 바탕으로 만들었습니다. 공개 버전은 사내 전용 업무를 제외하고 사용자 정의 분류 규칙을 적용했습니다.</p>
+            <p><b>공개 데모 도구</b>React·TypeScript, 명세서 파서, Cloudflare D1·R2를 사용해 거래와 첨부 자료를 저장합니다.</p>
+            <p><b>공개 데모 구현</b>지원하는 은행·카드·세금계산서 파일의 가져오기와 미리보기, 거래 검색·수정, 반복 결제, 지출 분석과 예산 관리를 구현했습니다. 사용자가 카테고리와 분류 규칙을 직접 만들 수 있습니다.</p>
+            <p><b>설계</b>규칙이 없는 거래는 미분류로 남기고, 기존 거래에 규칙을 적용할 때는 변경 내용을 먼저 검토합니다. 현재 지원 범위는 정해진 한국어 헤더를 사용하는 원화 명세서입니다.</p>
           </div>
         </div>
         <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">Next.js</span><span class="tag">Local-first</span><span class="tag">MIT</span></div>
-          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/personal-workspace" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-          <p class="plist__note">실제 구현 화면 · 개인 기록과 분리된 가상 예시</p>
-          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/personal-01.jpg" alt="오늘 · 우선순위·루틴·할 일·집중 시간 한곳에" loading="lazy" class="on"><img src="assets/proj/highlights/personal-02.jpg" alt="기록 · 활동 잔디와 프로젝트별 누적 시간" loading="lazy"><img src="assets/proj/highlights/personal-03.jpg" alt="루틴 · 시간대별 실행과 최근 일주일의 달성도" loading="lazy"><img src="assets/proj/highlights/personal-04.jpg" alt="할 일 · 오늘과 예정 작업을 나누어 관리" loading="lazy"><img src="assets/proj/highlights/personal-05.jpg" alt="노트 · PARA 분류와 프로젝트 메모 편집" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">오늘 · 우선순위·루틴·할 일·집중 시간 한곳에</p></div>
+          <div class="tags"><span class="tag tag--fill">Finance</span><span class="tag">Data Processing</span><span class="tag">TypeScript</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/company-finance" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/finance-01.jpg" alt="재무 대시보드 · 월별 지출 흐름과 계좌 잔액" loading="lazy" class="on"><img src="assets/proj/highlights/finance-02.jpg" alt="정기 결제 탐색 · 여러 달 반복된 가맹점과 결제 이력" loading="lazy"><img src="assets/proj/highlights/finance-03.jpg" alt="예산 관리 · 직접 정의한 분류별 한도와 남은 예산" loading="lazy"><img src="assets/proj/highlights/finance-04.jpg" alt="거래 내역 · 계좌·카드·분류별 필터와 상세 조회" loading="lazy"><img src="assets/proj/highlights/finance-05.jpg" alt="분류 규칙 · 사용자 분류와 거래명 매칭 조건 설정" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">재무 대시보드 · 월별 지출 흐름과 계좌 잔액</p></div>
         </div>
       </li>
 
@@ -121,48 +122,6 @@ I build what people actually need, and keep it running.</div>
       <li class="plist__item">
         <div class="plist__idx">03</div>
         <div class="plist__main">
-          <div class="plist__org">SwirlX · 2026.07 ~ 현재 · 사내 구축·적용</div>
-          <h3>Sprint Dashboard: 프로젝트·업무 진행 관리</h3>
-          <p class="plist__brief">같은 프로젝트와 업무를 다이어그램, 보드, 로드맵과 달력으로 살펴봅니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
-          <div class="plist__more">
-            <p><b>적용 배경</b>SwirlX의 프로젝트·업무 진행 관리에 적용 중인 시스템을 바탕으로 만들었습니다. 공개 버전은 실제 프로젝트와 구성원 정보, 사내 연동을 분리해 재구성했습니다.</p>
-            <p><b>공개 데모 도구</b>React·TypeScript, Cloudflare D1·R2와 프로젝트·업무 상태를 다루는 공통 데이터 계층을 사용합니다.</p>
-            <p><b>공개 데모 구현</b>8개 보기, 중요도 색상, 담당자·일정, 체크리스트, 댓글과 일일 진행 기록을 구현했습니다. 업무 상태에 따라 프로젝트 진행 상황을 계산하며, Grant Project에서 전달받은 신청 준비 내용을 검토해 업무로 저장합니다.</p>
-            <p><b>설계</b>보기마다 동일한 업무 데이터를 사용하고, 중요도는 색상과 텍스트로 함께 표시합니다. 데이터는 계정 단위로 분리되며 계정 간 공동 편집은 현재 구현 범위에 포함되지 않습니다.</p>
-          </div>
-        </div>
-        <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">Project Management</span><span class="tag">Data Visualization</span><span class="tag">TypeScript</span></div>
-          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/sprint-dashboard" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-          <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
-          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/sprint-01.jpg" alt="Diagram · 프로젝트와 업무·체크리스트를 한눈에" loading="lazy" class="on"><img src="assets/proj/highlights/sprint-02.jpg" alt="Board · 상태별 업무 진행과 우선순위 관리" loading="lazy"><img src="assets/proj/highlights/sprint-03.jpg" alt="Roadmap · 프로젝트별 업무 기간과 일정 확인" loading="lazy"><img src="assets/proj/highlights/sprint-04.jpg" alt="Due · 남은 기간별 마감 업무와 담당자 확인" loading="lazy"><img src="assets/proj/highlights/sprint-05.jpg" alt="업무 상세 · 목표·완료 기준·체크리스트·일일 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Diagram · 프로젝트와 업무·체크리스트를 한눈에</p></div>
-        </div>
-      </li>
-
-      <li class="plist__item">
-        <div class="plist__idx">04</div>
-        <div class="plist__main">
-          <div class="plist__org">SwirlX · 2026.07 ~ 현재 · 사내 구축·적용</div>
-          <h3>Company Finance: 기업 가계부·거래 분류</h3>
-          <p class="plist__brief">은행·카드 명세서를 가져와 거래를 분류하고, 기업의 지출·잔액·예산을 확인합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
-          <div class="plist__more">
-            <p><b>적용 배경</b>SwirlX의 재무·지출 관리 업무에 적용 중인 시스템을 바탕으로 만들었습니다. 공개 버전은 사내 전용 업무를 제외하고 사용자 정의 분류 규칙을 적용했습니다.</p>
-            <p><b>공개 데모 도구</b>React·TypeScript, 명세서 파서, Cloudflare D1·R2를 사용해 거래와 첨부 자료를 저장합니다.</p>
-            <p><b>공개 데모 구현</b>지원하는 은행·카드·세금계산서 파일의 가져오기와 미리보기, 거래 검색·수정, 반복 결제, 지출 분석과 예산 관리를 구현했습니다. 사용자가 카테고리와 분류 규칙을 직접 만들 수 있습니다.</p>
-            <p><b>설계</b>규칙이 없는 거래는 미분류로 남기고, 기존 거래에 규칙을 적용할 때는 변경 내용을 먼저 검토합니다. 현재 지원 범위는 정해진 한국어 헤더를 사용하는 원화 명세서입니다.</p>
-          </div>
-        </div>
-        <div class="plist__aside">
-          <div class="tags"><span class="tag tag--fill">Finance</span><span class="tag">Data Processing</span><span class="tag">TypeScript</span></div>
-          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/company-finance" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-          <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
-          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/finance-01.jpg" alt="재무 대시보드 · 월별 지출 흐름과 계좌 잔액" loading="lazy" class="on"><img src="assets/proj/highlights/finance-02.jpg" alt="정기 결제 탐색 · 여러 달 반복된 가맹점과 결제 이력" loading="lazy"><img src="assets/proj/highlights/finance-03.jpg" alt="예산 관리 · 직접 정의한 분류별 한도와 남은 예산" loading="lazy"><img src="assets/proj/highlights/finance-04.jpg" alt="거래 내역 · 계좌·카드·분류별 필터와 상세 조회" loading="lazy"><img src="assets/proj/highlights/finance-05.jpg" alt="분류 규칙 · 사용자 분류와 거래명 매칭 조건 설정" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">재무 대시보드 · 월별 지출 흐름과 계좌 잔액</p></div>
-        </div>
-      </li>
-
-      <li class="plist__item">
-        <div class="plist__idx">05</div>
-        <div class="plist__main">
           <div class="plist__org">SwirlX · 2026.06 ~ 현재 · 사내 구축·적용</div>
           <h3>CRM Automation: 고객·영업·문서 관리</h3>
           <p class="plist__brief">고객 정보와 영업 단계를 관리하고, 요구 사양·견적·후속 업무를 한 흐름으로 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
@@ -178,6 +137,47 @@ I build what people actually need, and keep it running.</div>
           <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/crm-automation" target="_blank" rel="noreferrer">GitHub ↗</a></div>
           <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
           <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/crm-01.jpg" alt="영업 파이프라인 · 고객 발굴부터 견적·청구까지" loading="lazy" class="on"><img src="assets/proj/highlights/crm-02.jpg" alt="고객 사양서 · 직접 정의한 요청값·확정값 비교" loading="lazy"><img src="assets/proj/highlights/crm-03.jpg" alt="사양서 설정 · 회사별 섹션·필드·값 형식 구성" loading="lazy"><img src="assets/proj/highlights/crm-04.jpg" alt="견적서 편집 · 품목·수량·단가와 합계 계산" loading="lazy"><img src="assets/proj/highlights/crm-05.jpg" alt="고객 활동 · 담당자·연락처와 영업 활동 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">영업 파이프라인 · 고객 발굴부터 견적·청구까지</p></div>
+        </div>
+      </li>
+
+      <li class="plist__item">
+        <div class="plist__idx">04</div>
+        <div class="plist__main">
+          <div class="plist__org">개인 프로젝트 · 2026.10 · 설치형 웹서비스 · MIT</div>
+          <h3>Personal Workspace: 일상 기록·목표 관리</h3>
+          <p class="plist__brief">하루의 계획과 루틴, 작업 기록을 목표·학업·개인 라이브러리와 연결합니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__more">
+            <p><b>도구</b>Next.js·React·TypeScript를 사용하고, 로컬 JSON 또는 선택적으로 연결한 Supabase에 데이터를 저장합니다.</p>
+            <p><b>구현</b>개인용 Yeji OS에서 일상 관리 기능을 분리했습니다. 오늘·루틴·할 일·일기, 목표판·학업·기록, 노트·독서 등 13개 화면과 한·영 설치 문서를 제공합니다.</p>
+            <p><b>설계</b>개인 기록이 없는 상태로 설치해 사용자가 자신의 데이터를 쌓도록 구성했습니다. 기본 기능은 API 키 없이 로컬에서 시작할 수 있으며, 한 명의 소유자가 사용하는 워크스페이스입니다.</p>
+          </div>
+        </div>
+        <div class="plist__aside">
+          <div class="tags"><span class="tag tag--fill">Next.js</span><span class="tag">Local-first</span><span class="tag">MIT</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/personal-workspace" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">실제 구현 화면 · 개인 기록과 분리된 가상 예시</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/personal-01.jpg" alt="오늘 · 우선순위·루틴·할 일·집중 시간 한곳에" loading="lazy" class="on"><img src="assets/proj/highlights/personal-02.jpg" alt="기록 · 활동 잔디와 프로젝트별 누적 시간" loading="lazy"><img src="assets/proj/highlights/personal-03.jpg" alt="루틴 · 시간대별 실행과 최근 일주일의 달성도" loading="lazy"><img src="assets/proj/highlights/personal-04.jpg" alt="할 일 · 오늘과 예정 작업을 나누어 관리" loading="lazy"><img src="assets/proj/highlights/personal-05.jpg" alt="노트 · PARA 분류와 프로젝트 메모 편집" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">오늘 · 우선순위·루틴·할 일·집중 시간 한곳에</p></div>
+        </div>
+      </li>
+
+      <li class="plist__item">
+        <div class="plist__idx">05</div>
+        <div class="plist__main">
+          <div class="plist__org">SwirlX · 2026.07 ~ 현재 · 사내 구축·적용</div>
+          <h3>Sprint Dashboard: 프로젝트·업무 진행 관리</h3>
+          <p class="plist__brief">같은 프로젝트와 업무를 다이어그램, 보드, 로드맵과 달력으로 살펴봅니다. <span class="plist__cue">클릭해서 자세히 보기</span></p>
+          <div class="plist__more">
+            <p><b>적용 배경</b>SwirlX의 프로젝트·업무 진행 관리에 적용 중인 시스템을 바탕으로 만들었습니다. 공개 버전은 실제 프로젝트와 구성원 정보, 사내 연동을 분리해 재구성했습니다.</p>
+            <p><b>공개 데모 도구</b>React·TypeScript, Cloudflare D1·R2와 프로젝트·업무 상태를 다루는 공통 데이터 계층을 사용합니다.</p>
+            <p><b>공개 데모 구현</b>8개 보기, 중요도 색상, 담당자·일정, 체크리스트, 댓글과 일일 진행 기록을 구현했습니다. 업무 상태에 따라 프로젝트 진행 상황을 계산하며, Grant Project에서 전달받은 신청 준비 내용을 검토해 업무로 저장합니다.</p>
+            <p><b>설계</b>보기마다 동일한 업무 데이터를 사용하고, 중요도는 색상과 텍스트로 함께 표시합니다. 데이터는 계정 단위로 분리되며 계정 간 공동 편집은 현재 구현 범위에 포함되지 않습니다.</p>
+          </div>
+        </div>
+        <div class="plist__aside">
+          <div class="tags"><span class="tag tag--fill">Project Management</span><span class="tag">Data Visualization</span><span class="tag">TypeScript</span></div>
+          <div class="proj-links"><a class="btn-doc" href="https://github.com/dpwld/sprint-dashboard" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="plist__note">공개 코드와 화면은 별도로 재구성한 개인 데모로, SwirlX의 공식 제품·서비스와 무관합니다. 실제 사내 데이터와 기밀 자료는 포함하지 않습니다.</p>
+          <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/sprint-01.jpg" alt="Diagram · 프로젝트와 업무·체크리스트를 한눈에" loading="lazy" class="on"><img src="assets/proj/highlights/sprint-02.jpg" alt="Board · 상태별 업무 진행과 우선순위 관리" loading="lazy"><img src="assets/proj/highlights/sprint-03.jpg" alt="Roadmap · 프로젝트별 업무 기간과 일정 확인" loading="lazy"><img src="assets/proj/highlights/sprint-04.jpg" alt="Due · 남은 기간별 마감 업무와 담당자 확인" loading="lazy"><img src="assets/proj/highlights/sprint-05.jpg" alt="업무 상세 · 목표·완료 기준·체크리스트·일일 기록" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Diagram · 프로젝트와 업무·체크리스트를 한눈에</p></div>
         </div>
       </li>
 
@@ -269,15 +269,6 @@ I build what people actually need, and keep it running.</div>
           <span class="work__cue">자세히 보기 →</span>
         </div>
       </article>
-      <article class="work" data-work="2" tabindex="0" role="button" aria-label="AX Job Simulator 기획서 자세히 보기">
-        <div class="work__imgwrap"><img src="assets/cover/3-axjob.png" alt="AX Job Simulator 기획서" loading="lazy"></div>
-        <div class="work__body">
-          <div class="work__org">오픈놀 미니인턴 · 2026 · 단독 기획</div>
-          <h4>AX Job Simulator 기획서</h4>
-          <p>AI 시대 청년 인재를 기르는 8주 부트캠프를 단독으로 기획했습니다.</p>
-          <span class="work__cue">자세히 보기 →</span>
-        </div>
-      </article>
       <article class="work" data-work="3" tabindex="0" role="button" aria-label="전시 《취향의 증명》 기획 자세히 보기">
         <div class="work__imgwrap"><img src="assets/cover/4-museum.png" alt="전시 《취향의 증명》 기획" loading="lazy"></div>
         <div class="work__body">
@@ -296,21 +287,12 @@ I build what people actually need, and keep it running.</div>
           <span class="work__cue">자세히 보기 →</span>
         </div>
       </article>
-      <article class="work" data-work="5" tabindex="0" role="button" aria-label="초등 디지털 리터러시 교육 게임 자세히 보기">
-        <div class="work__imgwrap"><img src="assets/cover/6-literacy.png" alt="초등 디지털 리터러시 교육 게임" loading="lazy"></div>
+      <article class="work" data-work="5" tabindex="0" role="button" aria-label="넥슨 코딩교육봉사 — 초등 디지털 리터러시 교육게임 자세히 보기">
+        <div class="work__imgwrap"><img src="assets/cover/6-literacy.png" alt="넥슨 코딩교육봉사 — 초등 디지털 리터러시 교육게임" loading="lazy"></div>
         <div class="work__body">
           <div class="work__org">동대문구가족센터 교육봉사 · 2025 · 4인 팀</div>
-          <h4>초등 디지털 리터러시 교육 게임</h4>
-          <p>빨간 모자 이야기로 정보 판별을 배우는 교육용 게임 월드를 만들었습니다.</p>
-          <span class="work__cue">자세히 보기 →</span>
-        </div>
-      </article>
-      <article class="work" data-work="6" tabindex="0" role="button" aria-label="Netflix 콘텐츠 대시보드 자세히 보기">
-        <div class="work__imgwrap"><img src="assets/cover/7-netflix.png" alt="Netflix 콘텐츠 대시보드" loading="lazy"></div>
-        <div class="work__body">
-          <div class="work__org">데이터 시각화 · 2025 · 4인 팀</div>
-          <h4>Netflix 콘텐츠 대시보드</h4>
-          <p>콘텐츠 제작자를 위한 넷플릭스 데이터 대시보드를 만들었습니다.</p>
+          <h4>넥슨 코딩교육봉사 — 초등 디지털 리터러시 교육게임</h4>
+          <p>초등학생이 가짜 정보와 개인정보 요구를 판단하는 교육게임을 팀과 제작해 수업에 활용했습니다.</p>
           <span class="work__cue">자세히 보기 →</span>
         </div>
       </article>
@@ -320,15 +302,6 @@ I build what people actually need, and keep it running.</div>
           <div class="work__org">한양대 산업융합학부 · 2026 여름 · 팀 프로젝트</div>
           <h4>늬웃: AI 뉴스 브리핑 서비스</h4>
           <p>AI가 하루의 뉴스를 모아 다시 써주는 서비스를 팀과 기획했습니다.</p>
-          <span class="work__cue">자세히 보기 →</span>
-        </div>
-      </article>
-      <article class="work" data-work="8" tabindex="0" role="button" aria-label="Dobi: 음성 제어 IoT 버튼 사업계획서 자세히 보기">
-        <div class="work__imgwrap"><img src="assets/cover/9-nexiot.png" alt="Dobi: 음성 제어 IoT 버튼 사업계획서" loading="lazy"></div>
-        <div class="work__body">
-          <div class="work__org">NexIoT · 창업동아리 대표 · 2024</div>
-          <h4>Dobi: 음성 제어 IoT 버튼 사업계획서</h4>
-          <p>버튼을 대신 눌러주는 음성 제어 기기의 사업계획서를 썼습니다.</p>
           <span class="work__cue">자세히 보기 →</span>
         </div>
       </article>
@@ -456,7 +429,7 @@ I build what people actually need, and keep it running.</div>
         <div>
           <h4>한양대학교 정보공학 학사 (야간)</h4>
           <div class="role">부전공 디지털혁신전략 · GPA 4.0/4.5</div>
-          <p>풀타임 재직과 병행.<br>재학 중 Biz&amp;AI Lab 연구활동, 창업동아리 NexIoT 창립, 블록체인 학회 HYBLOCK 활동.</p>
+          <p>풀타임 재직과 병행.<br>재학 중 Biz&amp;AI Lab 연구활동, 창업동아리 NexIoT 창립·대표, 블록체인 학회 HYBLOCK 활동.</p>
         </div>
       </div>
       <div class="cv-item">
@@ -546,19 +519,6 @@ I build what people actually need, and keep it running.</div>
       <div class="proj-links"><a class="btn-demo" href="demo/louver.html" target="_blank" rel="noreferrer">▶ HTML 데모 열기</a><span class="demo-tag">데모 버전 · 실제 데이터 아님</span></div>
     </div>
   </div>
-  <div class="modal" id="modal-2" role="dialog" aria-modal="true" aria-label="AX Job Simulator 기획서">
-    <div class="modal__box">
-      <button class="modal__x" aria-label="닫기">✕</button>
-      <div class="modal__org">오픈놀 미니인턴 · 2026 · 단독 기획</div>
-      <h3 class="modal__title">AX Job Simulator 기획서</h3>
-      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/axjob-01.jpg" alt="청년의 실무 경험과 기업의 AI 요구 사이의 격차" loading="lazy" class="on"><img src="assets/proj/highlights/axjob-02.jpg" alt="8주·96시간 프로그램 전체 설계" loading="lazy"><img src="assets/proj/highlights/axjob-03.jpg" alt="8주 학습·프로젝트 로드맵" loading="lazy"><img src="assets/proj/highlights/axjob-04.jpg" alt="교육 후 남는 6종 산출물" loading="lazy"><img src="assets/proj/highlights/axjob-05.jpg" alt="운영·학습·취업 성과 지표" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">청년의 실무 경험과 기업의 AI 요구 사이의 격차</p></div>
-      <div class="modal__body">
-        <p><b>도구</b>청년 고용 통계와 AI 채용·업무 변화 자료로 문제를 규정하고, 서비스기획 직무를 선택한 근거를 정리한 뒤 8주 96시간 커리큘럼과 운영 실행안을 설계했습니다.</p>
-        <p><b>결과물</b>왜 지금 AX 인재인가부터 실행 방안까지 5부로 구성한 기획서를 혼자 작성했습니다.</p>
-        <p><b>배운 것</b>교육 프로그램은 무엇을 가르치느냐보다 끝나고 무엇이 남는지가 설득 포인트였습니다. 개인 2종·팀 1종이라는 산출물을 먼저 정하고 커리큘럼을 거꾸로 짜니 기획이 단단해졌습니다.</p>
-      </div>
-    </div>
-  </div>
   <div class="modal" id="modal-3" role="dialog" aria-modal="true" aria-label="전시 《취향의 증명》 기획">
     <div class="modal__box">
       <button class="modal__x" aria-label="닫기">✕</button>
@@ -586,31 +546,18 @@ I build what people actually need, and keep it running.</div>
       </div>
     </div>
   </div>
-  <div class="modal" id="modal-5" role="dialog" aria-modal="true" aria-label="초등 디지털 리터러시 교육 게임">
+  <div class="modal" id="modal-5" role="dialog" aria-modal="true" aria-label="넥슨 코딩교육봉사 — 초등 디지털 리터러시 교육게임">
     <div class="modal__box">
       <button class="modal__x" aria-label="닫기">✕</button>
       <div class="modal__org">동대문구가족센터 교육봉사 · 2025 · 4인 팀</div>
-      <h3 class="modal__title">초등 디지털 리터러시 교육 게임</h3>
+      <h3 class="modal__title">넥슨 코딩교육봉사 — 초등 디지털 리터러시 교육게임</h3>
       <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/literacy-01.jpg" alt="「빨간모자와 늑대의 유혹」 교육 월드 개요" loading="lazy" class="on"><img src="assets/proj/highlights/literacy-02.jpg" alt="수업 운영 흐름과 교육 활동" loading="lazy"><img src="assets/proj/highlights/literacy-03.jpg" alt="과장 광고를 검증하는 상점 마을 퀘스트" loading="lazy"><img src="assets/proj/highlights/literacy-04.jpg" alt="정보를 판단하는 OX 퀴즈" loading="lazy"><img src="assets/proj/highlights/literacy-05.jpg" alt="늑대와의 대결과 학습 내용 확인" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">「빨간모자와 늑대의 유혹」 교육 월드 개요</p></div>
       <div class="modal__body">
-        <p><b>도구</b>메이플스토리 월드의 블록코딩으로 게임을 제작했습니다. 디지털 세상을 숲으로, 가짜 뉴스와 피싱을 늑대의 유혹으로 치환해 스토리를 짜고, 출처 확인·과장 광고·교차 검증·개인정보 보호 4대 원칙을 단계별 퀘스트에 넣었습니다.</p>
-        <p><b>결과물</b>초등 고학년 대상 교육 월드와 소개서를 완성해 수업에 활용했습니다.</p>
-        <p><b>배운 것</b>이론으로 가르칠 때보다 아이들이 직접 속아보고 검증하게 했을 때 반응이 달랐습니다. 교육은 설명하는 것보다 경험하게 하는 설계가 중요하다는 것을 배웠습니다.</p>
+        <p><b>교육 대상과 문제</b>넥슨 코딩교육봉사에서 초등학교 4~6학년이 가짜 뉴스·과장 광고·개인정보 요구를 스스로 판단하도록 돕는 게임을 만들었습니다.</p>
+        <p><b>기획·구현</b>4인 팀으로 헬로메이플 블록코딩을 활용해 「빨간모자와 늑대의 유혹」을 제작했습니다. 출처 확인·과장 광고 주의·교차 검증·개인정보 보호를 NPC 대화, 선택지와 OX 퀴즈로 구성했습니다.</p>
+        <p><b>현장 활용과 설계</b>완성한 교육 월드와 소개서를 동대문구가족센터 교육봉사 수업에 활용했습니다. 이전 수업에서 동화에 대한 학생들의 반응을 관찰한 경험을 바탕으로, 익숙한 이야기에 정보 검증 과정을 담았습니다.</p>
       </div>
       
-    </div>
-  </div>
-  <div class="modal" id="modal-6" role="dialog" aria-modal="true" aria-label="Netflix 콘텐츠 대시보드">
-    <div class="modal__box">
-      <button class="modal__x" aria-label="닫기">✕</button>
-      <div class="modal__org">데이터 시각화 · 2025 · 4인 팀</div>
-      <h3 class="modal__title">Netflix 콘텐츠 대시보드</h3>
-      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/netflix-01.jpg" alt="Netflix 콘텐츠 분석 대시보드" loading="lazy" class="on"><img src="assets/proj/highlights/netflix-02.jpg" alt="대시보드 사용자와 분석 목적" loading="lazy"><img src="assets/proj/highlights/netflix-03.jpg" alt="장르 Top 10과 시각화 설계" loading="lazy"><img src="assets/proj/highlights/netflix-04.jpg" alt="한국·미국 콘텐츠 비교" loading="lazy"><img src="assets/proj/highlights/netflix-05.jpg" alt="콘텐츠 전략으로 연결한 인사이트" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Netflix 콘텐츠 분석 대시보드</p></div>
-      <div class="modal__body">
-        <p><b>도구</b>넷플릭스 공개 데이터셋의 장르·등급·개봉연도·국가 항목을 정리하고, 콘텐츠 기획자가 궁금해할 질문을 기준으로 그래프를 배치했습니다. 비중이 낮을수록 명도를 높이는 방식으로 중요도를 시각화했습니다.</p>
-        <p><b>결과물</b>제작자·분석가·마케터가 각각 참고할 수 있도록 인사이트별로 구성한 대시보드를 만들었습니다.</p>
-        <p><b>배운 것</b>그래프를 많이 그리는 것보다 누가 무엇을 결정하려고 보는지를 먼저 정하는 게 중요했습니다. 대상을 정하니 어떤 그래프를 뺄지가 분명해졌습니다.</p>
-      </div>
     </div>
   </div>
   <div class="modal" id="modal-7" role="dialog" aria-modal="true" aria-label="늬웃: AI 뉴스 브리핑 서비스">
@@ -623,19 +570,6 @@ I build what people actually need, and keep it running.</div>
         <p><b>도구</b>Figma로 홈·카테고리·검색 화면의 와이어프레임과 디자인 시스템(컬러 스케일·타이포)을 만들고, 뉴스 수집부터 클러스터링, 기사 생성으로 이어지는 서비스 구조를 팀과 정리했습니다.</p>
         <p><b>결과물</b>"아무리 바빠도, 뉴스는 봐야죠"를 콘셉트로 한 화면 설계와 디자인 시스템, 세 줄 요약 기능 구조를 만들었습니다.</p>
         <p><b>배운 것</b>디자인 시스템을 먼저 정해두니 화면이 늘어나도 팀원끼리 의견이 갈리지 않았습니다. 협업에서는 결과물보다 기준을 먼저 합의하는 게 빠르다는 것을 배웠습니다.</p>
-      </div>
-    </div>
-  </div>
-  <div class="modal" id="modal-8" role="dialog" aria-modal="true" aria-label="Dobi: 음성 제어 IoT 버튼 사업계획서">
-    <div class="modal__box">
-      <button class="modal__x" aria-label="닫기">✕</button>
-      <div class="modal__org">NexIoT · 창업동아리 대표 · 2024</div>
-      <h3 class="modal__title">Dobi: 음성 제어 IoT 버튼 사업계획서</h3>
-      <div class="fig" data-i="0" data-n="5"><div class="fig__stage"><img src="assets/proj/highlights/nexiot-01.jpg" alt="Dobi의 대상 사용자와 아이템 개요 · 상세" loading="lazy" class="on"><img src="assets/proj/highlights/nexiot-02.jpg" alt="음성 인식 허브와 IR 버튼 장치 구조 · 상세" loading="lazy"><img src="assets/proj/highlights/nexiot-03.jpg" alt="제품 동작 흐름·UX와 시장성 · 상세" loading="lazy"><img src="assets/proj/highlights/nexiot-04.jpg" alt="기존 스마트홈 제품과의 차별점 · 상세" loading="lazy"><img src="assets/proj/highlights/nexiot-05.jpg" alt="시장 확장과 제품군 성장 구상 · 상세" loading="lazy"></div><div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전">‹</button><span class="fig__cnt">1 / 5</span><button class="fig__btn" data-d="1" aria-label="다음">›</button></div><p class="fig__caption" aria-live="polite">Dobi의 대상 사용자와 아이템 개요 · 상세</p></div>
-      <div class="modal__body">
-        <p><b>도구</b>어르신과 장애가 있는 분들이 가전 버튼을 누르기 위해 이동해야 하는 불편에서 출발해, 음성 인식 허브가 IR 신호로 개별 버튼 장치를 작동시키는 구조를 설계하고 사업계획서로 정리했습니다.</p>
-        <p><b>결과물</b>아이템 개요·기술성·UX 동작 흐름을 담은 사업계획서를 작성했습니다.</p>
-        <p><b>배운 것</b>앱 설치가 필요 없어야 한다는 조건 하나가 기술 구조 전체를 바꿨습니다. 사용자의 제약에서 출발하면 만들 것이 저절로 좁혀진다는 것을 배웠습니다.</p>
       </div>
     </div>
   </div>

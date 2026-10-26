@@ -6,7 +6,7 @@
 
 ## 살펴보기
 
-- [AI와 데이터 프로젝트](https://dpwld.github.io/#projects): Grant Project, Company Finance, CRM Automation, Sprint Dashboard, Personal Workspace와 KAERI·시계열·감성분석 연구
+- [AI와 데이터 프로젝트](https://dpwld.github.io/#projects): Company Finance, Grant Project, CRM Automation, Personal Workspace, Sprint Dashboard와 KAERI·시계열·감성분석 연구
 - [기획과 디자인](https://dpwld.github.io/#works): 서비스 기획과 사용자 경험 설계
 - [기술과 자격](https://dpwld.github.io/#skills)
 - [경력](https://dpwld.github.io/#cv)
