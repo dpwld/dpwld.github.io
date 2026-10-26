@@ -28,34 +28,50 @@ document.addEventListener('click', function (e) {
 // ── 라이트박스 ──
 var lb = document.getElementById('lightbox');
 var lbSrcs = [], lbCaptions = [], lbIdx = 0;
+var lbFigure = null;
 function lbRender() {
   lb.querySelector('.lb__img').src = lbSrcs[lbIdx];
   lb.querySelector('.lb__img').alt = lbCaptions[lbIdx];
+  lb.querySelector('.lb__caption').textContent = lbCaptions[lbIdx];
   lb.querySelector('.lb__cnt').textContent = (lbIdx + 1) + ' / ' + lbSrcs.length;
   lb.querySelectorAll('.lb__nav').forEach(function (b) { b.style.display = lbSrcs.length > 1 ? '' : 'none'; });
 }
+function lbGo(d) {
+  figGo(lbFigure, d);
+  lbIdx = +lbFigure.dataset.i;
+  lbRender();
+}
 function openLightbox(fig) {
+  lbFigure = fig;
+  var item = fig.closest('.plist__item');
+  if (item) item.classList.add('previewing');
   lbSrcs = [].map.call(fig.querySelectorAll('.fig__stage img'), function (i) { return i.src; });
   lbCaptions = [].map.call(fig.querySelectorAll('.fig__stage img'), function (i) { return i.alt; });
   lbIdx = +fig.dataset.i || 0;
   lbRender();
   lb.classList.add('on');
   document.body.classList.add('modal-open');
+  lb.querySelector('.lb__x').focus();
 }
 function closeLightbox() {
   lb.classList.remove('on');
   if (!document.querySelector('.modal.on')) document.body.classList.remove('modal-open');
+  lbFigure.querySelector('.fig__stage').focus({ preventScroll: true });
+  var item = lbFigure.closest('.plist__item');
+  if (item) item.classList.remove('previewing');
 }
 lb.addEventListener('click', function (e) {
   var nav = e.target.closest('.lb__nav');
-  if (nav) { lbIdx = (lbIdx + +nav.dataset.d + lbSrcs.length) % lbSrcs.length; lbRender(); return; }
+  if (nav) { lbGo(+nav.dataset.d); return; }
   if (e.target.closest('.lb__x') || e.target === lb) closeLightbox();
 });
 
-// ── 프로젝트 상세: 클릭 토글 ──
+// ── 프로젝트 상세: 마우스 호버, 터치·키보드 토글 ──
 document.querySelectorAll('.plist__item').forEach(function (item) {
+  item.tabIndex = 0;
   item.addEventListener('click', function (e) {
     if (e.target.closest('a, button, .fig')) return;
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     item.classList.toggle('open');
   });
 });
@@ -104,6 +120,35 @@ document.addEventListener('keydown', function (e) {
     if (cvView.classList.contains('on')) { cvView.classList.remove('on'); document.body.classList.remove('modal-open'); return; }
     document.querySelectorAll('.modal.on').forEach(closeModal);
     return;
+  }
+  if (lb.classList.contains('on')) {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      lbGo(e.key === 'ArrowLeft' ? -1 : 1);
+      return;
+    }
+    if (e.key === 'Tab') {
+      var buttons = [].filter.call(lb.querySelectorAll('button'), function (b) { return b.style.display !== 'none'; });
+      var first = buttons[0], last = buttons[buttons.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+    return;
+  }
+  if (e.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+  var fig = e.target.closest('.fig') || document.querySelector('.modal.on .fig');
+  if (fig && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+    e.preventDefault();
+    figGo(fig, e.key === 'ArrowLeft' ? -1 : 1);
+    return;
+  }
+  if (e.key === 'Enter' || e.key === ' ') {
+    if (e.target.matches('.fig__stage')) {
+      e.preventDefault(); e.stopPropagation(); openLightbox(fig); return;
+    }
+    if (e.target.matches('.plist__item')) {
+      e.preventDefault(); e.stopPropagation(); e.target.classList.toggle('open'); return;
+    }
   }
   var card = e.target.closest && e.target.closest('.work[data-work]');
   if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); openModal(card.dataset.work); }

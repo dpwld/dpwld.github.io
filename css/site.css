@@ -95,7 +95,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
   display: flex; align-items: baseline; gap: 24px;
   border-top: 4px solid currentColor; padding-top: 28px; margin-bottom: 64px;
 }
-.section__num { font: 700 14px/1 var(--mono); letter-spacing: 0.1em; }
 .section__title {
   margin: 0;
   font: 800 clamp(40px, 5.2vw, 72px)/1.05 var(--display);
@@ -129,13 +128,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
   transition: max-height 0.55s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.4s 0.08s;
 }
 .plist__more > p { margin-top: 14px; }
-.plist__item:hover .plist__more,
-.plist__item:focus-within .plist__more { max-height: 900px; opacity: 1; }
-.plist__item:hover .plist__cue { opacity: 0; }
-@media (hover: none) {
-  .plist__more { max-height: none; opacity: 1; }
-  .plist__cue { display: none; }
-}
 .plist__aside { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
 .plist__metric { font: 800 20px/1.45 var(--display); word-break: keep-all; }
 .plist__link {
@@ -346,7 +338,9 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
   object-fit: cover; object-position: top center;
   opacity: 0; transition: opacity 0.35s ease;
 }
-.fig__stage img.on { opacity: 1; }
+.fig__stage img { pointer-events: none; }
+.fig__stage img.on { opacity: 1; pointer-events: auto; }
+.fig__stage:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .fig__nav {
   display: flex; align-items: center; justify-content: space-between;
   border-top: 1px solid var(--ink); background: var(--paper);
@@ -371,6 +365,10 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
   border: 1px solid var(--ink); color: var(--ink); padding: 9px 13px; text-decoration: none;
 }
 .btn-doc:hover { background: var(--ink); color: var(--paper); }
+.btn-github { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; }
+.btn-github img { display: block; width: 24px; height: 24px; }
+.btn-github:hover img { filter: invert(1); }
+.btn-github:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .demo-tag {
   font: 600 10.5px/1.4 var(--mono); letter-spacing: 0.04em; color: var(--gray);
   border: 1px dashed var(--gray-light); padding: 6px 9px; white-space: nowrap;
@@ -472,9 +470,12 @@ body.gate { overflow: hidden; height: 100vh; }
 .lb {
   display: none; position: fixed; inset: 0; z-index: 300;
   background: rgba(0,0,0,0.94); align-items: center; justify-content: center;
+  padding: 72px 88px 76px;
 }
 .lb.on { display: flex; }
-.lb__img { max-width: 92vw; max-height: 86vh; object-fit: contain; }
+.lb__figure { margin: 0; max-width: 100%; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.lb__img { display: block; max-width: 100%; max-height: calc(100dvh - 240px); object-fit: contain; }
+.lb__caption { max-width: 780px; color: #f4f4f4; font: 500 15px/1.6 var(--sans); text-align: center; word-break: keep-all; overflow-wrap: anywhere; }
 .lb__x, .lb__nav {
   position: absolute; background: none; border: 1px solid rgba(255,255,255,0.35);
   color: #fff; cursor: pointer; font-family: var(--mono);
@@ -484,10 +485,11 @@ body.gate { overflow: hidden; height: 100vh; }
 .lb__nav--prev { left: 24px; }
 .lb__nav--next { right: 24px; }
 .lb__x:hover, .lb__nav:hover { background: #fff; color: #000; }
+.lb__footer { position: absolute; bottom: 20px; left: 0; right: 0; display: grid; gap: 10px; text-align: center; }
 .lb__cnt {
-  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
   font: 700 12px/1 var(--mono); letter-spacing: 0.12em; color: #b8b8b8;
 }
+.lb__help { font: 500 12px/1.4 var(--sans); color: #b8b8b8; }
 
 /* 검은 구분선 → 연한 회색으로 완화 */
 .works-grid { border-color: var(--gray-light); }
@@ -501,6 +503,8 @@ body.gate { overflow: hidden; height: 100vh; }
 
 @media (max-width: 900px) {
   .plist__item { grid-template-columns: 1fr; }
+  .lb { padding-inline: 52px; }
+  .lb__caption { font-size: 13px; }
   .lb__nav { width: 40px; height: 54px; font-size: 20px; }
   .lb__nav--prev { left: 8px; } .lb__nav--next { right: 8px; }
 }
@@ -540,21 +544,24 @@ body.gate { overflow: hidden; height: 100vh; }
   width: min(900px, 100%); flex: 1; border: 0; background: #fff;
 }
 
-/* 프로젝트 상세: 호버 확장 → 클릭 확장 */
+/* 프로젝트 상세: 마우스 호버, 터치·키보드 확장 */
 .plist__item { cursor: pointer; transition: background 0.2s ease; }
 .plist__item:hover { background: #f5f5f5; }
-.plist__item:hover .plist__more,
-.plist__item:focus-within .plist__more { max-height: 0; opacity: 0; }
-.plist__item.open .plist__more { max-height: 900px; opacity: 1; }
-.plist__item.open .plist__cue { opacity: 0; }
-.plist__item:hover .plist__cue { opacity: 1; }
+.plist__item .fig { display: none; }
+.plist__item:is(.open, .previewing) .plist__more { max-height: none; opacity: 1; }
+.plist__item:is(.open, .previewing) .fig { display: block; }
+.plist__item:is(.open, .previewing) .plist__cue { opacity: 0; }
+.plist__item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  .plist__item:hover .plist__more,
+  .plist__item:focus-within .plist__more { max-height: none; opacity: 1; }
+  .plist__item:hover .fig,
+  .plist__item:focus-within .fig { display: block; }
+  .plist__item:hover .plist__cue,
+  .plist__item:focus-within .plist__cue { opacity: 0; }
+}
 .plist__item .fig, .plist__item a, .plist__item button { cursor: pointer; }
 .plist__aside .fig { cursor: zoom-in; }
-@media (hover: none) {
-  .plist__more { max-height: 0; opacity: 0; }
-  .plist__item.open .plist__more { max-height: 900px; opacity: 1; }
-  .plist__cue { display: inline; }
-}
 
 /* Planning 표지 여백을 흰색으로 */
 .work__imgwrap { background: #fff; }
@@ -697,7 +704,6 @@ body.gate { overflow: hidden; height: 100vh; }
 .plist__idx { font-size: clamp(1.25rem, 2.6vw, 2.5rem); }
 .plist__main h3 { font-size: clamp(1.25rem, 2.4vw, 2.125rem); overflow-wrap: break-word; }
 .plist__main p { font-size: clamp(.875rem, 1.1vw, .9375rem); }
-.plist__item.open .plist__more { max-height: none; }
 .works-grid { gap: clamp(24px, 2.86vw, 40px) clamp(20px, 2.29vw, 32px); }
 .work__body h4 { font-size: clamp(1.0625rem, 1.36vw, 1.1875rem); }
 .footer { padding: clamp(48px, 7.43vw, 104px) 0 clamp(32px, 4vw, 56px); }
@@ -707,5 +713,4 @@ body.gate { overflow: hidden; height: 100vh; }
 @media (max-width: 700px) {
   .plist__item { grid-template-columns: minmax(0, 1fr); }
   .plist__aside { width: 100%; }
-  .section__num { font-size: 12px; }
 }
