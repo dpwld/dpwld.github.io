@@ -208,7 +208,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 }
 .footer__grid { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-top: 32px; }
 .footer__links { display: flex; flex-wrap: wrap; gap: 24px clamp(24px, 4vw, 56px); }
-.footer__grid a, .footer__grid span {
+.footer__contact {
   font: 700 clamp(12px, calc(9px + .36vw), 14px)/1.6 var(--mono); color: var(--paper); text-decoration: none;
 }
 .footer__contact { display: inline-flex; align-items: center; gap: 12px; }
@@ -216,12 +216,18 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .footer__contact img { filter: invert(1); }
 .footer__grid a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .footer__grid :is(a, button):focus-visible { outline: 2px solid #fff; outline-offset: 6px; }
-.cv-open__avatar { display: block; width: clamp(96px, 11vw, 144px); height: auto; border-radius: 50%; }
+.tech-pile { position: relative; width: min(400px, 42%); aspect-ratio: 5 / 3; flex-shrink: 0; isolation: isolate; }
+.tech-pile__item {
+  position: absolute; left: var(--x); top: var(--y); width: var(--size); aspect-ratio: 1;
+  transform: rotate(var(--tilt)); cursor: grab; user-select: none;
+}
+.tech-pile__item img { display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.tech-pile__item:hover { z-index: 2; }
 .footer__updated { margin-top: 48px; font: 600 12px/1 var(--mono); color: #6a6a6a; }
-@media (max-width: 480px) {
+@media (max-width: 700px) {
   .footer__grid { flex-direction: column; align-items: stretch; }
   .footer__links { flex-direction: column; align-items: flex-start; }
-  .footer__grid .cv-open { align-self: flex-end; }
+  .tech-pile { width: min(350px, 100%); align-self: flex-end; }
 }
 
 /* ---- 반응형 ---- */
@@ -493,11 +499,13 @@ body.gate { overflow: hidden; height: 100vh; }
 
 /* 푸터 CV 버튼 */
 .cv-open {
-  display: flex; align-items: baseline; gap: 12px;
+  position: absolute; left: 44%; top: 41%; z-index: 3; width: 31%; height: 36%;
   background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
-  font: 700 clamp(15px, 1.4vw, 18px)/1.5 var(--display); color: var(--paper);
+  font: 800 clamp(64px, 6.8vw, 96px)/1 var(--display); letter-spacing: -0.07em; color: var(--paper);
+  transform: rotate(-8deg); transition: color 0.2s ease;
 }
-.cv-open:hover { opacity: 0.65; }
+.cv-open:hover, .cv-open:focus-visible { color: #8c8c8c; }
+@media (max-width: 700px) { .cv-open { font-size: clamp(64px, 22vw, 84px); } }
 
 /* CV 뷰어 (조회 전용) */
 .cvview {
@@ -580,12 +588,6 @@ body.gate { overflow: hidden; height: 100vh; }
 
 /* 데모 안내 라벨: 점선 제거 */
 .demo-tag { border: 0 !important; padding: 6px 4px; }
-
-/* 푸터 CV 버튼: 캐릭터와 이력서 링크 */
-.cv-open {
-  display: inline-flex; flex-direction: column; align-items: center; gap: 12px; flex-shrink: 0;
-  font: 700 14px/1.6 var(--mono) !important; color: var(--paper);
-}
 
 /* ================= v4.2: Planning·Design 흑백→컬러 인터랙션 ================= */
 .works-grid .work__imgwrap img {
