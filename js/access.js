@@ -25,6 +25,5 @@
     gate.remove();
     window.scrollTo({ top: 0, behavior: 'instant' });
     document.dispatchEvent(new Event('portfolio:unlock'));
-    document.querySelector('.topnav__logo').focus({ preventScroll: true });
   });
 })();
