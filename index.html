@@ -8,6 +8,12 @@
 <link rel="icon" type="image/png" href="assets/profile.png">
 <link rel="stylesheet" href="css/colors_and_type.css?v=42">
 <link rel="stylesheet" href="css/site.css?v=58">
+<noscript><style>
+  .hero .terminal { display: none !important; }
+  .hero h1[hidden], .hero .hero__sub[hidden], .hero .hero__enter[hidden] { display: block !important; }
+  .hero .hero__block { padding-top: 0 !important; }
+  .hero[data-intro] .hero__meta { visibility: visible; }
+</style></noscript>
 </head>
 <body>
 
@@ -27,18 +33,18 @@
 </nav>
 
 <!-- ================= 히어로 ================= -->
-<header id="top" class="hero">
+<header id="top" class="hero" data-intro="idle">
   <div class="container">
-    <h1>Finance by day,<br>code by night<span class="thin">.</span></h1>
+    <h1 hidden>Finance by day,<br>code by night<span class="thin">.</span></h1>
     <div class="hero__block">
-    <div class="terminal" id="introTerminal" hidden>
+    <div class="terminal" id="introTerminal">
       <div class="terminal__label" aria-hidden="true"><span class="terminal__dot"></span> YEJI / PORTFOLIO <span class="terminal__session">interactive session</span></div>
       <p class="terminal__command"><span>yeji@portfolio:~$</span> ./start-portfolio<span class="terminal__cursor" aria-hidden="true">▌</span></p>
       <button class="terminal__run" id="introRun" type="button">Press <kbd>Enter ↵</kbd> to run</button>
       <div class="terminal__log" id="introLog" aria-hidden="true"></div>
       <p class="terminal__status" id="introStatus" role="status"></p>
     </div>
-    <p class="hero__sub" id="introStory"><span id="typed">I'm Yeji Jeong.
+    <p class="hero__sub" id="introStory" hidden><span id="typed">I'm Yeji Jeong.
 I joined Samsung Securities at twenty and spent six years in budgets and settlements.
 Wanting to fix the repetitive work myself, I enrolled in a night program in information engineering.
 Now I run business operations at a startup while building the chatbots and automation pipelines we use every day.
@@ -51,7 +57,7 @@ I build what people actually need, and keep it running.</span></p>
       </div>
       <p class="intro-choice__help"><span>← → to choose · Enter to continue</span><span>Tap an option to continue</span></p>
     </div>
-    <a class="hero__enter on" id="heroEnter" href="#projects">View projects ↓</a>
+    <a class="hero__enter" id="heroEnter" href="#projects" hidden>View projects ↓</a>
     <div class="hero__meta"><span id="clock"></span><span class="hero__meta-right">updated Aug 2026</span></div>
     </div>
   </div>
