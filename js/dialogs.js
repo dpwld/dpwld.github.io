@@ -117,7 +117,6 @@ document.querySelectorAll('.plist__item').forEach(function (item) {
   }
   function updatePreview() {
     clearInterval(timer);
-    if (isExpanded()) item.classList.add('is-preview-open');
     if (!isExpanded() || reducedMotion.matches) return;
     timer = setInterval(function () {
       if (!isExpanded()) { clearInterval(timer); return; }
