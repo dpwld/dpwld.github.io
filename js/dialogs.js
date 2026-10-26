@@ -68,11 +68,35 @@ lb.addEventListener('click', function (e) {
 
 // ── 프로젝트 상세: 마우스 호버, 터치·키보드 토글 ──
 document.querySelectorAll('.plist__item').forEach(function (item) {
+  var timer;
+  var figure = item.querySelector('.fig');
+  var reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  function isExpanded() {
+    return item.classList.contains('open') || item.matches(':focus-visible, :has(:focus-visible)') ||
+      (matchMedia('(hover: hover) and (pointer: fine)').matches && item.matches(':hover'));
+  }
+  function updatePreview() {
+    clearInterval(timer);
+    if (!isExpanded() || reducedMotion.matches) return;
+    timer = setInterval(function () {
+      if (!isExpanded()) { clearInterval(timer); return; }
+      var bounds = figure.getBoundingClientRect();
+      if (document.hidden || lb.classList.contains('on') || reducedMotion.matches || bounds.bottom <= 0 || bounds.top >= innerHeight) return;
+      figGo(figure, 1);
+    }, 4000);
+  }
   item.tabIndex = 0;
+  item.addEventListener('pointerenter', updatePreview);
+  item.addEventListener('pointerleave', updatePreview);
+  item.addEventListener('focusin', updatePreview);
+  item.addEventListener('focusout', function () { setTimeout(updatePreview, 0); });
+  item.addEventListener('keydown', function () { setTimeout(updatePreview, 0); });
+  reducedMotion.addEventListener('change', updatePreview);
   item.addEventListener('click', function (e) {
     if (e.target.closest('a, button, .fig')) return;
     if (matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     item.classList.toggle('open');
+    updatePreview();
   });
 });
 
