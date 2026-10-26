@@ -669,8 +669,9 @@ body.gate { overflow: hidden; height: 100vh; }
 .section__head { gap: clamp(12px, 1.72vw, 24px); margin-bottom: clamp(32px, 4.57vw, 64px); }
 .section__title { min-width: 0; font-size: clamp(1.625rem, 5.2vw, 4.5rem); overflow-wrap: break-word; }
 #projects { padding-block: clamp(40px, 5.14vw, 72px); }
+.section .container, .footer .container { max-width: 1280px; padding-inline: clamp(20px, 4.5vw, 64px); }
 #projects .section__head { margin-bottom: clamp(24px, 2.86vw, 40px); }
-#projects .section__title { font-size: clamp(1.625rem, 4.3vw, 3.75rem); }
+#projects .section__title { font-size: clamp(1.625rem, 3.8vw, 3.25rem); }
 .plist__item {
   grid-template-columns: clamp(28px, 4.57vw, 64px) minmax(0, 1fr) minmax(0, 32.2%);
   gap: clamp(16px, 2vw, 28px);
@@ -692,10 +693,22 @@ body.gate { overflow: hidden; height: 100vh; }
 .footer h2 { font-size: clamp(1.75rem, 7vw, 6rem); margin-bottom: clamp(24px, 3.43vw, 48px); }
 .modal__box { padding: clamp(20px, 2.86vw, 40px); }
 .modal .fig__stage { height: min(58vh, 60vw, 460px); }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .plist__item { grid-template-columns: minmax(0, 1fr); }
   .plist__aside { width: 100%; }
   .plist__item--github .tags { padding-right: 0; }
+}
+
+/* 넓은 화면에서는 번호 순서대로 두 프로젝트씩 배치 */
+@media (min-width: 901px) {
+  #projects { --project-space: 22px; }
+  .plist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 12px 28px; margin-inline: calc(-1 * var(--project-inset)); }
+  .plist__item { grid-template-columns: 32px minmax(0, 1fr); gap: 12px 20px; margin: 0; }
+  .plist__item--github .plist__main { padding-right: 44px; }
+  .plist__main h3 { font-size: clamp(1.125rem, 1.8vw, 1.5rem); }
+  .plist__aside { grid-column: 2; gap: 8px; }
+  .plist__item--github .tags { padding-right: 0; }
+  .plist__aside .fig { margin-top: 8px; }
 }
 
 /* 프로젝트 클릭 시 큰 이미지와 전체 설명 */
