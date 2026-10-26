@@ -67,16 +67,16 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
   background: var(--ink); color: var(--paper);
   padding: calc(var(--nav-h) + 96px) 0 96px;
 }
-.hero__eyebrow { font: 600 14px/1.6 var(--sans); color: #9a9a9a; margin: 0 0 24px; }
+.hero__eyebrow { font: 700 13px/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: #9a9a9a; margin-bottom: 32px; }
 .hero h1 {
   margin: 0;
-  font: 800 clamp(32px, 5.2vw, 72px)/1.18 var(--display);
+  font: 800 clamp(56px, 8.5vw, 118px)/1.06 var(--display);
   letter-spacing: -0.025em;
   word-break: keep-all;
 }
 .hero h1 .thin { color: #5c5c5c; }
 .hero__sub {
-  margin-top: 24px; max-width: 900px;
+  margin-top: 48px; max-width: 640px;
   font: 500 17px/1.75 var(--sans); color: #c9c9c9; word-break: keep-all;
 }
 .hero__links { margin-top: 40px; display: flex; gap: 12px; }
@@ -281,15 +281,43 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 }
 .topnav__logo:hover .topnav__avatar { transform: rotate(-8deg) scale(1.06); }
 
-/* 첫 화면에서 바로 이동할 수 있는 버튼 */
-.hero__enter {
-  display: inline-flex; align-items: center; gap: 18px;
-  margin-top: 32px;
-  background: none; border: 0; padding: 8px 0; cursor: pointer;
-  font: 600 15px/1.4 var(--sans); color: var(--paper);
+/* ---- v2.4: 타이핑 인트로 + 시계 ---- */
+.hero__sub { min-height: 8.6em; }
+.caret {
+  display: inline-block; width: 2px; height: 1.05em; margin-left: 3px;
+  background: var(--paper); vertical-align: text-bottom;
+  animation: caret-blink 1s steps(1) infinite;
 }
-.hero__enter:hover { color: #c9c9c9; }
-.hero__enter:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+@keyframes caret-blink { 50% { opacity: 0; } }
+.hero__enter {
+  display: none;
+  margin-top: 56px;
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: 600 15px/1 var(--mono); letter-spacing: 0.02em;
+  color: #8a8a8a;
+  animation: caret-blink 1.15s steps(1) infinite;
+}
+.hero__enter.on { display: inline-block; }
+.hero__enter:hover { color: var(--ink); animation-play-state: paused; }
+.hero__meta {
+  margin-top: 28px; display: flex; justify-content: space-between; max-width: 640px;
+  font: 600 12px/1 var(--mono); color: #8a8a8a;
+}
+.hero__meta-right { font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; }
+  .hero__enter { animation: none; }
+}
+
+/* ---- v2.5: 문장 단위 개행 ---- */
+#typed { white-space: pre-line; }
+.hero__sub { min-height: 10.5em; }
+
+/* ---- v2.6: 소개문 폭을 가장 긴 문장에 맞춰 가변화 ---- */
+.hero__block { width: fit-content; max-width: 100%; }
+.hero__block .hero__sub { max-width: none; }
+.hero__block .hero__meta { max-width: none; width: 100%; }
 
 /* ---- v2.7: 디스플레이 타이포 Helvetica 버전 ----
    한글은 Helvetica에 글리프가 없어 Pretendard로 폴백. 웨이트는 실보유 최대치인 700. */
@@ -299,6 +327,15 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .cv-item .when, .cv-item h4, .plist__metric, .topnav__logo { font-weight: 700; }
 .hero h1 { letter-spacing: -0.035em; }
 .section__title { letter-spacing: -0.028em; }
+
+.hero__meta { gap: 40px; }
+
+/* ---- v2.8: 타이핑 중 블록 폭 고정 (전체 텍스트 사이저) ---- */
+.hero__sizer {
+  visibility: hidden; height: 0; overflow: hidden;
+  white-space: pre-line; word-break: keep-all;
+  font: 500 17px/1.75 var(--sans);
+}
 
 /* ================= v3.0: 이미지 슬라이더 · 데모 링크 · 모달 ================= */
 .plist__item { grid-template-columns: 88px 1fr 360px; }
@@ -662,10 +699,10 @@ body.gate { overflow: hidden; height: 100vh; }
 }
 .container, .topnav__in { padding-inline: var(--page-gutter); }
 .hero { padding: calc(var(--nav-h) + clamp(48px, 6.86vw, 96px)) 0 clamp(48px, 6.86vw, 96px); }
-.hero h1 { font-size: clamp(2rem, 5.2vw, 4.5rem); }
-.hero__sub { font-size: clamp(.875rem, 1.22vw, 1.0625rem); }
-.hero__sub { margin-top: 24px; }
-.hero__enter { margin-top: 28px; }
+.hero h1 { font-size: clamp(2rem, 8.5vw, 7.375rem); }
+.hero__sub, .hero__sizer { font-size: clamp(.875rem, 1.22vw, 1.0625rem); }
+.hero__sub { margin-top: clamp(24px, 3.43vw, 48px); }
+.hero__enter { margin-top: clamp(28px, 4vw, 56px); }
 .section { padding: clamp(48px, 7.43vw, 104px) 0 clamp(40px, 6.86vw, 96px); }
 .section__head { gap: clamp(12px, 1.72vw, 24px); margin-bottom: clamp(32px, 4.57vw, 64px); }
 .section__title { min-width: 0; font-size: clamp(1.625rem, 5.2vw, 4.5rem); overflow-wrap: break-word; }
@@ -694,34 +731,4 @@ body.gate { overflow: hidden; height: 100vh; }
   .plist__item { grid-template-columns: minmax(0, 1fr); }
   .plist__aside { width: 100%; }
   .plist__item--github .tags { padding-right: 0; }
-}
-
-/* 핵심 경험을 먼저 보여주고 나머지는 펼쳐보기 */
-.project-disclosure {
-  max-width: 960px; margin: -8px 0 24px;
-  font: 500 clamp(12px, 1vw, 13px)/1.7 var(--sans); color: var(--gray); word-break: keep-all;
-}
-.portfolio-more { margin-top: 32px; }
-.portfolio-more > summary {
-  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px;
-  padding: 20px 24px; background: #f5f5f5; cursor: pointer; list-style: none;
-  font: 600 clamp(13px, 1.2vw, 16px)/1.5 var(--sans);
-}
-.portfolio-more > summary::-webkit-details-marker { display: none; }
-.portfolio-more > summary span { color: var(--gray); font-size: 12px; font-weight: 500; }
-.portfolio-more > summary::after { content: '+'; margin-left: auto; font-size: 22px; line-height: 1; }
-.portfolio-more[open] > summary::after { content: '−'; }
-.portfolio-more > summary:hover { background: #eee; }
-.portfolio-more > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
-.portfolio-more > :not(summary) { margin-top: 24px; }
-.section--dark .portfolio-more > summary { background: #1b1b1b; }
-.section--dark .portfolio-more > summary:hover { background: #262626; }
-.section--dark .portfolio-more > summary span { color: #aaa; }
-.works-grid--featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.works-grid--featured .work h4 { color: var(--ink); }
-.works-grid--featured .work p { color: #3a3a3a; }
-.works-grid--featured .work__org, .works-grid--featured .work .work__cue { color: var(--gray); }
-@media (max-width: 600px) {
-  .works-grid--featured { grid-template-columns: 1fr; }
-  .portfolio-more > summary { padding: 16px; }
 }

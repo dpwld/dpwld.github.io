@@ -6,19 +6,14 @@
 
 ## 살펴보기
 
-- [업무 시스템과 AI 연구](https://dpwld.github.io/#projects): 기업 지출·예산, 정부지원사업, CRM, 프로젝트 관리와 KAERI 연구를 먼저 소개합니다. 개인 서비스·데이터 연구 3건은 펼쳐볼 수 있습니다.
-- [경력과 학력](https://dpwld.github.io/#cv): SwirlX, KAERI, 한양대학교, 삼성증권을 중심으로 소개합니다.
-- [기획과 교육 경험](https://dpwld.github.io/#works): ETF 데이터 서비스와 넥슨 코딩교육봉사를 먼저 소개합니다.
+- [AI와 데이터 프로젝트](https://dpwld.github.io/#projects): Company Finance, Grant Project, CRM Automation, Personal Workspace, Sprint Dashboard와 KAERI·시계열·감성분석 연구
+- [기획과 디자인](https://dpwld.github.io/#works): 서비스 기획과 사용자 경험 설계
 - [기술과 자격](https://dpwld.github.io/#skills)
+- [경력](https://dpwld.github.io/#cv)
 
 ## 구성
 
 정적 HTML·CSS와 브라우저 JavaScript로 구성하며 GitHub Pages에서 제공합니다.
-
-소개는 접속 즉시 표시하며 자유롭게 스크롤할 수 있습니다. 첫 화면에서는 Enter나
-‘구축한 시스템 보기’ 버튼으로 프로젝트에 이동합니다. 프로젝트에 커서를 올리면
-역할·구현 내용과 이미지 5장이 펼쳐지고, 화면이 4초마다 전환됩니다. 이미지를 누르면
-설명과 함께 크게 볼 수 있으며 방향키로 이동하고 Esc로 닫을 수 있습니다.
 
 접속할 때 비밀번호 입력 화면을 표시합니다. 이는 브라우저에서 동작하는 간단한
 진입 장치이며, 서버 인증이나 파일 접근 보호가 아닙니다. 공개 저장소의 소스와
@@ -28,7 +23,7 @@
 | --- | --- |
 | `index.html` | 프로젝트 소개와 경력 |
 | `css/` | 스타일 |
-| `js/` | 비밀번호 입력 화면, 내비게이션, 대화상자·이미지 뷰어, 스크롤 표시 효과 |
+| `js/` | 비밀번호 입력 화면, 내비게이션·소개 애니메이션, 대화상자·이미지 뷰어, 스크롤 표시 효과 |
 | `assets/` | 이미지 등 포트폴리오 자료. `proj/highlights/`에 프로젝트별 핵심 이미지 5장 |
 | `demo/` | 프로젝트 데모 |
 | `docs/` | CV. 프로젝트 PDF는 제공하지 않음 |
