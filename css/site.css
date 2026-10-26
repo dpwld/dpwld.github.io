@@ -715,7 +715,7 @@ body.gate { overflow: hidden; height: 100vh; }
 .terminal__run { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 12px 0; border: 0; background: none; color: #aaa; font: 400 13px/1.5 var(--font-mono); cursor: pointer; }
 .terminal__run kbd { border: 1px solid #555; border-radius: 4px; padding: 4px 8px; color: #fff; font: inherit; }
 .terminal__run:hover { color: #fff; }
-.terminal__run:focus-visible { outline: 1px solid #9a9a9a; outline-offset: 8px; }
+.terminal__run:focus-visible { outline: none; }
 .terminal__log { margin-top: 24px; color: #7e9ca6; font: 400 clamp(11px, 1vw, 13px)/1.9 var(--font-mono); }
 .terminal__log:empty { margin: 0; }
 .terminal__line { display: block; animation: terminal-line .22s ease-out both; }
