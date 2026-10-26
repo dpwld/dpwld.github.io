@@ -529,12 +529,13 @@ body.gate { overflow: hidden; height: 100vh; }
 .plist__item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 @media (hover: hover) and (pointer: fine) {
   .plist__item:hover .plist__preview {
-    grid-template-rows: 1fr; opacity: 1; visibility: visible; transition-delay: 0.08s;
+    grid-template-rows: 1fr; opacity: 1; visibility: visible;
+    transition: grid-template-rows 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.3s, opacity 0.5s ease 0.3s, visibility 0s 0.3s;
   }
   .plist__item:hover .plist__cue { color: var(--gray); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .plist__preview { transition: none; }
+  .plist__item .plist__preview, .plist__item:hover .plist__preview { transition: none; }
 }
 .plist__item .fig, .plist__item a, .plist__item button { cursor: pointer; }
 .plist__aside .fig { cursor: zoom-in; }

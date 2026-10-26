@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
       row.className = 'terminal__line';
       row.textContent = step.code || step.line;
       (step.code ? log : story).appendChild(row);
-      introTimer = setTimeout(printNext, step.code ? 130 : 780);
+      introTimer = setTimeout(printNext, step.code ? 130 : 1500);
     }
     printNext();
   }
