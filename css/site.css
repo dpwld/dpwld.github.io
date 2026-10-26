@@ -647,7 +647,7 @@ body.gate { overflow: hidden; height: 100vh; }
 
 /* 넓은 화면에서는 번호 순서대로 두 프로젝트씩 배치 */
 @media (min-width: 901px) {
-  body { zoom: .9; }
+  body { zoom: .95; }
   .section, .footer { zoom: .9; }
   .section .container, .footer .container { max-width: calc(1400px / .9); padding-inline: calc(var(--page-gutter) / .9); }
   #projects { --project-space: 22px; }
@@ -679,7 +679,7 @@ body.gate { overflow: hidden; height: 100vh; }
 
 /* Enter로 실행하는 터미널 표지 */
 .hero { min-height: 100svh; }
-@media (min-width: 901px) { .hero { min-height: calc(100svh / .9); } }
+@media (min-width: 901px) { .hero { min-height: calc(100svh / .95); } }
 .hero [hidden] { display: none !important; }
 .hero[data-intro="idle"] .hero__block,
 .hero[data-intro="running"] .hero__block { padding-top: clamp(32px, 8vh, 80px); }
