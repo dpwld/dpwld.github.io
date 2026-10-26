@@ -7,7 +7,7 @@
 <meta name="description" content="증권사 운영 6년과 LLM 실무를 함께 가진 AI-Native 비즈니스 오퍼레이터 정예지의 포트폴리오">
 <link rel="icon" type="image/png" href="assets/profile.png">
 <link rel="stylesheet" href="css/colors_and_type.css?v=42">
-<link rel="stylesheet" href="css/site.css?v=57">
+<link rel="stylesheet" href="css/site.css?v=58">
 </head>
 <body>
 
@@ -31,15 +31,27 @@
   <div class="container">
     <h1>Finance by day,<br>code by night<span class="thin">.</span></h1>
     <div class="hero__block">
-    <div class="hero__sizer" aria-hidden="true">I'm Yeji Jeong.
+    <div class="terminal" id="introTerminal" hidden>
+      <div class="terminal__label" aria-hidden="true"><span class="terminal__dot"></span> YEJI / PORTFOLIO <span class="terminal__session">interactive session</span></div>
+      <p class="terminal__command"><span>yeji@portfolio:~$</span> ./start-portfolio<span class="terminal__cursor" aria-hidden="true">▌</span></p>
+      <button class="terminal__run" id="introRun" type="button">Press <kbd>Enter ↵</kbd> to run</button>
+      <div class="terminal__log" id="introLog" aria-hidden="true"></div>
+      <p class="terminal__status" id="introStatus" role="status"></p>
+    </div>
+    <p class="hero__sub" id="introStory"><span id="typed">I'm Yeji Jeong.
 I joined Samsung Securities at twenty and spent six years in budgets and settlements.
 Wanting to fix the repetitive work myself, I enrolled in a night program in information engineering.
 Now I run business operations at a startup while building the chatbots and automation pipelines we use every day.
-I build what people actually need, and keep it running.</div>
-    <p class="hero__sub">
-      <span id="typed" data-text="I'm Yeji Jeong.&#10;I joined Samsung Securities at twenty and spent six years in budgets and settlements.&#10;Wanting to fix the repetitive work myself, I enrolled in a night program in information engineering.&#10;Now I run business operations at a startup while building the chatbots and automation pipelines we use every day.&#10;I build what people actually need, and keep it running."></span><span class="caret" aria-hidden="true"></span>
-    </p>
-    <button class="hero__enter" id="heroEnter" type="button" aria-label="다음 섹션으로 이동">Enter를 눌러 계속하세요...</button>
+I build what people actually need, and keep it running.</span></p>
+    <div class="intro-choice" id="introChoice" role="group" aria-labelledby="introQuestion" hidden>
+      <p id="introQuestion" aria-live="polite">Want to see what I've built?</p>
+      <div class="intro-choice__options">
+        <button type="button" data-intro-choice="0" aria-pressed="true">Yes</button>
+        <button type="button" data-intro-choice="1" aria-pressed="false" tabindex="-1">No</button>
+      </div>
+      <p class="intro-choice__help"><span>← → to choose · Enter to continue</span><span>Tap an option to continue</span></p>
+    </div>
+    <a class="hero__enter on" id="heroEnter" href="#projects">View projects ↓</a>
     <div class="hero__meta"><span id="clock"></span><span class="hero__meta-right">updated Aug 2026</span></div>
     </div>
   </div>
@@ -457,7 +469,7 @@ I build what people actually need, and keep it running.</div>
   </div>
 </footer>
 
-<script src="js/navigation.js?v=54"></script>
+<script src="js/navigation.js?v=58"></script>
 
 <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 크게 보기">
   <button class="lb__x" aria-label="닫기">✕</button>
