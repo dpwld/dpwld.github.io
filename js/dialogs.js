@@ -15,6 +15,7 @@ document.addEventListener('click', function (e) {
   if (btn) {
     e.preventDefault(); e.stopPropagation();
     figGo(btn.closest('.fig'), +btn.dataset.d);
+    if (btn.closest('#projectDetail')) restartProjectSlideshow();
     return;
   }
   // 프로젝트 미리보기 → 상세창, 상세창 이미지 → 라이트박스
@@ -45,6 +46,7 @@ function lbGo(d) {
 }
 function openLightbox(fig) {
   lbFigure = fig;
+  if (fig.closest('#projectDetail')) clearInterval(projectSlideTimer);
   lbSrcs = [].map.call(fig.querySelectorAll('.fig__stage img'), function (i) { return i.src; });
   lbCaptions = [].map.call(fig.querySelectorAll('.fig__stage img'), function (i) { return i.alt; });
   lbIdx = +fig.dataset.i || 0;
@@ -57,6 +59,7 @@ function closeLightbox() {
   lb.classList.remove('on');
   if (!document.querySelector('.modal.on')) document.body.classList.remove('modal-open');
   lbFigure.querySelector('.fig__stage').focus({ preventScroll: true });
+  if (lbFigure.closest('#projectDetail')) restartProjectSlideshow();
 }
 lb.addEventListener('click', function (e) {
   var nav = e.target.closest('.lb__nav');
@@ -67,6 +70,17 @@ lb.addEventListener('click', function (e) {
 // ── 프로젝트 상세창: 기존 내용과 이미지 5장을 그대로 사용 ──
 var projectDetail = document.getElementById('projectDetail');
 var projectSource = null;
+var projectSlideTimer;
+var projectMotion = matchMedia('(prefers-reduced-motion: reduce)');
+function restartProjectSlideshow() {
+  clearInterval(projectSlideTimer);
+  if (!projectDetail.classList.contains('on') || document.hidden || lb.classList.contains('on') || projectMotion.matches) return;
+  projectSlideTimer = setInterval(function () {
+    figGo(projectDetail.querySelector('.fig'), 1);
+  }, 3000);
+}
+projectMotion.addEventListener('change', restartProjectSlideshow);
+document.addEventListener('visibilitychange', restartProjectSlideshow);
 function openProjectDetail(item) {
   projectSource = item;
   projectDetail.querySelector('.modal__org').textContent = item.querySelector('.plist__org').textContent;
@@ -89,6 +103,7 @@ function openProjectDetail(item) {
   projectDetail.scrollTop = 0;
   document.body.classList.add('modal-open');
   projectDetail.querySelector('.modal__x').focus({ preventScroll: true });
+  restartProjectSlideshow();
 }
 
 // ── 프로젝트 호버: 짧은 요약과 미리보기 ──
@@ -155,7 +170,10 @@ function openModal(n) {
 function closeModal(m) {
   m.classList.remove('on');
   if (!lb.classList.contains('on')) document.body.classList.remove('modal-open');
-  if (m === projectDetail) projectSource.focus({ preventScroll: true });
+  if (m === projectDetail) {
+    clearInterval(projectSlideTimer);
+    projectSource.focus({ preventScroll: true });
+  }
 }
 document.addEventListener('click', function (e) {
   var card = e.target.closest('.work[data-work]');
@@ -197,6 +215,7 @@ document.addEventListener('keydown', function (e) {
   if (fig && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
     e.preventDefault();
     figGo(fig, e.key === 'ArrowLeft' ? -1 : 1);
+    if (fig.closest('#projectDetail')) restartProjectSlideshow();
     return;
   }
   if (e.key === 'Enter' || e.key === ' ') {

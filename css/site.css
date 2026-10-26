@@ -618,38 +618,6 @@ body.gate { overflow: hidden; height: 100vh; }
   font: 700 14px/1.6 var(--mono) !important; color: var(--paper);
 }
 
-/* ================= 포트폴리오 비밀번호 입력 ================= */
-.portfolio-gate {
-  min-height: 100vh; min-height: 100svh; height: 100svh; overflow-y: auto;
-  display: grid; place-items: center; padding: 32px 24px;
-  background: #000; color: #fff;
-}
-.portfolio-gate__box { width: 100%; max-width: 480px; }
-.portfolio-gate__eyebrow {
-  margin: 0 0 36px; color: #aaa;
-  font: 600 11px/1.5 var(--sans); letter-spacing: 0.2em;
-}
-.portfolio-gate h1 {
-  margin: 0 0 18px; font: 700 clamp(36px, 7vw, 52px)/1.15 var(--display);
-  letter-spacing: -0.04em;
-}
-.portfolio-gate__intro { margin: 0 0 48px; color: #aaa; font: 400 15px/1.7 var(--sans); word-break: keep-all; }
-.portfolio-gate label { display: block; margin-bottom: 12px; font: 600 13px/1.5 var(--sans); }
-.portfolio-gate__field { display: flex; gap: 10px; }
-.portfolio-gate input {
-  width: 100%; min-width: 0; border: 1px solid #666; border-radius: 0;
-  background: #111; color: #fff; padding: 16px; font: 500 18px/1.4 var(--sans);
-}
-.portfolio-gate button {
-  flex-shrink: 0; border: 1px solid #fff; border-radius: 0;
-  background: #fff; color: #000; padding: 16px 22px; cursor: pointer;
-  font: 700 14px/1.4 var(--sans);
-}
-.portfolio-gate button span { margin-left: 10px; }
-.portfolio-gate button:hover { background: #ddd; }
-.portfolio-gate :is(input, button):focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
-.portfolio-gate__error { min-height: 22px; margin: 14px 0 0; color: #ccc; font: 400 13px/1.7 var(--sans); }
-
 /* ================= v4.2: Planning·Design 흑백→컬러 인터랙션 ================= */
 .works-grid .work__imgwrap img {
   filter: grayscale(1) contrast(0.95);
@@ -689,7 +657,7 @@ body.gate { overflow: hidden; height: 100vh; }
 :root {
   --page-gutter: clamp(20px, 3.43vw, 48px);
   --project-inset: clamp(12px, 1.43vw, 20px);
-  --project-space: clamp(24px, 2.86vw, 40px);
+  --project-space: clamp(20px, 2vw, 28px);
 }
 .container, .topnav__in { padding-inline: var(--page-gutter); }
 .hero { padding: calc(var(--nav-h) + clamp(48px, 6.86vw, 96px)) 0 clamp(48px, 6.86vw, 96px); }
@@ -700,18 +668,21 @@ body.gate { overflow: hidden; height: 100vh; }
 .section { padding: clamp(48px, 7.43vw, 104px) 0 clamp(40px, 6.86vw, 96px); }
 .section__head { gap: clamp(12px, 1.72vw, 24px); margin-bottom: clamp(32px, 4.57vw, 64px); }
 .section__title { min-width: 0; font-size: clamp(1.625rem, 5.2vw, 4.5rem); overflow-wrap: break-word; }
+#projects { padding-block: clamp(40px, 5.14vw, 72px); }
+#projects .section__head { margin-bottom: clamp(24px, 2.86vw, 40px); }
+#projects .section__title { font-size: clamp(1.625rem, 4.3vw, 3.75rem); }
 .plist__item {
-  grid-template-columns: clamp(28px, 5.71vw, 80px) minmax(0, 1fr) minmax(0, 32.2%);
-  gap: clamp(16px, 2.57vw, 36px);
+  grid-template-columns: clamp(28px, 4.57vw, 64px) minmax(0, 1fr) minmax(0, 32.2%);
+  gap: clamp(16px, 2vw, 28px);
   padding: var(--project-space) var(--project-inset);
   margin-inline: calc(-1 * var(--project-inset));
 }
 .plist__item:first-child { padding-top: var(--project-space) !important; }
 .plist__main, .plist__aside { min-width: 0; }
-.plist__idx { font-size: clamp(1.25rem, 2.6vw, 2.5rem); }
-.plist__main h3 { font-size: clamp(1.125rem, calc(.625rem + 1.5vw), 2rem); overflow-wrap: break-word; }
-.plist__main p { font-size: clamp(.8125rem, calc(.625rem + .36vw), .9375rem); }
-.plist__org { font-size: clamp(.625rem, calc(.4375rem + .36vw), .75rem); }
+.plist__idx { font-size: clamp(1.125rem, 2.2vw, 2rem); }
+.plist__main h3 { margin-bottom: 8px; font-size: clamp(1.125rem, calc(.625rem + 1.2vw), 1.75rem); overflow-wrap: break-word; }
+.plist__main p { font-size: clamp(.8125rem, calc(.625rem + .3vw), .875rem); }
+.plist__org { margin-bottom: 12px; font-size: clamp(.625rem, calc(.4375rem + .36vw), .75rem); }
 .plist__note { font-size: clamp(.6875rem, calc(.5rem + .36vw), .8125rem); }
 .plist__item .tag { font-size: clamp(.5625rem, calc(.4375rem + .3vw), .6875rem); padding: .65em .9em; }
 .plist__cue { font-size: clamp(.5625rem, .8vw, .6875rem); }
