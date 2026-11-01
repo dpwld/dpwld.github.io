@@ -86,7 +86,9 @@ function openProjectDetail(item) {
   projectDetail.querySelector('.modal__org').textContent = item.querySelector('.plist__org').textContent;
   projectDetail.querySelector('.modal__title').textContent = item.querySelector('h3').textContent;
   var brief = item.querySelector('.plist__brief');
-  projectDetail.querySelector('.project-modal__brief').textContent = brief.textContent.trim();
+  projectDetail.querySelector('.project-modal__brief').replaceChildren(
+    ...Array.from(brief.childNodes, function (node) { return node.cloneNode(true); })
+  );
   var figure = item.querySelector('.fig').cloneNode(true);
   figure.querySelectorAll('img').forEach(function (img) { img.loading = 'eager'; });
   figure.insertAdjacentHTML('beforeend', '<div class="fig__nav"><button class="fig__btn" data-d="-1" aria-label="이전 이미지">‹</button><span class="fig__cnt"></span><button class="fig__btn" data-d="1" aria-label="다음 이미지">›</button></div><p class="fig__caption" aria-live="polite"></p>');

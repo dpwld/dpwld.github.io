@@ -1,6 +1,7 @@
 # 정예지 포트폴리오
 
-금융 실무, 업무 자동화와 AI 시스템 구축, 연구 프로젝트를 소개하는 개인 포트폴리오입니다.
+금융·운영 실무를 바탕으로 AI 서비스 기획과 구현을 연결하는 개인 포트폴리오입니다.
+프로젝트별 대상 업무, 담당 역할, 설계 판단과 검증 범위를 소개합니다.
 
 **[포트폴리오 보기](https://dpwld.github.io/)** · [GitHub 프로필](https://github.com/dpwld) · [LinkedIn](https://www.linkedin.com/in/yejijeong1204/)
 

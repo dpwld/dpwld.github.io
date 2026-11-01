@@ -378,7 +378,14 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .modal__body > p { margin-top: 18px; font: 500 16.5px/1.75 var(--sans); color: #3a3a3a; word-break: keep-all; }
 .modal__body > p b {
   display: block; font: 700 12.1px/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase;
-  color: #9a9a9a; margin-bottom: 6px;
+  color: #666; margin-bottom: 6px;
+}
+.plist__brief strong, .project-modal__brief strong, .modal__body strong {
+  color: #1746b0; font-weight: 800;
+}
+.plist__brief mark, .project-modal__brief mark, .modal__body mark {
+  background: #ffeb70; color: #111; font-weight: 800; padding: .08em .18em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 .modal .fig { margin-bottom: 0; }
 body.modal-open { overflow: hidden; }
