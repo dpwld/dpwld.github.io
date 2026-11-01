@@ -7,7 +7,7 @@
 
 ## 살펴보기
 
-- [AI와 데이터 프로젝트](https://dpwld.github.io/#projects): Company Finance, Grant Project, CRM Automation, Personal Workspace, Sprint Dashboard와 KAERI·시계열·감성분석 연구
+- [AI와 데이터 프로젝트](https://dpwld.github.io/#projects): Company Finance, Grant Project, CRM Automation, Personal Workspace, Sprint Dashboard, YouTube Community Desk와 KAERI·시계열·감성분석 연구
 - [기획과 디자인](https://dpwld.github.io/#works): 서비스 기획과 사용자 경험 설계
 - [기술과 자격](https://dpwld.github.io/#skills)
 - [경력](https://dpwld.github.io/#cv)
@@ -18,7 +18,7 @@
 
 프로젝트에 커서를 올리면 짧은 요약과 이미지 미리보기가 표시됩니다. 프로젝트를
 클릭하거나 키보드로 선택해 Enter를 누르면 큰 이미지와 전체 설명이 담긴 상세창이
-열립니다. 상세창의 이미지 5장은 3초마다 자동 전환되며, 화살표 버튼이나 방향키로도
+열립니다. 상세창의 이미지는 3초마다 자동 전환되며, 화살표 버튼이나 방향키로도
 넘길 수 있습니다. 이미지를 확대하거나 다른 탭을 보는 동안에는 자동 전환을 멈추고,
 Esc로 창을 닫을 수 있습니다. 기기의 모션 줄이기 설정도 따릅니다.
 
@@ -36,7 +36,7 @@ Esc로 창을 닫을 수 있습니다. 기기의 모션 줄이기 설정도 따�
 | `index.html` | 프로젝트 소개와 경력 |
 | `css/` | 스타일 |
 | `js/` | 내비게이션·소개 애니메이션, 대화상자·이미지 뷰어, 스크롤 표시 효과 |
-| `assets/` | 이미지 등 포트폴리오 자료. `proj/highlights/`에 프로젝트별 핵심 이미지 5장 |
+| `assets/` | 이미지 등 포트폴리오 자료. `proj/highlights/`에 프로젝트별 핵심 이미지 |
 | `demo/` | 프로젝트 데모 |
 | `docs/` | CV. 프로젝트 PDF는 제공하지 않음 |
 | `fonts/` | 글꼴 |
